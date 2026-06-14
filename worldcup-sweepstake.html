@@ -33,67 +33,16 @@
     padding: 28px 16px 56px;
   }
 
+  /* ── HEADER ── */
   header { text-align: center; margin-bottom: 8px; }
+  .header-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 9vw, 74px); letter-spacing: 0.04em; color: var(--gold); text-shadow: 0 3px 14px rgba(0,0,0,0.45); line-height: 1; }
+  .header-sub { font-family: 'Bebas Neue', sans-serif; font-size: clamp(22px, 5vw, 42px); letter-spacing: 0.05em; color: rgba(255,255,255,0.85); line-height: 1; margin-top: 2px; }
+  .stage-banner { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #1a1a1a; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 18px; border-radius: 99px; margin: 14px auto 0; }
 
-  .header-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(38px, 9vw, 74px);
-    letter-spacing: 0.04em;
-    color: var(--gold);
-    text-shadow: 0 3px 14px rgba(0,0,0,0.45);
-    line-height: 1;
-  }
-
-  .header-sub {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(22px, 5vw, 42px);
-    letter-spacing: 0.05em;
-    color: rgba(255,255,255,0.85);
-    line-height: 1;
-    margin-top: 2px;
-  }
-
-  .stage-banner {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--gold);
-    color: #1a1a1a;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 6px 18px;
-    border-radius: 99px;
-    margin: 14px auto 0;
-  }
-
-  .leaderboard {
-    max-width: 560px;
-    margin: 22px auto 28px;
-    background: rgba(0,0,0,0.28);
-    border-radius: 16px;
-    padding: 16px 20px;
-  }
-
-  .leaderboard h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 0.08em;
-    color: var(--gold);
-    margin-bottom: 12px;
-    text-align: center;
-  }
-
-  .lb-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 7px 8px;
-    border-radius: 8px;
-    margin-bottom: 4px;
-    background: rgba(255,255,255,0.05);
-  }
+  /* ── LEADERBOARD ── */
+  .leaderboard { max-width: 560px; margin: 22px auto 28px; background: rgba(0,0,0,0.28); border-radius: 16px; padding: 16px 20px; }
+  .leaderboard h3 { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 12px; text-align: center; }
+  .lb-row { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 8px; margin-bottom: 4px; background: rgba(255,255,255,0.05); }
   .lb-row:last-child { margin-bottom: 0; }
   .lb-rank { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: rgba(255,255,255,0.4); width: 28px; text-align: center; flex-shrink: 0; }
   .lb-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
@@ -103,32 +52,14 @@
   .lb-count { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.12); border-radius: 6px; padding: 2px 10px; }
   .lb-count.zero { color: rgba(255,255,255,0.3); }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 18px;
-    max-width: 1200px;
-    margin: 0 auto 32px;
-  }
+  /* ── GRID ── */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; max-width: 1300px; margin: 0 auto 32px; }
 
   .card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
 
-  .card-header {
-    padding: 14px 18px 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    user-select: none;
-    border-left: 5px solid transparent;
-  }
+  .card-header { padding: 14px 18px 12px; display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; border-left: 5px solid transparent; }
 
-  .avatar {
-    width: 42px; height: 42px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif; font-size: 21px; color: #fff; flex-shrink: 0;
-    overflow: hidden;
-  }
+  .avatar { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 21px; color: #fff; flex-shrink: 0; overflow: hidden; }
   .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
   .card-header-text { flex: 1; min-width: 0; }
@@ -136,36 +67,70 @@
   .card-header-text .subtitle { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 1px; }
 
   .survive-badge { font-size: 12px; font-weight: 700; border-radius: 20px; padding: 3px 10px; color: #fff; white-space: nowrap; flex-shrink: 0; }
-
   .chevron { font-size: 12px; color: var(--muted); transition: transform 0.25s; flex-shrink: 0; }
   .card.collapsed .chevron { transform: rotate(-90deg); }
 
-  .team-list { list-style: none; border-top: 1px solid rgba(0,0,0,0.07); overflow: hidden; transition: max-height 0.35s ease; max-height: 700px; }
+  /* ── TEAM LIST ── */
+  .team-list { list-style: none; border-top: 1px solid rgba(0,0,0,0.07); overflow: hidden; transition: max-height 0.35s ease; max-height: 900px; }
   .card.collapsed .team-list { max-height: 0; border-top: none; }
 
-  .team-list li {
-    display: flex; align-items: center; gap: 10px;
-    padding: 8px 18px; font-size: 14px; font-weight: 500;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-  }
+  .team-list li { display: flex; align-items: center; gap: 8px; padding: 7px 14px 7px 18px; font-size: 14px; font-weight: 500; border-bottom: 1px solid rgba(0,0,0,0.05); }
   .team-list li:last-child { border-bottom: none; }
   .team-list li:nth-child(even) { background: var(--stripe); }
 
-  .flag { font-size: 20px; line-height: 1; width: 28px; text-align: center; flex-shrink: 0; transition: opacity 0.3s; }
-  .team-name { flex: 1; transition: all 0.3s; }
+  .flag { font-size: 19px; line-height: 1; width: 26px; text-align: center; flex-shrink: 0; transition: opacity 0.3s; }
+  .team-name { flex: 1; transition: all 0.3s; min-width: 0; }
 
-  /* Big 5 highlight */
+  /* Big 5 */
   .team-list li.big5 { font-weight: 700; }
-  .team-list li.big5 .team-name::after { content: " ⭐"; font-size: 12px; }
+  .team-list li.big5 .team-name::after { content: " ⭐"; font-size: 11px; }
 
   /* Eliminated */
   .team-list li.eliminated .flag { opacity: 0.25; }
   .team-list li.eliminated .team-name { text-decoration: line-through; color: #bbb; font-weight: 400; }
   .team-list li.eliminated .team-name::after { display: none; }
   .team-list li.eliminated .out-icon { display: inline; }
-  .out-icon { display: none; font-size: 13px; margin-left: 2px; }
+  .out-icon { display: none; font-size: 12px; }
 
-  /* Per-person colours */
+  /* ── RESULT BADGES ── */
+  .results {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .result-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1.5px solid #e0e0e0;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 800;
+    color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0;
+  }
+
+  .result-btn:active { transform: scale(0.88); }
+
+  .result-btn.state-W { background: #27ae60; border-color: #27ae60; color: #fff; }
+  .result-btn.state-D { background: #bdc3c7; border-color: #aaa; color: #555; }
+  .result-btn.state-L { background: #e74c3c; border-color: #e74c3c; color: #fff; }
+
+  /* Eliminated teams freeze their badges */
+  .team-list li.eliminated .result-btn { opacity: 0.4; pointer-events: none; }
+
+  /* ── PER-PERSON COLOURS ── */
   .graham .card-header  { background: rgba(192,57,43,0.07);  border-left-color: var(--graham); }
   .graham .avatar       { background: var(--graham); }
   .graham .survive-badge { background: var(--graham); }
@@ -191,13 +156,13 @@
   .al .survive-badge    { background: var(--al); }
   .al .team-list        { background: rgba(30,132,73,0.012); }
 
-  .leftover-section {
-    max-width: 340px; margin: 0 auto 28px;
-    background: rgba(0,0,0,0.22); border-radius: 12px; padding: 16px 22px; text-align: center;
-  }
+  /* ── LEFTOVER ── */
+  .leftover-section { max-width: 340px; margin: 0 auto 28px; background: rgba(0,0,0,0.22); border-radius: 12px; padding: 16px 22px; text-align: center; }
   .leftover-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.07em; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
   .leftover-section ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
   .leftover-section li { color: rgba(255,255,255,0.45); font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+  .hint { text-align: center; color: rgba(255,255,255,0.35); font-size: 11px; margin-bottom: 20px; letter-spacing: 0.04em; }
 
   .footer { text-align: center; color: rgba(255,255,255,0.35); font-size: 12px; letter-spacing: 0.05em; margin-top: 8px; }
 
@@ -220,6 +185,8 @@
   <div id="leaderboard-rows"></div>
 </div>
 
+<p class="hint">Tap the small squares next to a team to log results &nbsp;·&nbsp; cycles blank → <strong>W</strong> → <strong>D</strong> → <strong>L</strong></p>
+
 <div class="grid">
 
   <!-- GRAHAM -->
@@ -234,15 +201,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-graham">
-      <li data-team="austria"><span class="flag">🇦🇹</span><span class="team-name">Austria</span><span class="out-icon">⚽</span></li>
-      <li data-team="spain" class="big5"><span class="flag">🇪🇸</span><span class="team-name">Spain</span><span class="out-icon">⚽</span></li>
-      <li data-team="tunisia"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span></li>
-      <li data-team="usa"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span></li>
-      <li data-team="ghana"><span class="flag">🇬🇭</span><span class="team-name">Ghana</span><span class="out-icon">⚽</span></li>
-      <li data-team="saudiarabia"><span class="flag">🇸🇦</span><span class="team-name">Saudi Arabia</span><span class="out-icon">⚽</span></li>
-      <li data-team="algeria"><span class="flag">🇩🇿</span><span class="team-name">Algeria</span><span class="out-icon">⚽</span></li>
-      <li data-team="brazil"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span></li>
-      <li data-team="czechia"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span></li>
+      <li data-team="austria"><span class="flag">🇦🇹</span><span class="team-name">Austria</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="spain" class="big5"><span class="flag">🇪🇸</span><span class="team-name">Spain</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="tunisia"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="usa"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="ghana"><span class="flag">🇬🇭</span><span class="team-name">Ghana</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="saudiarabia"><span class="flag">🇸🇦</span><span class="team-name">Saudi Arabia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="algeria"><span class="flag">🇩🇿</span><span class="team-name">Algeria</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="brazil"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="czechia"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -258,15 +225,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-jill">
-      <li data-team="croatia"><span class="flag">🇭🇷</span><span class="team-name">Croatia</span><span class="out-icon">⚽</span></li>
-      <li data-team="france" class="big5"><span class="flag">🇫🇷</span><span class="team-name">France</span><span class="out-icon">⚽</span></li>
-      <li data-team="australia"><span class="flag">🇦🇺</span><span class="team-name">Australia</span><span class="out-icon">⚽</span></li>
-      <li data-team="canada"><span class="flag">🇨🇦</span><span class="team-name">Canada</span><span class="out-icon">⚽</span></li>
-      <li data-team="belgium"><span class="flag">🇧🇪</span><span class="team-name">Belgium</span><span class="out-icon">⚽</span></li>
-      <li data-team="germany"><span class="flag">🇩🇪</span><span class="team-name">Germany</span><span class="out-icon">⚽</span></li>
-      <li data-team="uzbekistan"><span class="flag">🇺🇿</span><span class="team-name">Uzbekistan</span><span class="out-icon">⚽</span></li>
-      <li data-team="caboverde"><span class="flag">🇨🇻</span><span class="team-name">Cabo Verde</span><span class="out-icon">⚽</span></li>
-      <li data-team="scotland"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="team-name">Scotland</span><span class="out-icon">⚽</span></li>
+      <li data-team="croatia"><span class="flag">🇭🇷</span><span class="team-name">Croatia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="france" class="big5"><span class="flag">🇫🇷</span><span class="team-name">France</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="australia"><span class="flag">🇦🇺</span><span class="team-name">Australia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="canada"><span class="flag">🇨🇦</span><span class="team-name">Canada</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="belgium"><span class="flag">🇧🇪</span><span class="team-name">Belgium</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="germany"><span class="flag">🇩🇪</span><span class="team-name">Germany</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="uzbekistan"><span class="flag">🇺🇿</span><span class="team-name">Uzbekistan</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="caboverde"><span class="flag">🇨🇻</span><span class="team-name">Cabo Verde</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="scotland"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="team-name">Scotland</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -282,15 +249,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-laura">
-      <li data-team="curacao"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span></li>
-      <li data-team="argentina" class="big5"><span class="flag">🇦🇷</span><span class="team-name">Argentina</span><span class="out-icon">⚽</span></li>
-      <li data-team="uruguay"><span class="flag">🇺🇾</span><span class="team-name">Uruguay</span><span class="out-icon">⚽</span></li>
-      <li data-team="netherlands"><span class="flag">🇳🇱</span><span class="team-name">Netherlands</span><span class="out-icon">⚽</span></li>
-      <li data-team="sweden"><span class="flag">🇸🇪</span><span class="team-name">Sweden</span><span class="out-icon">⚽</span></li>
-      <li data-team="turkiye"><span class="flag">🇹🇷</span><span class="team-name">Türkiye</span><span class="out-icon">⚽</span></li>
-      <li data-team="newzealand"><span class="flag">🇳🇿</span><span class="team-name">New Zealand</span><span class="out-icon">⚽</span></li>
-      <li data-team="japan"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span></li>
-      <li data-team="colombia"><span class="flag">🇨🇴</span><span class="team-name">Colombia</span><span class="out-icon">⚽</span></li>
+      <li data-team="curacao"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="argentina" class="big5"><span class="flag">🇦🇷</span><span class="team-name">Argentina</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="uruguay"><span class="flag">🇺🇾</span><span class="team-name">Uruguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="netherlands"><span class="flag">🇳🇱</span><span class="team-name">Netherlands</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="sweden"><span class="flag">🇸🇪</span><span class="team-name">Sweden</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="turkiye"><span class="flag">🇹🇷</span><span class="team-name">Türkiye</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="newzealand"><span class="flag">🇳🇿</span><span class="team-name">New Zealand</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="japan"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="colombia"><span class="flag">🇨🇴</span><span class="team-name">Colombia</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -306,15 +273,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
-      <li data-team="ecuador"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span></li>
-      <li data-team="portugal" class="big5"><span class="flag">🇵🇹</span><span class="team-name">Portugal</span><span class="out-icon">⚽</span></li>
-      <li data-team="qatar"><span class="flag">🇶🇦</span><span class="team-name">Qatar</span><span class="out-icon">⚽</span></li>
-      <li data-team="norway"><span class="flag">🇳🇴</span><span class="team-name">Norway</span><span class="out-icon">⚽</span></li>
-      <li data-team="haiti"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span></li>
-      <li data-team="iraq"><span class="flag">🇮🇶</span><span class="team-name">Iraq</span><span class="out-icon">⚽</span></li>
-      <li data-team="morocco"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span></li>
-      <li data-team="switzerland"><span class="flag">🇨🇭</span><span class="team-name">Switzerland</span><span class="out-icon">⚽</span></li>
-      <li data-team="egypt"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span></li>
+      <li data-team="ecuador"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="portugal" class="big5"><span class="flag">🇵🇹</span><span class="team-name">Portugal</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="qatar"><span class="flag">🇶🇦</span><span class="team-name">Qatar</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="norway"><span class="flag">🇳🇴</span><span class="team-name">Norway</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="haiti"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="iraq"><span class="flag">🇮🇶</span><span class="team-name">Iraq</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="morocco"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="switzerland"><span class="flag">🇨🇭</span><span class="team-name">Switzerland</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="egypt"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -330,15 +297,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-al">
-      <li data-team="senegal"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span></li>
-      <li data-team="england" class="big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span></li>
-      <li data-team="paraguay"><span class="flag">🇵🇾</span><span class="team-name">Paraguay</span><span class="out-icon">⚽</span></li>
-      <li data-team="jordan"><span class="flag">🇯🇴</span><span class="team-name">Jordan</span><span class="out-icon">⚽</span></li>
-      <li data-team="mexico"><span class="flag">🇲🇽</span><span class="team-name">Mexico</span><span class="out-icon">⚽</span></li>
-      <li data-team="panama"><span class="flag">🇵🇦</span><span class="team-name">Panama</span><span class="out-icon">⚽</span></li>
-      <li data-team="bosnia"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span></li>
-      <li data-team="southafrica"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span></li>
-      <li data-team="iran"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span></li>
+      <li data-team="senegal"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="england" class="big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="paraguay"><span class="flag">🇵🇾</span><span class="team-name">Paraguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="jordan"><span class="flag">🇯🇴</span><span class="team-name">Jordan</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="mexico"><span class="flag">🇲🇽</span><span class="team-name">Mexico</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="panama"><span class="flag">🇵🇦</span><span class="team-name">Panama</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="bosnia"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="southafrica"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="iran"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -353,9 +320,11 @@
   </ul>
 </div>
 
-<div class="footer">Last updated: 14 June 2026</div>
+<div class="footer">Last updated: 14 June 2026 · Matchday 1</div>
 
 <script>
+  const MAX_RESULTS = 8;
+
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
     { id: 'jill',   name: 'Jill',   color: '#8e44ad', big5: '🇫🇷' },
@@ -363,6 +332,81 @@
     { id: 'katy',   name: 'Katy',   color: '#d35400', big5: '🇵🇹' },
     { id: 'al',     name: 'Al',     color: '#1e8449', big5: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
   ];
+
+  // Hardcoded results per team: array of up to 8 values, each null | 'W' | 'D' | 'L'
+  const RESULTS = {
+    // GRAHAM
+    austria:     [null],
+    spain:       [null],
+    tunisia:     [null],
+    usa:         ['W'],
+    ghana:       [null],
+    saudiarabia: [null],
+    algeria:     [null],
+    brazil:      ['D'],
+    czechia:     ['L'],
+    // JILL
+    croatia:     [null],
+    france:      [null],
+    australia:   ['W'],
+    canada:      ['D'],
+    belgium:     [null],
+    germany:     [null],
+    uzbekistan:  [null],
+    caboverde:   [null],
+    scotland:    ['W'],
+    // LAURA
+    curacao:     [null],
+    argentina:   [null],
+    uruguay:     [null],
+    netherlands: [null],
+    sweden:      [null],
+    turkiye:     ['L'],
+    newzealand:  [null],
+    japan:       [null],
+    colombia:    [null],
+    morocco:     ['D'],
+    // KATY
+    ecuador:     [null],
+    portugal:    [null],
+    qatar:       ['D'],
+    norway:      [null],
+    haiti:       ['L'],
+    iraq:        [null],
+    switzerland: ['D'],
+    egypt:       [null],
+    paraguay:    ['L'],
+    // AL
+    senegal:     [null],
+    england:     [null],
+    mexico:      ['W'],
+    jordan:      [null],
+    panama:      [null],
+    bosnia:      ['D'],
+    southafrica: ['L'],
+    iran:        [null],
+  };
+
+  function applyBtnState(btn, state) {
+    btn.dataset.state = state || '';
+    btn.className = 'result-btn' + (state ? ' state-' + state : '');
+    btn.textContent = state || '';
+  }
+
+  function initResultBadges() {
+    document.querySelectorAll('.team-list li[data-team]').forEach(li => {
+      const team = li.dataset.team;
+      const container = li.querySelector('.results');
+      const teamResults = RESULTS[team] || [];
+      for (let i = 0; i < MAX_RESULTS; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'result-btn';
+        btn.disabled = true; // read-only; Graham updates via code
+        applyBtnState(btn, teamResults[i] || null);
+        container.appendChild(btn);
+      }
+    });
+  }
 
   function getSurviving(id) {
     return document.getElementById('list-' + id).querySelectorAll('li:not(.eliminated)').length;
@@ -406,6 +450,7 @@
     document.getElementById(id).classList.toggle('collapsed');
   }
 
+  initResultBadges();
   buildLeaderboard();
   updateBadges();
 </script>
