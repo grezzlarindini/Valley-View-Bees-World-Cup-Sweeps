@@ -502,7 +502,7 @@
       const avatarHTML = hasPhoto
         ? `<img class="lb-avatar" src="${avatarEl.querySelector('img').src}" alt="${p.name}">`
         : `<div class="lb-dot" style="background:${p.color}"></div>`;
-      const recordStr = p.played > 0 ? `${p.w}W ${p.d}D ${p.l}L` : '—';
+      const recordStr = p.played > 0 ? `GP ${p.played} · ${p.w}W ${p.d}D ${p.l}L` : 'GP 0';
       const winPctStr = p.winPct !== null ? `${p.winPct}%` : '';
       div.innerHTML = `
         <div class="lb-rank">${i < 3 ? medals[i] : i+1}</div>
@@ -532,7 +532,22 @@
     document.getElementById(id).classList.toggle('collapsed');
   }
 
+  // Sort each player's team list: teams with results first (desc by games played), blanks after
+  function sortTeamLists() {
+    ['graham','jill','laura','katy','al'].forEach(id => {
+      const list = document.getElementById('list-' + id);
+      const items = Array.from(list.querySelectorAll('li[data-team]'));
+      items.sort((a, b) => {
+        const aRes = (RESULTS[a.dataset.team] || []).filter(Boolean).length;
+        const bRes = (RESULTS[b.dataset.team] || []).filter(Boolean).length;
+        return bRes - aRes; // most results first; ties keep original order
+      });
+      items.forEach(li => list.appendChild(li)); // re-append in new order
+    });
+  }
+
   initResultBadges();
+  sortTeamLists();
   buildFormStrips();
   buildLeaderboard();
   updateBadges();
