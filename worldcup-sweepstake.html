@@ -99,6 +99,24 @@
   .team-list li.big5 { font-weight: 700; }
   .team-list li.big5 .team-name::after { content: " ⭐"; font-size: 11px; }
 
+  /* Group badge */
+  .group-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 5px;
+    flex-shrink: 0;
+    margin-right: 2px;
+  }
+  .graham .group-badge { background: var(--graham); opacity: 0.75; }
+  .jill   .group-badge { background: var(--jill);   opacity: 0.75; }
+  .laura  .group-badge { background: var(--laura);  opacity: 0.75; }
+  .katy   .group-badge { background: var(--katy);   opacity: 0.75; }
+  .al     .group-badge { background: var(--al);     opacity: 0.75; }
+  .team-list li.eliminated .group-badge { opacity: 0.2; }
+
   /* Eliminated */
   .team-list li.eliminated .flag { opacity: 0.25; }
   .team-list li.eliminated .team-name { text-decoration: line-through; color: #bbb; font-weight: 400; }
@@ -216,15 +234,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-graham">
-      <li data-team="austria"><span class="flag">🇦🇹</span><span class="team-name">Austria</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="spain" class="big5"><span class="flag">🇪🇸</span><span class="team-name">Spain</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="tunisia"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="usa"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="ghana"><span class="flag">🇬🇭</span><span class="team-name">Ghana</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="saudiarabia"><span class="flag">🇸🇦</span><span class="team-name">Saudi Arabia</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="algeria"><span class="flag">🇩🇿</span><span class="team-name">Algeria</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="brazil"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="czechia"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="austria" data-group="J" data-group="J"><span class="flag">🇦🇹</span><span class="team-name">Austria</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="spain" data-group="H" class="big5"><span class="flag">🇪🇸</span><span class="team-name">Spain</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="tunisia" data-group="F"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="usa" data-group="D"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="ghana" data-group="L"><span class="flag">🇬🇭</span><span class="team-name">Ghana</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="saudiarabia" data-group="H"><span class="flag">🇸🇦</span><span class="team-name">Saudi Arabia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="algeria" data-group="J"><span class="flag">🇩🇿</span><span class="team-name">Algeria</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="brazil" data-group="C"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="czechia" data-group="A"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -241,15 +259,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-jill">
-      <li data-team="croatia"><span class="flag">🇭🇷</span><span class="team-name">Croatia</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="france" class="big5"><span class="flag">🇫🇷</span><span class="team-name">France</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="australia"><span class="flag">🇦🇺</span><span class="team-name">Australia</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="canada"><span class="flag">🇨🇦</span><span class="team-name">Canada</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="belgium"><span class="flag">🇧🇪</span><span class="team-name">Belgium</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="germany"><span class="flag">🇩🇪</span><span class="team-name">Germany</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="uzbekistan"><span class="flag">🇺🇿</span><span class="team-name">Uzbekistan</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="caboverde"><span class="flag">🇨🇻</span><span class="team-name">Cape Verde</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="scotland"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="team-name">Scotland</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="croatia" data-group="L"><span class="flag">🇭🇷</span><span class="team-name">Croatia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="france" data-group="I" class="big5"><span class="flag">🇫🇷</span><span class="team-name">France</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="australia" data-group="D"><span class="flag">🇦🇺</span><span class="team-name">Australia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="canada" data-group="B"><span class="flag">🇨🇦</span><span class="team-name">Canada</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="belgium" data-group="E"><span class="flag">🇧🇪</span><span class="team-name">Belgium</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="germany" data-group="E"><span class="flag">🇩🇪</span><span class="team-name">Germany</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="uzbekistan" data-group="K"><span class="flag">🇺🇿</span><span class="team-name">Uzbekistan</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="caboverde" data-group="H"><span class="flag">🇨🇻</span><span class="team-name">Cape Verde</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="scotland" data-group="C"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="team-name">Scotland</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -266,15 +284,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-laura">
-      <li data-team="curacao"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="argentina" class="big5"><span class="flag">🇦🇷</span><span class="team-name">Argentina</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="uruguay"><span class="flag">🇺🇾</span><span class="team-name">Uruguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="netherlands"><span class="flag">🇳🇱</span><span class="team-name">Netherlands</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="sweden"><span class="flag">🇸🇪</span><span class="team-name">Sweden</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="turkiye"><span class="flag">🇹🇷</span><span class="team-name">Türkiye</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="newzealand"><span class="flag">🇳🇿</span><span class="team-name">New Zealand</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="japan"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="colombia"><span class="flag">🇨🇴</span><span class="team-name">Colombia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="curacao" data-group="E"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="argentina" data-group="J" class="big5"><span class="flag">🇦🇷</span><span class="team-name">Argentina</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="uruguay" data-group="H"><span class="flag">🇺🇾</span><span class="team-name">Uruguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="netherlands" data-group="F"><span class="flag">🇳🇱</span><span class="team-name">Netherlands</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="sweden" data-group="F"><span class="flag">🇸🇪</span><span class="team-name">Sweden</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="turkiye" data-group="D"><span class="flag">🇹🇷</span><span class="team-name">Türkiye</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="newzealand" data-group="G"><span class="flag">🇳🇿</span><span class="team-name">New Zealand</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="japan" data-group="F"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="colombia" data-group="K"><span class="flag">🇨🇴</span><span class="team-name">Colombia</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -291,15 +309,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
-      <li data-team="ecuador"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="portugal" class="big5"><span class="flag">🇵🇹</span><span class="team-name">Portugal</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="qatar"><span class="flag">🇶🇦</span><span class="team-name">Qatar</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="norway"><span class="flag">🇳🇴</span><span class="team-name">Norway</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="haiti"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="iraq"><span class="flag">🇮🇶</span><span class="team-name">Iraq</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="morocco"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="switzerland"><span class="flag">🇨🇭</span><span class="team-name">Switzerland</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="egypt"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="ecuador" data-group="E"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="portugal" data-group="K" class="big5"><span class="flag">🇵🇹</span><span class="team-name">Portugal</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="qatar" data-group="B"><span class="flag">🇶🇦</span><span class="team-name">Qatar</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="norway" data-group="I"><span class="flag">🇳🇴</span><span class="team-name">Norway</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="haiti" data-group="C"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="iraq" data-group="I"><span class="flag">🇮🇶</span><span class="team-name">Iraq</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="morocco" data-group="C"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="switzerland" data-group="B"><span class="flag">🇨🇭</span><span class="team-name">Switzerland</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="egypt" data-group="G"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -316,15 +334,15 @@
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-al">
-      <li data-team="senegal"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="england" class="big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="paraguay"><span class="flag">🇵🇾</span><span class="team-name">Paraguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="jordan"><span class="flag">🇯🇴</span><span class="team-name">Jordan</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="mexico"><span class="flag">🇲🇽</span><span class="team-name">Mexico</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="panama"><span class="flag">🇵🇦</span><span class="team-name">Panama</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="bosnia"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="southafrica"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="iran"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="senegal" data-group="I"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="england" data-group="L" class="big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="paraguay" data-group="D"><span class="flag">🇵🇾</span><span class="team-name">Paraguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="jordan" data-group="J"><span class="flag">🇯🇴</span><span class="team-name">Jordan</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="mexico" data-group="A"><span class="flag">🇲🇽</span><span class="team-name">Mexico</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="panama" data-group="L"><span class="flag">🇵🇦</span><span class="team-name">Panama</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="bosnia" data-group="B"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="southafrica" data-group="A"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="iran" data-group="G"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -415,6 +433,17 @@
   function initResultBadges() {
     document.querySelectorAll('.team-list li[data-team]').forEach(li => {
       const team = li.dataset.team;
+      const group = li.dataset.group;
+
+      // Insert group badge after the flag
+      if (group) {
+        const badge = document.createElement('span');
+        badge.className = 'group-badge';
+        badge.textContent = group;
+        const flag = li.querySelector('.flag');
+        flag.insertAdjacentElement('afterend', badge);
+      }
+
       const container = li.querySelector('.results');
       const teamResults = RESULTS[team] || [];
       for (let i = 0; i < MAX_RESULTS; i++) {
