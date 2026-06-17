@@ -377,55 +377,55 @@
   // Hardcoded results per team: array of up to 8 values, each null | 'W' | 'D' | 'L'
   const RESULTS = {
     // GRAHAM
-    austria:     ['W'],
-    spain:       ['D'],
-    tunisia:     ['L'],
-    usa:         ['W'],
-    ghana:       [null],
-    saudiarabia: ['D'],
-    algeria:     ['L'],
-    brazil:      ['D'],
-    czechia:     ['L'],
+    austria:     [{ r: 'W', seq: 2 }],
+    spain:       [{ r: 'D', seq: 0 }],
+    tunisia:     [{ r: 'L', seq: 0 }],
+    usa:         [{ r: 'W', seq: 0 }],
+    ghana:       [],
+    saudiarabia: [{ r: 'D', seq: 0 }],
+    algeria:     [{ r: 'L', seq: 2 }],
+    brazil:      [{ r: 'D', seq: 0 }],
+    czechia:     [{ r: 'L', seq: 0 }],
     // JILL
-    croatia:     [null],
-    france:      ['W'],
-    australia:   ['W'],
-    canada:      ['D'],
-    belgium:     ['D'],
-    germany:     ['W'],
-    uzbekistan:  [null],
-    caboverde:   ['D'],
-    scotland:    ['W'],
+    croatia:     [],
+    france:      [{ r: 'W', seq: 1 }],
+    australia:   [{ r: 'W', seq: 0 }],
+    canada:      [{ r: 'D', seq: 0 }],
+    belgium:     [{ r: 'D', seq: 0 }],
+    germany:     [{ r: 'W', seq: 0 }],
+    uzbekistan:  [],
+    caboverde:   [{ r: 'D', seq: 0 }],
+    scotland:    [{ r: 'W', seq: 0 }],
     // LAURA
-    curacao:     ['L'],
-    argentina:   ['W'],
-    uruguay:     ['D'],
-    netherlands: ['D'],
-    sweden:      ['W'],
-    turkiye:     ['L'],
-    newzealand:  ['D'],
-    japan:       ['D'],
-    colombia:    [null],
-    morocco:     ['D'],
+    curacao:     [{ r: 'L', seq: 0 }],
+    argentina:   [{ r: 'W', seq: 2 }],
+    uruguay:     [{ r: 'D', seq: 0 }],
+    netherlands: [{ r: 'D', seq: 0 }],
+    sweden:      [{ r: 'W', seq: 0 }],
+    turkiye:     [{ r: 'L', seq: 0 }],
+    newzealand:  [{ r: 'D', seq: 0 }],
+    japan:       [{ r: 'D', seq: 0 }],
+    colombia:    [],
+    morocco:     [{ r: 'D', seq: 0 }],
     // KATY
-    ecuador:     ['L'],
-    portugal:    [null],
-    qatar:       ['D'],
-    norway:      ['W'],
-    haiti:       ['L'],
-    iraq:        ['L'],
-    switzerland: ['D'],
-    egypt:       ['D'],
-    paraguay:    ['L'],
+    ecuador:     [{ r: 'L', seq: 0 }],
+    portugal:    [{ r: 'D', seq: 3 }],
+    qatar:       [{ r: 'D', seq: 0 }],
+    norway:      [{ r: 'W', seq: 1 }],
+    haiti:       [{ r: 'L', seq: 0 }],
+    iraq:        [{ r: 'L', seq: 1 }],
+    switzerland: [{ r: 'D', seq: 0 }],
+    egypt:       [{ r: 'D', seq: 0 }],
+    paraguay:    [{ r: 'L', seq: 0 }],
     // AL
-    senegal:     ['L'],
-    england:     [null],
-    mexico:      ['W'],
-    jordan:      ['L'],
-    panama:      [null],
-    bosnia:      ['D'],
-    southafrica: ['L'],
-    iran:        ['D'],
+    senegal:     [{ r: 'L', seq: 1 }],
+    england:     [],
+    mexico:      [{ r: 'W', seq: 0 }],
+    jordan:      [{ r: 'L', seq: 2 }],
+    panama:      [],
+    bosnia:      [{ r: 'D', seq: 0 }],
+    southafrica: [{ r: 'L', seq: 0 }],
+    iran:        [{ r: 'D', seq: 0 }],
   };
 
   function applyBtnState(btn, state) {
@@ -449,7 +449,7 @@
       }
 
       const container = li.querySelector('.results');
-      const teamResults = RESULTS[team] || [];
+      const teamResults = (RESULTS[team] || []).map(e => e ? e.r : null);
       for (let i = 0; i < MAX_RESULTS; i++) {
         const btn = document.createElement('button');
         btn.className = 'result-btn';
@@ -467,9 +467,11 @@
     list.querySelectorAll('li[data-team]').forEach(li => {
       const team = li.dataset.team;
       const teamRes = RESULTS[team] || [];
-      teamRes.forEach(r => { if (r) allResults.push(r); });
+      teamRes.forEach(entry => { if (entry && entry.r) allResults.push(entry); });
     });
-    return allResults;
+    // Sort by seq so most recent submissions come last
+    allResults.sort((a, b) => a.seq - b.seq);
+    return allResults.map(e => e.r);
   }
 
   function getPlayerStats(id) {
@@ -486,12 +488,14 @@
   // Last 3 results chronologically across all teams (flatten in team order)
   function getRecentForm(id) {
     const list = document.getElementById('list-' + id);
-    const allResults = [];
+    const allEntries = [];
     list.querySelectorAll('li[data-team]').forEach(li => {
       const team = li.dataset.team;
-      (RESULTS[team] || []).forEach(r => { if (r) allResults.push(r); });
+      (RESULTS[team] || []).forEach(entry => { if (entry && entry.r) allEntries.push(entry); });
     });
-    return allResults.slice(-3);
+    allEntries.sort((a, b) => a.seq - b.seq);
+    const recent = allEntries.slice(-3);
+    return recent.map(e => e.r);
   }
 
   function buildFormStrips() {
