@@ -211,6 +211,16 @@
   .progress-track { height: 6px; background: rgba(255,255,255,0.12); border-radius: 99px; overflow: hidden; }
   .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), #f5c842); border-radius: 99px; transition: width 0.4s ease; }
 
+  
+  /* ── NEXT UP ── */
+  .next-up { max-width: 560px; margin: 0 auto 24px; background: rgba(0,0,0,0.22); border-radius: 16px; padding: 14px 18px; }
+  .next-up h3 { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.08em; color: rgba(255,255,255,0.45); margin-bottom: 10px; text-align: center; }
+  .fixture-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .fixture-row:last-child { border-bottom: none; }
+  .fixture-date { font-size: 11px; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif; width: 44px; flex-shrink: 0; }
+  .fixture-group { font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); border-radius: 4px; padding: 2px 5px; width: 20px; text-align: center; flex-shrink: 0; }
+  .fixture-teams { flex: 1; text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: 0.01em; }
+
   </style>
 </head>
 <body>
@@ -228,7 +238,7 @@
   <div id="leaderboard-rows"></div>
 </div>
 
-
+<div class="next-up" id="next-up"></div>
 
 <div class="grid">
 
@@ -456,6 +466,77 @@
       </div>`;
   }
 
+  
+  const FIXTURES = [
+    { date: '17 Jun', group: 'L', home: 'England', away: 'Croatia' },
+    { date: '17 Jun', group: 'L', home: 'Ghana', away: 'Panama' },
+    { date: '17 Jun', group: 'K', home: 'Uzbekistan', away: 'Colombia' },
+    { date: '18 Jun', group: 'A', home: 'Czechia', away: 'South Africa' },
+    { date: '18 Jun', group: 'B', home: 'Switzerland', away: 'Bosnia & Herzegovina' },
+    { date: '18 Jun', group: 'B', home: 'Canada', away: 'Qatar' },
+    { date: '18 Jun', group: 'A', home: 'Mexico', away: 'South Korea' },
+    { date: '19 Jun', group: 'D', home: 'United States', away: 'Australia' },
+    { date: '19 Jun', group: 'C', home: 'Scotland', away: 'Morocco' },
+    { date: '19 Jun', group: 'C', home: 'Brazil', away: 'Haiti' },
+    { date: '19 Jun', group: 'D', home: 'Turkey', away: 'Paraguay' },
+    { date: '20 Jun', group: 'F', home: 'Netherlands', away: 'Sweden' },
+    { date: '20 Jun', group: 'E', home: 'Germany', away: 'Ivory Coast' },
+    { date: '20 Jun', group: 'E', home: 'Ecuador', away: 'Curaçao' },
+    { date: '21 Jun', group: 'F', home: 'Tunisia', away: 'Japan' },
+    { date: '21 Jun', group: 'H', home: 'Spain', away: 'Saudi Arabia' },
+    { date: '21 Jun', group: 'G', home: 'Belgium', away: 'Iran' },
+    { date: '21 Jun', group: 'H', home: 'Uruguay', away: 'Cape Verde' },
+    { date: '21 Jun', group: 'G', home: 'New Zealand', away: 'Egypt' },
+    { date: '22 Jun', group: 'J', home: 'Argentina', away: 'Austria' },
+    { date: '22 Jun', group: 'I', home: 'France', away: 'Iraq' },
+    { date: '22 Jun', group: 'I', home: 'Norway', away: 'Senegal' },
+    { date: '22 Jun', group: 'J', home: 'Jordan', away: 'Algeria' },
+    { date: '23 Jun', group: 'K', home: 'Portugal', away: 'Uzbekistan' },
+    { date: '23 Jun', group: 'L', home: 'England', away: 'Ghana' },
+    { date: '23 Jun', group: 'L', home: 'Panama', away: 'Croatia' },
+    { date: '23 Jun', group: 'K', home: 'Colombia', away: 'DR Congo' },
+    { date: '24 Jun', group: 'B', home: 'Switzerland', away: 'Canada' },
+    { date: '24 Jun', group: 'B', home: 'Bosnia & Herzegovina', away: 'Qatar' },
+    { date: '24 Jun', group: 'C', home: 'Scotland', away: 'Brazil' },
+    { date: '24 Jun', group: 'C', home: 'Morocco', away: 'Haiti' },
+    { date: '24 Jun', group: 'A', home: 'Czechia', away: 'Mexico' },
+    { date: '24 Jun', group: 'A', home: 'South Africa', away: 'South Korea' },
+    { date: '25 Jun', group: 'E', home: 'Ecuador', away: 'Germany' },
+    { date: '25 Jun', group: 'E', home: 'Curaçao', away: 'Ivory Coast' },
+    { date: '25 Jun', group: 'F', home: 'Tunisia', away: 'Netherlands' },
+    { date: '25 Jun', group: 'F', home: 'Japan', away: 'Sweden' },
+    { date: '25 Jun', group: 'D', home: 'Turkey', away: 'United States' },
+    { date: '25 Jun', group: 'D', home: 'Paraguay', away: 'Australia' },
+    { date: '26 Jun', group: 'I', home: 'Norway', away: 'France' },
+    { date: '26 Jun', group: 'I', home: 'Senegal', away: 'Iraq' },
+    { date: '26 Jun', group: 'H', home: 'Uruguay', away: 'Spain' },
+    { date: '26 Jun', group: 'H', home: 'Cape Verde', away: 'Saudi Arabia' },
+    { date: '26 Jun', group: 'G', home: 'New Zealand', away: 'Belgium' },
+    { date: '26 Jun', group: 'G', home: 'Egypt', away: 'Iran' },
+    { date: '27 Jun', group: 'L', home: 'Panama', away: 'England' },
+    { date: '27 Jun', group: 'L', home: 'Croatia', away: 'Ghana' },
+    { date: '27 Jun', group: 'K', home: 'Colombia', away: 'Portugal' },
+    { date: '27 Jun', group: 'K', home: 'DR Congo', away: 'Uzbekistan' },
+    { date: '27 Jun', group: 'J', home: 'Jordan', away: 'Argentina' },
+    { date: '27 Jun', group: 'J', home: 'Algeria', away: 'Austria' },
+  ];
+
+  // How many fixtures have been played (consumed from top of list)
+  const FIXTURES_PLAYED = 0;
+
+  function buildNextUp() {
+    const el = document.getElementById('next-up');
+    if (!el) return;
+    const upcoming = FIXTURES.slice(FIXTURES_PLAYED, FIXTURES_PLAYED + 3);
+    if (upcoming.length === 0) { el.style.display = 'none'; return; }
+    el.innerHTML = '<h3>📅 Next Up</h3>' + upcoming.map(f => `
+      <div class="fixture-row">
+        <span class="fixture-date">${f.date}</span>
+        <span class="fixture-group">${f.group}</span>
+        <span class="fixture-teams">${f.home} v ${f.away}</span>
+      </div>`).join('');
+  }
+
   function applyBtnState(btn, state) {
     btn.dataset.state = state || '';
     btn.className = 'result-btn' + (state ? ' state-' + state : '');
@@ -614,6 +695,7 @@
   sortTeamLists();
   buildFormStrips();
     buildProgressBar();
+    buildNextUp();
   buildLeaderboard();
   updateBadges();
 </script>
