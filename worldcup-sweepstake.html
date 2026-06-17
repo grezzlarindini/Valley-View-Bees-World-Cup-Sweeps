@@ -221,6 +221,13 @@
   .fixture-group { font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); border-radius: 4px; padding: 2px 5px; width: 20px; text-align: center; flex-shrink: 0; }
   .fixture-teams { flex: 1; text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: 0.01em; }
 
+  
+  .fixture-matchup { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .fixture-team { display: flex; align-items: center; gap: 5px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .fixture-vs { font-size: 11px; color: rgba(255,255,255,0.3); font-family: 'Inter', sans-serif; flex-shrink: 0; }
+  .fixture-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; }
+  .fixture-avatar-empty { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.08); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
   </style>
 </head>
 <body>
@@ -524,7 +531,74 @@
   // How many fixtures have been played (consumed from top of list)
   const FIXTURES_PLAYED = 0;
 
-  function buildNextUp() {
+  // Maps fixture display names to RESULTS keys and player IDs
+  const TEAM_PLAYER_MAP = {
+    'England':                { key: 'england',     player: 'al' },
+    'Croatia':                { key: 'croatia',     player: 'jill' },
+    'Ghana':                  { key: 'ghana',       player: 'graham' },
+    'Panama':                 { key: 'panama',      player: 'al' },
+    'Uzbekistan':             { key: 'uzbekistan',  player: 'jill' },
+    'Colombia':               { key: 'colombia',    player: 'laura' },
+    'Czechia':                { key: 'czechia',     player: 'graham' },
+    'South Africa':           { key: 'southafrica', player: 'al' },
+    'Switzerland':            { key: 'switzerland', player: 'katy' },
+    'Bosnia & Herzegovina':   { key: 'bosnia',      player: 'al' },
+    'Canada':                 { key: 'canada',      player: 'jill' },
+    'Qatar':                  { key: 'qatar',       player: 'katy' },
+    'Mexico':                 { key: 'mexico',      player: 'al' },
+    'South Korea':            { key: null,          player: null },
+    'United States':          { key: 'usa',         player: 'graham' },
+    'Australia':              { key: 'australia',   player: 'jill' },
+    'Scotland':               { key: 'scotland',    player: 'jill' },
+    'Morocco':                { key: 'morocco',     player: 'laura' },
+    'Brazil':                 { key: 'brazil',      player: 'graham' },
+    'Haiti':                  { key: 'haiti',       player: 'katy' },
+    'Turkey':                 { key: 'turkiye',     player: 'laura' },
+    'Paraguay':               { key: 'paraguay',    player: 'katy' },
+    'Netherlands':            { key: 'netherlands', player: 'laura' },
+    'Sweden':                 { key: 'sweden',      player: 'laura' },
+    'Germany':                { key: 'germany',     player: 'jill' },
+    'Ivory Coast':            { key: null,          player: null },
+    'Ecuador':                { key: 'ecuador',     player: 'katy' },
+    'Curaçao':                { key: 'curacao',     player: 'laura' },
+    'Tunisia':                { key: 'tunisia',     player: 'graham' },
+    'Japan':                  { key: 'japan',       player: 'laura' },
+    'Spain':                  { key: 'spain',       player: 'graham' },
+    'Saudi Arabia':           { key: 'saudiarabia', player: 'graham' },
+    'Belgium':                { key: 'belgium',     player: 'jill' },
+    'Iran':                   { key: 'iran',        player: 'al' },
+    'Uruguay':                { key: 'uruguay',     player: 'laura' },
+    'Cape Verde':             { key: 'caboverde',   player: 'jill' },
+    'New Zealand':            { key: 'newzealand',  player: 'laura' },
+    'Egypt':                  { key: 'egypt',       player: 'katy' },
+    'Argentina':              { key: 'argentina',   player: 'laura' },
+    'Austria':                { key: 'austria',     player: 'graham' },
+    'France':                 { key: 'france',      player: 'jill' },
+    'Iraq':                   { key: 'iraq',        player: 'katy' },
+    'Norway':                 { key: 'norway',      player: 'katy' },
+    'Senegal':                { key: 'senegal',     player: 'al' },
+    'Jordan':                 { key: 'jordan',      player: 'al' },
+    'Algeria':                { key: 'algeria',     player: 'graham' },
+    'Portugal':               { key: 'portugal',    player: 'katy' },
+    'DR Congo':               { key: null,          player: null },
+    'Bosnia & Herzegovina':   { key: 'bosnia',      player: 'al' },
+  };
+
+  function getFixtureAvatar(teamName) {
+    const entry = TEAM_PLAYER_MAP[teamName];
+    if (!entry || !entry.player) return '<div class="fixture-avatar-empty">🐶</div>';
+    const avatarEl = document.getElementById('avatar-' + entry.player);
+    const img = avatarEl && avatarEl.querySelector('img');
+    if (img) {
+      return `<img class="fixture-avatar" src="${img.src}" alt="${teamName}">`;
+    }
+    const p = players.find(x => x.id === entry.player);
+    const initial = p ? p.name[0] : '?';
+    const color = p ? p.color : '#888';
+    return `<div class="fixture-avatar" style="background:${color};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;">${initial}</div>`;
+  }
+
+function buildNextUp() {
     const el = document.getElementById('next-up');
     if (!el) return;
     const upcoming = FIXTURES.slice(FIXTURES_PLAYED, FIXTURES_PLAYED + 3);
@@ -533,7 +607,11 @@
       <div class="fixture-row">
         <span class="fixture-date">${f.date}</span>
         <span class="fixture-group">${f.group}</span>
-        <span class="fixture-teams">${f.home} v ${f.away}</span>
+        <div class="fixture-matchup">
+          <span class="fixture-team">${getFixtureAvatar(f.home)} ${f.home}</span>
+          <span class="fixture-vs">v</span>
+          <span class="fixture-team">${f.away} ${getFixtureAvatar(f.away)}</span>
+        </div>
       </div>`).join('');
   }
 
