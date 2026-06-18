@@ -637,7 +637,7 @@ function buildFixturesPanel() {
       const homeSymbol = showScore ? getResultSymbol(f.home, f.score) : '';
       const awaySymbol = showScore ? getResultSymbol(f.away, f.score) : '';
       return `<div class="fixture-row">
-        <span class="fixture-date">${f.date}</span>
+        ${showScore ? '<span class="fixture-date"></span>' : `<span class="fixture-date">${f.date}</span>`}
         <span class="fixture-group">${f.group}</span>
         <div class="fixture-matchup">
           <span class="fixture-team">${homeSymbol}${getFixtureAvatar(f.home)} ${f.home}</span>
