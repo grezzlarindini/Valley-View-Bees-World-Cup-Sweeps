@@ -401,7 +401,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 72;
-  const GAMES_PLAYED = 23; // updated per result submission
+  const GAMES_PLAYED = 25; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -418,7 +418,7 @@
     spain:       [{ r: 'D', seq: 0 }],
     tunisia:     [{ r: 'L', seq: 0 }],
     usa:         [{ r: 'W', seq: 0 }],
-    ghana:       [],
+    ghana:       [{ r: 'W', seq: 6 }],
     saudiarabia: [{ r: 'D', seq: 0 }],
     algeria:     [{ r: 'L', seq: 2 }],
     brazil:      [{ r: 'D', seq: 0 }],
@@ -430,7 +430,7 @@
     canada:      [{ r: 'D', seq: 0 }],
     belgium:     [{ r: 'D', seq: 0 }],
     germany:     [{ r: 'W', seq: 0 }],
-    uzbekistan:  [],
+    uzbekistan:  [{ r: 'L', seq: 5 }],
     caboverde:   [{ r: 'D', seq: 0 }],
     scotland:    [{ r: 'W', seq: 0 }],
     // LAURA
@@ -442,7 +442,7 @@
     turkiye:     [{ r: 'L', seq: 0 }],
     newzealand:  [{ r: 'D', seq: 0 }],
     japan:       [{ r: 'D', seq: 0 }],
-    colombia:    [],
+    colombia:    [{ r: 'W', seq: 5 }],
     morocco:     [{ r: 'D', seq: 0 }],
     // KATY
     ecuador:     [{ r: 'L', seq: 0 }],
@@ -459,7 +459,7 @@
     england:     [{ r: 'W', seq: 4 }],
     mexico:      [{ r: 'W', seq: 0 }],
     jordan:      [{ r: 'L', seq: 2 }],
-    panama:      [],
+    panama:      [{ r: 'L', seq: 6 }],
     bosnia:      [{ r: 'D', seq: 0 }],
     southafrica: [{ r: 'L', seq: 0 }],
     iran:        [{ r: 'D', seq: 0 }],
@@ -485,6 +485,8 @@
     { date: '22 Jun', group: 'J', home: 'Austria', away: 'Jordan', score: '3-1' },
     { date: '23 Jun', group: 'K', home: 'Portugal', away: 'DR Congo', score: '1-1' },
     { date: '17 Jun', group: 'L', home: 'England', away: 'Croatia', score: '4-2' },
+    { date: '17 Jun', group: 'K', home: 'Uzbekistan', away: 'Colombia', score: '1-3' },
+    { date: '17 Jun', group: 'L', home: 'Ghana', away: 'Panama', score: '1-0' },
     { date: '17 Jun', group: 'L', home: 'Ghana', away: 'Panama' },
     { date: '17 Jun', group: 'K', home: 'Uzbekistan', away: 'Colombia' },
     { date: '18 Jun', group: 'A', home: 'Czechia', away: 'South Africa' },
@@ -538,7 +540,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 3;
+  const FIXTURES_PLAYED = 5;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
