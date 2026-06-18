@@ -212,9 +212,16 @@
   .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), #f5c842); border-radius: 99px; transition: width 0.4s ease; }
 
   
-  /* ── NEXT UP ── */
-  .next-up { max-width: 560px; margin: 0 auto 24px; background: rgba(0,0,0,0.22); border-radius: 16px; padding: 14px 18px; }
-  .next-up h3 { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.08em; color: rgba(255,255,255,0.45); margin-bottom: 10px; text-align: center; }
+  /* ── FIXTURES PANEL ── */
+  .next-up { max-width: 560px; margin: 0 auto 24px; background: rgba(0,0,0,0.22); border-radius: 16px; overflow: hidden; }
+  .fixtures-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; cursor: pointer; user-select: none; }
+  .fixtures-header-left { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); }
+  .fixtures-tabs { display: flex; gap: 6px; }
+  .fixtures-tab { font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 600; padding: 4px 10px; border-radius: 20px; border: none; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); }
+  .fixtures-tab.active { background: var(--gold); color: #1a3a1a; }
+  .fixtures-body { display: none; padding: 0 18px 14px; }
+  .fixtures-body.open { display: block; }
+  
   .fixture-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
   .fixture-row:last-child { border-bottom: none; }
   .fixture-date { font-size: 11px; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif; width: 44px; flex-shrink: 0; }
@@ -475,7 +482,9 @@
 
   
   const FIXTURES = [
-    { date: '17 Jun', group: 'L', home: 'England', away: 'Croatia' },
+    { date: '22 Jun', group: 'J', home: 'Austria', away: 'Jordan', score: '3-1' },
+    { date: '23 Jun', group: 'K', home: 'Portugal', away: 'DR Congo', score: '1-1' },
+    { date: '17 Jun', group: 'L', home: 'England', away: 'Croatia', score: '4-2' },
     { date: '17 Jun', group: 'L', home: 'Ghana', away: 'Panama' },
     { date: '17 Jun', group: 'K', home: 'Uzbekistan', away: 'Colombia' },
     { date: '18 Jun', group: 'A', home: 'Czechia', away: 'South Africa' },
@@ -498,7 +507,7 @@
     { date: '22 Jun', group: 'I', home: 'France', away: 'Iraq' },
     { date: '22 Jun', group: 'I', home: 'Norway', away: 'Senegal' },
     { date: '22 Jun', group: 'J', home: 'Jordan', away: 'Algeria' },
-    { date: '23 Jun', group: 'K', home: 'Portugal', away: 'Uzbekistan' },
+    { date: '23 Jun', group: 'K', home: 'Portugal', away: 'Uzbekistan', score: '1-1' },
     { date: '23 Jun', group: 'L', home: 'England', away: 'Ghana' },
     { date: '23 Jun', group: 'L', home: 'Panama', away: 'Croatia' },
     { date: '23 Jun', group: 'K', home: 'Colombia', away: 'DR Congo' },
@@ -529,7 +538,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 1;
+  const FIXTURES_PLAYED = 3;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -581,6 +590,7 @@
     'Algeria':                { key: 'algeria',     player: 'graham' },
     'Portugal':               { key: 'portugal',    player: 'katy' },
     'DR Congo':               { key: null,          player: null },
+    'Jordan':                 { key: 'jordan',      player: 'al' },
     'Bosnia & Herzegovina':   { key: 'bosnia',      player: 'al' },
   };
 
@@ -598,21 +608,83 @@
     return `<div class="fixture-avatar" style="background:${color};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;">${initial}</div>`;
   }
 
-function buildNextUp() {
+function buildFixturesPanel() {
     const el = document.getElementById('next-up');
     if (!el) return;
-    const upcoming = FIXTURES.slice(FIXTURES_PLAYED, FIXTURES_PLAYED + 3);
-    if (upcoming.length === 0) { el.style.display = 'none'; return; }
-    el.innerHTML = '<h3>📅 Next Up</h3>' + upcoming.map(f => `
-      <div class="fixture-row">
+
+    // Render fixture rows helper
+    function getResultSymbol(teamName, score) {
+      if (!score) return '';
+      const entry = TEAM_PLAYER_MAP[teamName];
+      if (!entry || !entry.player) return '';
+      const [h, a] = score.split('-').map(Number);
+      const isHome = FIXTURES.some(f => f.home === teamName);
+      // Determine if this team won/drew/lost
+      // We look up the actual result from RESULTS
+      const key = entry.key;
+      const res = key && RESULTS[key] && RESULTS[key].length > 0 ? RESULTS[key][RESULTS[key].length - 1].r : null;
+      if (!res) return '';
+      if (res === 'W') return '<span style="font-size:13px;font-weight:800;color:#2ecc71;">W</span>';
+      if (res === 'D') return '<span style="font-size:13px;font-weight:800;color:#bdc3c7;">D</span>';
+      if (res === 'L') return '<span style="font-size:13px;font-weight:800;color:#e74c3c;">L</span>';
+      return '';
+    }
+
+    function fixtureRowHTML(f, showScore) {
+      const scoreHTML = showScore && f.score
+        ? `<span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);margin:0 4px;">${f.score}</span>`
+        : '<span class="fixture-vs">v</span>';
+      const homeSymbol = showScore ? getResultSymbol(f.home, f.score) : '';
+      const awaySymbol = showScore ? getResultSymbol(f.away, f.score) : '';
+      return `<div class="fixture-row">
         <span class="fixture-date">${f.date}</span>
         <span class="fixture-group">${f.group}</span>
         <div class="fixture-matchup">
-          <span class="fixture-team">${getFixtureAvatar(f.home)} ${f.home}</span>
-          <span class="fixture-vs">v</span>
-          <span class="fixture-team">${f.away} ${getFixtureAvatar(f.away)}</span>
+          <span class="fixture-team">${homeSymbol}${getFixtureAvatar(f.home)} ${f.home}</span>
+          ${scoreHTML}
+          <span class="fixture-team">${f.away} ${getFixtureAvatar(f.away)}${awaySymbol}</span>
         </div>
-      </div>`).join('');
+      </div>`;
+    }
+
+    let activeTab = 'next';
+
+    function render() {
+      const upcoming = FIXTURES.slice(FIXTURES_PLAYED, FIXTURES_PLAYED + 3);
+      const played = FIXTURES.slice(Math.max(0, FIXTURES_PLAYED - 3), FIXTURES_PLAYED).reverse();
+      const rows = activeTab === 'next'
+        ? upcoming.map(f => fixtureRowHTML(f, false)).join('')
+        : played.map(f => fixtureRowHTML(f, true)).join('') || '<p style="text-align:center;color:rgba(255,255,255,0.3);font-size:13px;padding:8px 0;">No results yet</p>';
+
+      const isOpen = document.getElementById('fixtures-body') && document.getElementById('fixtures-body').classList.contains('open');
+      el.innerHTML = `
+        <div class="fixtures-header" onclick="toggleFixtures()">
+          <span class="fixtures-header-left">📅 Fixtures</span>
+          <div class="fixtures-tabs" onclick="event.stopPropagation()">
+            <button class="fixtures-tab ${activeTab === 'next' ? 'active' : ''}" onclick="switchTab('next')">Next Up</button>
+            <button class="fixtures-tab ${activeTab === 'played' ? 'active' : ''}" onclick="switchTab('played')">Just Played</button>
+          </div>
+          <span class="fixtures-chevron" id="fixtures-chevron" style="font-size:11px;color:rgba(255,255,255,0.3);transition:transform 0.25s;${isOpen ? 'transform:rotate(90deg)' : ''}">▶</span>
+        </div>
+        <div class="fixtures-body ${isOpen ? 'open' : ''}" id="fixtures-body">${rows}</div>`;
+    }
+
+    
+    window.toggleFixtures = function() {
+      const body = document.getElementById('fixtures-body');
+      const chev = document.getElementById('fixtures-chevron');
+      const open = body.classList.toggle('open');
+      if (chev) chev.style.transform = open ? 'rotate(90deg)' : '';
+    };
+
+    window.switchTab = function(tab) {
+      activeTab = tab;
+      render();
+      document.getElementById('fixtures-body').classList.add('open');
+      document.getElementById('fixtures-chevron').style.transform = 'rotate(90deg)';
+    };
+
+    render();
   }
 
   function applyBtnState(btn, state) {
@@ -773,7 +845,7 @@ function buildNextUp() {
   sortTeamLists();
   buildFormStrips();
     buildProgressBar();
-    buildNextUp();
+    buildFixturesPanel();
   buildLeaderboard();
   updateBadges();
 </script>
