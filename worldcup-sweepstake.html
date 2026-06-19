@@ -401,7 +401,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 72;
-  const GAMES_PLAYED = 28; // updated per result submission
+  const GAMES_PLAYED = 29; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -417,7 +417,7 @@
     austria:     [{ r: 'W', seq: 2 }],
     spain:       [{ r: 'D', seq: 0 }],
     tunisia:     [{ r: 'L', seq: 0 }],
-    usa:         [{ r: 'W', seq: 0 }],
+    usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }],
     ghana:       [{ r: 'W', seq: 6 }],
     saudiarabia: [{ r: 'D', seq: 0 }],
     algeria:     [{ r: 'L', seq: 2 }],
@@ -426,7 +426,7 @@
     // JILL
     croatia:     [{ r: 'L', seq: 4 }],
     france:      [{ r: 'W', seq: 1 }],
-    australia:   [{ r: 'W', seq: 0 }],
+    australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }],
     belgium:     [{ r: 'D', seq: 0 }],
     germany:     [{ r: 'W', seq: 0 }],
@@ -491,7 +491,7 @@
     { date: '18 Jun', group: 'B', home: 'Switzerland', away: 'Bosnia & Herzegovina', score: '4-1' },
     { date: '18 Jun', group: 'B', home: 'Canada', away: 'Qatar', score: '6-0' },
     { date: '18 Jun', group: 'A', home: 'Mexico', away: 'South Korea', score: '1-0' },
-    { date: '19 Jun', group: 'D', home: 'United States', away: 'Australia' },
+    { date: '19 Jun', group: 'D', home: 'United States', away: 'Australia', score: '2-0' },
     { date: '19 Jun', group: 'C', home: 'Scotland', away: 'Morocco' },
     { date: '19 Jun', group: 'C', home: 'Brazil', away: 'Haiti' },
     { date: '19 Jun', group: 'D', home: 'Turkey', away: 'Paraguay' },
@@ -538,7 +538,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 9;
+  const FIXTURES_PLAYED = 10;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
