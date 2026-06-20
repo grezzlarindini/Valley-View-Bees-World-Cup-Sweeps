@@ -423,7 +423,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 72;
-  const GAMES_PLAYED = 33; // updated per result submission
+  const GAMES_PLAYED = 34; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -451,7 +451,7 @@
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }],
     belgium:     [{ r: 'D', seq: 0 }],
-    germany:     [{ r: 'W', seq: 0 }],
+    germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }],
     uzbekistan:  [{ r: 'L', seq: 5 }],
     caboverde:   [{ r: 'D', seq: 0 }],
     scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }],
@@ -518,7 +518,7 @@
     { date: '19 Jun', group: 'C', home: 'Brazil', away: 'Haiti', score: '3-0' },
     { date: '19 Jun', group: 'D', home: 'Turkey', away: 'Paraguay', score: '0-1' },
     { date: '20 Jun', group: 'F', home: 'Netherlands', away: 'Sweden', score: '5-1' },
-    { date: '20 Jun', group: 'E', home: 'Germany', away: 'Ivory Coast' },
+    { date: '20 Jun', group: 'E', home: 'Germany', away: 'Ivory Coast', score: '2-1' },
     { date: '20 Jun', group: 'E', home: 'Ecuador', away: 'Curaçao' },
     { date: '21 Jun', group: 'F', home: 'Tunisia', away: 'Japan' },
     { date: '21 Jun', group: 'H', home: 'Spain', away: 'Saudi Arabia' },
@@ -560,7 +560,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 14;
+  const FIXTURES_PLAYED = 15;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -738,8 +738,8 @@ function buildFixturesPanel() {
 
   
   const WOES = {
-    timestamp: '20 Jun, 22:45',
-    text: `<strong>Laura</strong> is having a proper nightmare — Turkey eliminated, Sweden thumped by her own Netherlands. <strong>Jill's</strong> Scotland are already wobbling and Australia got spanked. Meanwhile <strong>Graham's</strong> Brazil and USA look sharp. <strong>Alison's</strong> Paraguay are causing chaos and Mexico keep winning. <strong>Katy's</strong> Morocco are the surprise package — but Haiti are gone and Qatar were humiliated 6-0. Buckle up. 👀`
+    timestamp: '20 Jun, 23:00',
+    text: `<strong>Jill</strong> needed that — Germany make it two wins from two and are flying in Group E. Ivory Coast are 🐶 Daisy's problem. <strong>Laura's</strong> Netherlands and <strong>Graham's</strong> Brazil lead the standings but it's tight. <strong>Katy</strong> and <strong>Alison</strong> are quietly doing damage. Watch this space. 👀`
   };
 
   function buildWoesPanel() {
