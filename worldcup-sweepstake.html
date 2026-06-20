@@ -401,7 +401,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 72;
-  const GAMES_PLAYED = 32; // updated per result submission
+  const GAMES_PLAYED = 33; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -437,8 +437,8 @@
     curacao:     [{ r: 'L', seq: 0 }],
     argentina:   [{ r: 'W', seq: 2 }],
     uruguay:     [{ r: 'D', seq: 0 }],
-    netherlands: [{ r: 'D', seq: 0 }],
-    sweden:      [{ r: 'W', seq: 0 }],
+    netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }],
+    sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }],
     turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }],
     newzealand:  [{ r: 'D', seq: 0 }],
     japan:       [{ r: 'D', seq: 0 }],
@@ -495,7 +495,7 @@
     { date: '19 Jun', group: 'C', home: 'Scotland', away: 'Morocco', score: '0-1' },
     { date: '19 Jun', group: 'C', home: 'Brazil', away: 'Haiti', score: '3-0' },
     { date: '19 Jun', group: 'D', home: 'Turkey', away: 'Paraguay', score: '0-1' },
-    { date: '20 Jun', group: 'F', home: 'Netherlands', away: 'Sweden' },
+    { date: '20 Jun', group: 'F', home: 'Netherlands', away: 'Sweden', score: '5-1' },
     { date: '20 Jun', group: 'E', home: 'Germany', away: 'Ivory Coast' },
     { date: '20 Jun', group: 'E', home: 'Ecuador', away: 'Curaçao' },
     { date: '21 Jun', group: 'F', home: 'Tunisia', away: 'Japan' },
@@ -538,7 +538,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 13;
+  const FIXTURES_PLAYED = 14;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
