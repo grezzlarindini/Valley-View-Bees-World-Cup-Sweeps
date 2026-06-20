@@ -235,6 +235,25 @@
   .fixture-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; }
   .fixture-avatar-empty { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.08); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; }
 
+  
+  /* ── ELIMINATED ── */
+  .team-list li.eliminated .team-name { text-decoration: line-through; opacity: 0.4; }
+  .team-list li.eliminated .flag { opacity: 0.3; }
+  .team-list li.eliminated .out-icon { opacity: 0.2; }
+  .team-list li.eliminated .results { opacity: 0.3; }
+
+  /* ── ELIMINATED PANEL ── */
+  .eliminated-panel { max-width: 560px; margin: 0 auto 24px; background: rgba(0,0,0,0.22); border-radius: 16px; overflow: hidden; }
+  .eliminated-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; cursor: pointer; user-select: none; }
+  .eliminated-header-left { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); }
+  .eliminated-chevron { font-size: 11px; color: rgba(255,255,255,0.3); transition: transform 0.25s; }
+  .eliminated-body { display: none; padding: 0 18px 14px; }
+  .eliminated-body.open { display: block; }
+  .eliminated-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .eliminated-row:last-child { border-bottom: none; }
+  .eliminated-team { font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: line-through; flex: 1; }
+  .eliminated-owner { font-size: 11px; color: rgba(255,255,255,0.25); font-family: 'Inter', sans-serif; }
+
   </style>
 </head>
 <body>
@@ -253,6 +272,8 @@
 </div>
 
 <div class="next-up" id="next-up"></div>
+
+<div class="eliminated-panel" id="eliminated-panel"></div>
 
 <div class="grid">
 
@@ -315,11 +336,11 @@
         <div class="subtitle">⭐ Argentina</div>
       </div>
       <div class="form-strip" id="form-laura"></div>
-      <span class="survive-badge" id="badge-laura">9 left</span>
+      <span class="survive-badge" id="badge-laura">8 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-laura">
-      <li data-team="turkiye" data-group="D"><span class="flag">🇹🇷</span><span class="team-name">Türkiye</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="turkiye" data-group="D" class="eliminated"><span class="flag">🇹🇷</span><span class="team-name">Türkiye</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="curacao" data-group="E"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="japan" data-group="F"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="netherlands" data-group="F"><span class="flag">🇳🇱</span><span class="team-name">Netherlands</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -340,13 +361,13 @@
         <div class="subtitle">⭐ Portugal</div>
       </div>
       <div class="form-strip" id="form-katy"></div>
-      <span class="survive-badge" id="badge-katy">9 left</span>
+      <span class="survive-badge" id="badge-katy">8 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
       <li data-team="qatar" data-group="B"><span class="flag">🇶🇦</span><span class="team-name">Qatar</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="switzerland" data-group="B"><span class="flag">🇨🇭</span><span class="team-name">Switzerland</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="haiti" data-group="C"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="haiti" data-group="C" class="eliminated"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="morocco" data-group="C"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="ecuador" data-group="E"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="egypt" data-group="G"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -687,6 +708,51 @@ function buildFixturesPanel() {
     render();
   }
 
+  
+  // Eliminated teams - add as { team, flag, owner } when told
+  const ELIMINATED = [
+    { team: 'Turkey', flag: '🇹🇷', player: 'laura' },
+    { team: 'Haiti', flag: '🇭🇹', player: 'katy' },
+  ];
+
+  function buildEliminatedPanel() {
+    const el = document.getElementById('eliminated-panel');
+    if (!el) return;
+    const chevId = 'eliminated-chevron';
+    const bodyId = 'eliminated-body';
+    const isOpen = document.getElementById(bodyId) && document.getElementById(bodyId).classList.contains('open');
+
+    const recent = [...ELIMINATED].slice(-3).reverse();
+    const rows = recent.length > 0
+      ? recent.map(e => {
+          const avatarEl = document.getElementById('avatar-' + e.player);
+          const img = avatarEl && avatarEl.querySelector('img');
+          const avatarHTML = img
+            ? `<img src="${img.src}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:center top;opacity:0.5;">`
+            : `<div style="width:24px;height:24px;border-radius:50%;background:${players.find(p=>p.id===e.player)?.color||'#888'};opacity:0.5;"></div>`;
+          return `<div class="eliminated-row">
+            <span style="font-size:18px;">${e.flag}</span>
+            <span class="eliminated-team">${e.team}</span>
+            ${avatarHTML}
+          </div>`;
+        }).join('')
+      : '<p style="text-align:center;color:rgba(255,255,255,0.25);font-size:13px;padding:8px 0;">No eliminations yet</p>';
+
+    el.innerHTML = `
+      <div class="eliminated-header" onclick="toggleEliminated()">
+        <span class="eliminated-header-left">💀 Recently Eliminated</span>
+        <span class="eliminated-chevron" id="${chevId}" style="${isOpen ? 'transform:rotate(90deg)' : ''}">▶</span>
+      </div>
+      <div class="eliminated-body ${isOpen ? 'open' : ''}" id="${bodyId}">${rows}</div>`;
+
+    window.toggleEliminated = function() {
+      const body = document.getElementById(bodyId);
+      const chev = document.getElementById(chevId);
+      const open = body.classList.toggle('open');
+      if (chev) chev.style.transform = open ? 'rotate(90deg)' : '';
+    };
+  }
+
   function applyBtnState(btn, state) {
     btn.dataset.state = state || '';
     btn.className = 'result-btn' + (state ? ' state-' + state : '');
@@ -846,6 +912,7 @@ function buildFixturesPanel() {
   buildFormStrips();
     buildProgressBar();
     buildFixturesPanel();
+    buildEliminatedPanel();
   buildLeaderboard();
   updateBadges();
 </script>
