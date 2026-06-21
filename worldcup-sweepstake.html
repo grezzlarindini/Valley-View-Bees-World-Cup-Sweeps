@@ -301,14 +301,14 @@
         <div class="subtitle">⭐ Spain</div>
       </div>
       <div class="form-strip" id="form-graham"></div>
-      <span class="survive-badge" id="badge-graham">9 left</span>
+      <span class="survive-badge" id="badge-graham">8 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-graham">
       <li data-team="czechia" data-group="A"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="brazil" data-group="C"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="usa" data-group="D"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="tunisia" data-group="F"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="tunisia" data-group="F" class="eliminated"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="saudiarabia" data-group="H"><span class="flag">🇸🇦</span><span class="team-name">Saudi Arabia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="spain" data-group="H" class="big5"><span class="flag">🇪🇸</span><span class="team-name">Spain</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="algeria" data-group="J"><span class="flag">🇩🇿</span><span class="team-name">Algeria</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -439,7 +439,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 72;
-  const GAMES_PLAYED = 34; // updated per result submission
+  const GAMES_PLAYED = 36; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -454,7 +454,7 @@
     // GRAHAM
     austria:     [{ r: 'W', seq: 2 }],
     spain:       [{ r: 'D', seq: 0 }],
-    tunisia:     [{ r: 'L', seq: 0 }],
+    tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }],
     usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }],
     ghana:       [{ r: 'W', seq: 6 }],
     saudiarabia: [{ r: 'D', seq: 0 }],
@@ -472,18 +472,18 @@
     caboverde:   [{ r: 'D', seq: 0 }],
     scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }],
     // LAURA
-    curacao:     [{ r: 'L', seq: 0 }],
+    curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
     argentina:   [{ r: 'W', seq: 2 }],
     uruguay:     [{ r: 'D', seq: 0 }],
     netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }],
     sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }],
     turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }],
     newzealand:  [{ r: 'D', seq: 0 }],
-    japan:       [{ r: 'D', seq: 0 }],
+    japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }],
     colombia:    [{ r: 'W', seq: 5 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }],
     // KATY
-    ecuador:     [{ r: 'L', seq: 0 }],
+    ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
     portugal:    [{ r: 'D', seq: 3 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }],
     norway:      [{ r: 'W', seq: 1 }],
@@ -535,8 +535,8 @@
     { date: '19 Jun', group: 'D', home: 'Turkey', away: 'Paraguay', score: '0-1' },
     { date: '20 Jun', group: 'F', home: 'Netherlands', away: 'Sweden', score: '5-1' },
     { date: '20 Jun', group: 'E', home: 'Germany', away: 'Ivory Coast', score: '2-1' },
-    { date: '20 Jun', group: 'E', home: 'Ecuador', away: 'Curaçao' },
-    { date: '21 Jun', group: 'F', home: 'Tunisia', away: 'Japan' },
+    { date: '20 Jun', group: 'E', home: 'Ecuador', away: 'Curaçao', score: '0-0' },
+    { date: '21 Jun', group: 'F', home: 'Tunisia', away: 'Japan', score: '0-4' },
     { date: '21 Jun', group: 'H', home: 'Spain', away: 'Saudi Arabia' },
     { date: '21 Jun', group: 'G', home: 'Belgium', away: 'Iran' },
     { date: '21 Jun', group: 'H', home: 'Uruguay', away: 'Cape Verde' },
@@ -576,7 +576,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 15;
+  const FIXTURES_PLAYED = 17;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -747,6 +747,7 @@ function buildFixturesPanel() {
   const ELIMINATED = [
     { team: 'Turkey', flag: '🇹🇷', player: 'laura', group: 'D' },
     { team: 'Haiti', flag: '🇭🇹', player: 'katy', group: 'C' },
+    { team: 'Tunisia', flag: '🇹🇳', player: 'graham', group: 'F' },
   ];
 
 
@@ -756,12 +757,16 @@ function buildFixturesPanel() {
     {
       timestamp: '20 Jun, 22:45',
       text: `<strong>Laura</strong> is having a proper nightmare — Turkey eliminated, Sweden thumped by her own Netherlands. <strong>Jill's</strong> Scotland are already wobbling and Australia got spanked. Meanwhile <strong>Graham's</strong> Brazil and USA look sharp. <strong>Alison's</strong> Paraguay are causing chaos and Mexico keep winning. <strong>Katy's</strong> Morocco are the surprise package — but Haiti are gone and Qatar were humiliated 6-0. Buckle up. 👀`
+    },
+    {
+      timestamp: '20 Jun, 23:00',
+      text: `<strong>Jill</strong> needed that — Germany make it two wins from two and are flying in Group E. Ivory Coast are 🐶 Daisy's problem. <strong>Laura's</strong> Netherlands and <strong>Graham's</strong> Brazil lead the standings but it's tight. <strong>Katy</strong> and <strong>Alison</strong> are quietly doing damage. Watch this space. 👀`
     }
   ];
 
   const WOES = {
-    timestamp: '20 Jun, 23:00',
-    text: `<strong>Jill</strong> needed that — Germany make it two wins from two and are flying in Group E. Ivory Coast are 🐶 Daisy's problem. <strong>Laura's</strong> Netherlands and <strong>Graham's</strong> Brazil lead the standings but it's tight. <strong>Katy</strong> and <strong>Alison</strong> are quietly doing damage. Watch this space. 👀`
+    timestamp: '21 Jun, 09:30',
+    text: `Japan are absolutely flying — 4-0 against Tunisia is a statement. Bad news for <strong>Graham</strong> who loses Tunisia to elimination, though his Brazil and USA are still looking solid. <strong>Katy's</strong> Ecuador grind out a draw with <strong>Laura's</strong> Curaçao — a point each but neither will be thrilled. <strong>Laura</strong> does bag Japan though. Swings and roundabouts. ⚖️`
   };
 
   function buildWoesPanel() {
