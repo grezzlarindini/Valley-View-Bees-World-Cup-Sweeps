@@ -439,7 +439,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 72;
-  const GAMES_PLAYED = 36; // updated per result submission
+  const GAMES_PLAYED = 38; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -453,11 +453,11 @@
   const RESULTS = {
     // GRAHAM
     austria:     [{ r: 'W', seq: 2 }],
-    spain:       [{ r: 'D', seq: 0 }],
+    spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }],
     tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }],
     usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }],
     ghana:       [{ r: 'W', seq: 6 }],
-    saudiarabia: [{ r: 'D', seq: 0 }],
+    saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }],
     algeria:     [{ r: 'L', seq: 2 }],
     brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }],
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }],
@@ -466,7 +466,7 @@
     france:      [{ r: 'W', seq: 1 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }],
-    belgium:     [{ r: 'D', seq: 0 }],
+    belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }],
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }],
     uzbekistan:  [{ r: 'L', seq: 5 }],
     caboverde:   [{ r: 'D', seq: 0 }],
@@ -500,7 +500,7 @@
     panama:      [{ r: 'L', seq: 6 }],
     bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }],
     southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }],
-    iran:        [{ r: 'D', seq: 0 }],
+    iran:        [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }],
   };
 
   
@@ -537,8 +537,8 @@
     { date: '20 Jun', group: 'E', home: 'Germany', away: 'Ivory Coast', score: '2-1' },
     { date: '20 Jun', group: 'E', home: 'Ecuador', away: 'Curaçao', score: '0-0' },
     { date: '21 Jun', group: 'F', home: 'Tunisia', away: 'Japan', score: '0-4' },
-    { date: '21 Jun', group: 'H', home: 'Spain', away: 'Saudi Arabia' },
-    { date: '21 Jun', group: 'G', home: 'Belgium', away: 'Iran' },
+    { date: '21 Jun', group: 'H', home: 'Spain', away: 'Saudi Arabia', score: '4-0' },
+    { date: '21 Jun', group: 'G', home: 'Belgium', away: 'Iran', score: '0-0' },
     { date: '21 Jun', group: 'H', home: 'Uruguay', away: 'Cape Verde' },
     { date: '21 Jun', group: 'G', home: 'New Zealand', away: 'Egypt' },
     { date: '22 Jun', group: 'J', home: 'Argentina', away: 'Austria' },
@@ -576,7 +576,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 17;
+  const FIXTURES_PLAYED = 19;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -761,12 +761,16 @@ function buildFixturesPanel() {
     {
       timestamp: '20 Jun, 23:00',
       text: `<strong>Jill</strong> needed that — Germany make it two wins from two and are flying in Group E. Ivory Coast are 🐶 Daisy's problem. <strong>Laura's</strong> Netherlands and <strong>Graham's</strong> Brazil lead the standings but it's tight. <strong>Katy</strong> and <strong>Alison</strong> are quietly doing damage. Watch this space. 👀`
+    },
+    {
+      timestamp: '21 Jun, 09:30',
+      text: `Japan are absolutely flying — 4-0 against Tunisia is a statement. Bad news for <strong>Graham</strong> who loses Tunisia to elimination, though his Brazil and USA are still looking solid. <strong>Katy's</strong> Ecuador grind out a draw with <strong>Laura's</strong> Curaçao — a point each but neither will be thrilled. <strong>Laura</strong> does bag Japan though. Swings and roundabouts. ⚖️`
     }
   ];
 
   const WOES = {
-    timestamp: '21 Jun, 09:30',
-    text: `Japan are absolutely flying — 4-0 against Tunisia is a statement. Bad news for <strong>Graham</strong> who loses Tunisia to elimination, though his Brazil and USA are still looking solid. <strong>Katy's</strong> Ecuador grind out a draw with <strong>Laura's</strong> Curaçao — a point each but neither will be thrilled. <strong>Laura</strong> does bag Japan though. Swings and roundabouts. ⚖️`
+    timestamp: '21 Jun, 22:00',
+    text: `<strong>Graham</strong> is having a moment — Spain put four past Saudi Arabia and both are his. A rare double win that shoots him up the table. <strong>Jill</strong> and <strong>Alison</strong> share a point as Belgium and Iran cancel each other out in a Group G snooze-fest. Not every game can be a thriller. 😴`
   };
 
   function buildWoesPanel() {
