@@ -439,7 +439,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 72;
-  const GAMES_PLAYED = 40; // updated per result submission
+  const GAMES_PLAYED = 41; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -452,7 +452,7 @@
   // Hardcoded results per team: array of up to 8 values, each null | 'W' | 'D' | 'L'
   const RESULTS = {
     // GRAHAM
-    austria:     [{ r: 'W', seq: 2 }],
+    austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }],
     spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }],
     tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }],
     usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }],
@@ -473,7 +473,7 @@
     scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }],
     // LAURA
     curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
-    argentina:   [{ r: 'W', seq: 2 }],
+    argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }],
     uruguay:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }],
     netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }],
     sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }],
@@ -541,7 +541,7 @@
     { date: '21 Jun', group: 'G', home: 'Belgium', away: 'Iran', score: '0-0' },
     { date: '21 Jun', group: 'H', home: 'Uruguay', away: 'Cape Verde', score: '2-2' },
     { date: '21 Jun', group: 'G', home: 'New Zealand', away: 'Egypt', score: '1-3' },
-    { date: '22 Jun', group: 'J', home: 'Argentina', away: 'Austria' },
+    { date: '22 Jun', group: 'J', home: 'Argentina', away: 'Austria', score: '2-0' },
     { date: '22 Jun', group: 'I', home: 'France', away: 'Iraq' },
     { date: '22 Jun', group: 'I', home: 'Norway', away: 'Senegal' },
     { date: '22 Jun', group: 'J', home: 'Jordan', away: 'Algeria' },
@@ -576,7 +576,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 21;
+  const FIXTURES_PLAYED = 22;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -769,12 +769,16 @@ function buildFixturesPanel() {
     {
       timestamp: '21 Jun, 22:00',
       text: `<strong>Graham</strong> is having a moment — Spain put four past Saudi Arabia and both are his. A rare double win that shoots him up the table. <strong>Jill</strong> and <strong>Alison</strong> share a point as Belgium and Iran cancel each other out in a Group G snooze-fest. Not every game can be a thriller. 😴`
+    },
+    {
+      timestamp: '22 Jun, 07:00',
+      text: `Cape Verde are the minnows making waves — a second draw leaves <strong>Laura's</strong> Uruguay teetering on the brink of an embarrassing early exit. <strong>Jill</strong> picks up a point with Cape Verde but will want more. This Group H is a mess and someone's going home earlier than expected. Meanwhile <strong>Katy's</strong> Egypt turn Group G upside down with a 3-1 thumping of <strong>Laura's</strong> New Zealand. <strong>Laura</strong> is not having a good night. 😬`
     }
   ];
 
   const WOES = {
-    timestamp: '22 Jun, 07:00',
-    text: `Cape Verde are the minnows making waves — a second draw leaves <strong>Laura's</strong> Uruguay teetering on the brink of an embarrassing early exit. <strong>Jill</strong> picks up a point with Cape Verde but will want more. This Group H is a mess and someone's going home earlier than expected. Meanwhile <strong>Katy's</strong> Egypt turn Group G upside down with a 3-1 thumping of <strong>Laura's</strong> New Zealand. <strong>Laura</strong> is not having a good night. 😬`
+    timestamp: '22 Jun, 20:15',
+    text: `Argentina mean business — <strong>Laura's</strong> boys put two past <strong>Graham's</strong> Austria without breaking a sweat. Laura is quietly building something here with Argentina, Japan and Colombia all in the mix. Graham takes the hit but Spain are still flying — he'll survive. Group J is shaping up to be a tasty one. 🇦🇷`
   };
 
   function buildWoesPanel() {
