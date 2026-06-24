@@ -230,8 +230,10 @@
 
   
   .fixture-matchup { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .fixture-team { display: flex; align-items: center; gap: 5px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .fixture-team { display: flex; align-items: center; gap: 5px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85); min-width: 0; overflow: hidden; }
+  .fixture-team > span:last-of-type { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
   .fixture-vs { font-size: 11px; color: rgba(255,255,255,0.3); font-family: 'Inter', sans-serif; flex-shrink: 0; }
+  .fixture-team span:not(.fixture-avatar-empty) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
   .fixture-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; }
   .fixture-avatar-empty { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.08); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; }
 
@@ -304,6 +306,29 @@
   /* Dark bracket panel */
   .ko-panel { background: rgba(0,0,0,0.30); border-radius: 14px; padding: 20px 16px; min-height: 200px; }
   .ko-panel-placeholder { text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.3); padding: 40px 0; }
+
+  
+  /* ── KNOCKOUT BRACKET ── */
+  .bracket-scroller   { overflow-x: auto; overflow-y: auto; max-height: 70vh; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; }
+  .bracket-table      { display: flex; align-items: flex-start; width: max-content; padding: 12px 8px 20px; }
+  .bracket-round-col  { display: flex; flex-direction: column; margin-right: 8px; }
+  .bracket-round-hdr  { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.06em; color: var(--gold); text-align: center; padding-bottom: 8px; opacity: 0.8; position: sticky; top: 0; background: rgba(26,60,30,0.95); z-index: 2; padding-top: 4px; }
+  .bk-match-final     { background: rgba(240,192,64,0.12); border: 1px solid rgba(240,192,64,0.4); border-radius: 8px; width: 140px; overflow: hidden; flex-shrink: 0; }
+  .bk-final-label     { font-size: 9px; color: rgba(240,192,64,0.8); padding: 2px 8px; font-family: 'Inter', sans-serif; border-bottom: 1px solid rgba(240,192,64,0.2); letter-spacing: 0.05em; text-transform: uppercase; }
+  .bk-match-3rd       { background: rgba(205,127,50,0.15); border: 1px dashed rgba(205,127,50,0.5); border-radius: 8px; width: 140px; overflow: hidden; flex-shrink: 0; }
+  .bk-3rd-label       { font-size: 9px; color: rgba(205,127,50,0.7); padding: 2px 8px; font-family: 'Inter', sans-serif; border-bottom: 1px dashed rgba(205,127,50,0.3); letter-spacing: 0.05em; text-transform: uppercase; }
+  .bk-match           { background: rgba(255,255,255,0.07); border-radius: 8px; width: 140px; overflow: hidden; flex-shrink: 0; }
+  .bk-team            { display: flex; align-items: center; justify-content: space-between; padding: 5px 8px; font-family: 'Inter', sans-serif; font-size: 11px; color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .bk-team:last-child { border-bottom: none; }
+  .bk-team.tbc        { color: rgba(255,255,255,0.25); font-style: italic; }
+  .bk-team.winner     { font-weight: 700; color: #fff; background: rgba(240,192,64,0.12); }
+  .bk-score           { font-weight: 700; font-size: 11px; color: rgba(255,255,255,0.5); min-width: 12px; text-align: right; }
+  .bk-team.winner .bk-score { color: var(--gold); }
+  .bk-match-no        { font-size: 9px; color: rgba(255,255,255,0.2); padding: 2px 8px; font-family: 'Inter', sans-serif; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+  
+  .bracket-connector  { position: relative; flex-shrink: 0; }
+  .bracket-connector svg { display: block; }
 
   </style>
 </head>
@@ -421,11 +446,11 @@
         <div class="subtitle">⭐ Portugal</div>
       </div>
       <div class="form-strip" id="form-katy"></div>
-      <span class="survive-badge" id="badge-katy">8 left</span>
+      <span class="survive-badge" id="badge-katy">7 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
-      <li data-team="qatar" data-group="B"><span class="flag">🇶🇦</span><span class="team-name">Qatar</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="qatar" data-group="B" class="eliminated"><span class="flag">🇶🇦</span><span class="team-name">Qatar</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="switzerland" data-group="B"><span class="flag">🇨🇭</span><span class="team-name">Switzerland</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="haiti" data-group="C" class="eliminated"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="morocco" data-group="C"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -485,7 +510,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 48; // updated per result submission
+  const GAMES_PLAYED = 50; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -511,7 +536,7 @@
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }],
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }],
-    canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }],
+    canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }],
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }],
     uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }],
@@ -531,11 +556,11 @@
     // KATY
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
     portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }],
-    qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }],
+    qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }],
-    switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }],
+    switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }],
     egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }],
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }],
@@ -544,7 +569,7 @@
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }],
-    bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }],
+    bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }, { r: 'W', seq: 32 }],
     southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }],
     iran:        [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }],
   };
@@ -561,6 +586,8 @@
       </div>
       <div class="progress-track">
         <div class="progress-fill" style="width:${pct}%"></div>
+        
+      </div>
       </div>`;
   }
 
@@ -595,8 +622,8 @@
     { date: '23 Jun', group: 'L', home: 'England', away: 'Ghana', score: '0-0' },
     { date: '23 Jun', group: 'L', home: 'Panama', away: 'Croatia', score: '0-1' },
     { date: '23 Jun', group: 'K', home: 'Colombia', away: 'DR Congo', score: '1-0' },
-    { date: '24 Jun', group: 'B', home: 'Switzerland', away: 'Canada' },
-    { date: '24 Jun', group: 'B', home: 'Bosnia & Herzegovina', away: 'Qatar' },
+    { date: '24 Jun', group: 'B', home: 'Switzerland', away: 'Canada', score: '2-1' },
+    { date: '24 Jun', group: 'B', home: 'Bosnia & Herzegovina', away: 'Qatar', score: '3-1' },
     { date: '24 Jun', group: 'C', home: 'Scotland', away: 'Brazil' },
     { date: '24 Jun', group: 'C', home: 'Morocco', away: 'Haiti' },
     { date: '24 Jun', group: 'A', home: 'Czechia', away: 'Mexico' },
@@ -622,7 +649,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 29;
+  const FIXTURES_PLAYED = 31;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -723,6 +750,8 @@ function buildFixturesPanel() {
           ${scoreHTML}
           <span class="fixture-team">${f.away} ${getFixtureAvatar(f.away)}${awaySymbol}</span>
         </div>
+        
+      </div>
       </div>`;
     }
 
@@ -738,6 +767,8 @@ function buildFixturesPanel() {
         <div class="fixture-matchup">
           <span class="fixture-team">${avatarHTML} ${e.flag} ${e.team}</span>
         </div>
+        
+      </div>
       </div>`;
     }
 
@@ -781,8 +812,6 @@ function buildFixturesPanel() {
     window.switchTab = function(tab) {
       activeTab = tab;
       render();
-      document.getElementById('fixtures-body').classList.add('open');
-      document.getElementById('fixtures-chevron').style.transform = 'rotate(90deg)';
     };
 
     render();
@@ -797,6 +826,7 @@ function buildFixturesPanel() {
     { team: 'Jordan', flag: '🇯🇴', player: 'al', group: 'J' },
     { team: 'Panama', flag: '🇵🇦', player: 'al', group: 'L' },
     { team: 'Uzbekistan', flag: '🇺🇿', player: 'jill', group: 'K' },
+    { team: 'Qatar', flag: '🇶🇦', player: 'katy', group: 'B' },
   ];
 
 
@@ -834,22 +864,27 @@ function buildFixturesPanel() {
     {
       timestamp: '23 Jun, 23:00',
       text: `History made at Valley View — Ronaldo scores twice as <strong>Katy's</strong> Portugal demolish <strong>Jill's</strong> Uzbekistan 5-0. The man becomes the first player ever to score in six World Cups. <strong>Katy</strong> will take that. <strong>Jill</strong> less so — Uzbekistan are looking very much like group stage tourists. 🐐 Meanwhile <strong>Alison's</strong> England and <strong>Graham's</strong> Ghana cancel each other out in a tense 0-0. Group L is wide open going into the final matchday.`
+    },
+    {
+      timestamp: '24 Jun, 08:15',
+      text: `Group L drama — <strong>Jill's</strong> Croatia get their first win, beating <strong>Alison's</strong> Panama who are now eliminated. Two gone for Alison in as many days. <strong>Laura's</strong> Colombia continue to impress with a 1-0 over DR Congo, while Uzbekistan are shown the door — bad news for <strong>Jill</strong> who loses her second team in 24 hours. It's a tale of two Jills right now: Croatia flying, Uzbekistan gone. 😅`
     }
   ];
 
   const WOES = {
-    timestamp: '24 Jun, 08:15',
-    text: `Group L drama — <strong>Jill's</strong> Croatia get their first win, beating <strong>Alison's</strong> Panama who are now eliminated. Two gone for Alison in as many days. <strong>Laura's</strong> Colombia continue to impress with a 1-0 over DR Congo, while Uzbekistan are shown the door — bad news for <strong>Jill</strong> who loses her second team in 24 hours. It's a tale of two Jills right now: Croatia flying, Uzbekistan gone. 😅`
+    timestamp: '24 Jun, 22:00',
+    text: `Group B wraps up with fireworks — <strong>Katy's</strong> Switzerland beat <strong>Jill's</strong> Canada to go through, while <strong>Alison's</strong> Bosnia put three past <strong>Katy's</strong> Qatar who are now eliminated. Mixed bag for Katy — one through, one out. <strong>Jill</strong> takes another hit. <strong>Alison's</strong> Bosnia are quietly on a roll. 🔥`
   };
 
   function buildWoesPanel() {
     const el = document.getElementById('woes-panel');
     if (!el) return;
-    const isOpen = document.getElementById('woes-body') && document.getElementById('woes-body').classList.contains('open');
+    const bodyEl = document.getElementById('woes-body');
+    const isOpen = bodyEl ? bodyEl.classList.contains('open') : false;
     el.innerHTML = `
       <div class="woes-header" onclick="toggleWoes()">
         <span class="woes-header-left">🤖 Claude's Winners & Woes <span class="woes-timestamp">${WOES.timestamp}</span></span>
-        <span class="woes-chevron" id="woes-chevron" style="${isOpen ? 'transform:rotate(90deg)' : ''}">▶</span>
+        <span class="woes-chevron" id="woes-chevron" style="${isOpen ? 'transform:rotate(90deg);' : ''}"">▶</span>
       </div>
       <div class="woes-body${isOpen ? ' open' : ''}" id="woes-body">
         <p class="woes-text">${WOES.text}</p>
@@ -966,7 +1001,12 @@ function buildFixturesPanel() {
         <div class="ko-rounds" id="ko-rounds">${roundPills}</div>
       </div>
       <div class="ko-panel" id="ko-panel">
-        <div class="ko-panel-placeholder">Bracket content coming here · Round: <span id="ko-active-round">${activeRound}</span></div>
+        <div style="position:relative;">
+        <div class="bracket-scroller" id="bracket-scroller">
+          <div class="bracket-table" id="bracket-table"></div>
+        </div>
+        
+      </div>
       </div>`;
 
     window.setKORound = function(r) {
@@ -975,8 +1015,198 @@ function buildFixturesPanel() {
       document.querySelectorAll('.ko-round-pill').forEach(btn => {
         btn.classList.toggle('active', btn.textContent.trim() === r);
       });
-      document.getElementById('ko-active-round').textContent = r;
+      // Scroll bracket to the selected round column
+      const roundKeys = ['R32', 'R16', 'QF', 'SF', '🏆'];
+      const ri = roundKeys.indexOf(r);
+      if (ri >= 0) {
+        const col = document.getElementById('bk-round-' + ri);
+        const scroller = document.getElementById('bracket-scroller');
+        if (col && scroller) {
+          const colRect = col.getBoundingClientRect();
+          const scrollerRect = scroller.getBoundingClientRect();
+          const scrollLeft = scroller.scrollLeft + colRect.left - scrollerRect.left;
+          scroller.scrollTo({ left: scrollLeft, top: 0, behavior: 'smooth' });
+        }
+      }
     };
+  }
+
+  
+  
+  // ── KNOCKOUT MATCH DATA ──
+  const MATCHES = {
+    73:  { team1: null, team2: null, score1: null, score2: null },
+    74:  { team1: null, team2: null, score1: null, score2: null },
+    75:  { team1: null, team2: null, score1: null, score2: null },
+    76:  { team1: null, team2: null, score1: null, score2: null },
+    77:  { team1: null, team2: null, score1: null, score2: null },
+    78:  { team1: null, team2: null, score1: null, score2: null },
+    79:  { team1: null, team2: null, score1: null, score2: null },
+    80:  { team1: null, team2: null, score1: null, score2: null },
+    81:  { team1: null, team2: null, score1: null, score2: null },
+    82:  { team1: null, team2: null, score1: null, score2: null },
+    83:  { team1: null, team2: null, score1: null, score2: null },
+    84:  { team1: null, team2: null, score1: null, score2: null },
+    85:  { team1: null, team2: null, score1: null, score2: null },
+    86:  { team1: null, team2: null, score1: null, score2: null },
+    87:  { team1: null, team2: null, score1: null, score2: null },
+    88:  { team1: null, team2: null, score1: null, score2: null },
+    89:  { team1: null, team2: null, score1: null, score2: null },
+    90:  { team1: null, team2: null, score1: null, score2: null },
+    91:  { team1: null, team2: null, score1: null, score2: null },
+    92:  { team1: null, team2: null, score1: null, score2: null },
+    93:  { team1: null, team2: null, score1: null, score2: null },
+    94:  { team1: null, team2: null, score1: null, score2: null },
+    95:  { team1: null, team2: null, score1: null, score2: null },
+    96:  { team1: null, team2: null, score1: null, score2: null },
+    97:  { team1: null, team2: null, score1: null, score2: null },
+    98:  { team1: null, team2: null, score1: null, score2: null },
+    99:  { team1: null, team2: null, score1: null, score2: null },
+    100: { team1: null, team2: null, score1: null, score2: null },
+    101: { team1: null, team2: null, score1: null, score2: null },
+    102: { team1: null, team2: null, score1: null, score2: null },
+    103: { team1: null, team2: null, score1: null, score2: null },
+    104: { team1: null, team2: null, score1: null, score2: null },
+  };
+
+  function buildBracket() {
+    const el = document.getElementById('bracket-table');
+    if (!el) return;
+
+    const rounds = [
+      { title: 'Round of 32',    nos: [73,75,74,77,76,78,79,80,81,82,83,84,85,87,86,88], spacing: 0 },
+      { title: 'Round of 16',    nos: [90,89,91,92,94,93,96,95],                          spacing: 1 },
+      { title: 'Quarter-Finals', nos: [97,98,99,100],                                     spacing: 2 },
+      { title: 'Semi-Finals',    nos: [101,102],                                           spacing: 3 },
+      { title: 'Final',          nos: [104],                                               spacing: 4 },
+    ];
+
+    const CARD_H   = 50;
+    const GAP      = 10;
+    const CONN_W   = 28;
+    const BRONZE   = 'rgba(205,127,50,0.6)';
+
+    function teamHTML(m, side, bronze) {
+      const name  = m['team' + side] || null;
+      const score = m['score' + side];
+      const other = m['score' + (side === 1 ? 2 : 1)];
+      const decided = name && score !== null && other !== null && score !== other;
+      const isWinner = decided && score > other;
+      const cls = name ? (isWinner ? 'bk-team winner' : 'bk-team') : 'bk-team tbc';
+      return `<div class="${cls}" style="${bronze ? 'color:rgba(205,127,50,0.8);' : ''}">
+        <span>${name || 'TBC'}</span>
+        <span class="bk-score">${score !== null && score !== undefined ? score : ''}</span>
+      </div>`;
+    }
+
+    function matchHTML(no, bronze) {
+      const m = MATCHES[no] || { team1: null, team2: null, score1: null, score2: null };
+      if (bronze) {
+        return `<div class="bk-match-3rd" id="bm-${no}">
+          <div class="bk-3rd-label">3rd Place Play-off</div>
+          ${teamHTML(m,1,true)}${teamHTML(m,2,true)}
+        </div>`;
+      }
+      if (no === 104) {
+        return `<div class="bk-match-final" id="bm-${no}">
+          <div class="bk-final-label">🏆 Final</div>
+          ${teamHTML(m,1)}${teamHTML(m,2)}
+        </div>`;
+      }
+      return `<div class="bk-match" id="bm-${no}">${teamHTML(m,1)}${teamHTML(m,2)}</div>`;
+    }
+
+    const roundCols = rounds.map(r => {
+      const betweenGap = (CARD_H + GAP) * Math.pow(2, r.spacing) - CARD_H;
+      const firstTopPad = betweenGap / 2;
+      const cards = r.nos.map((no, i) => {
+        const mt = i === 0 ? firstTopPad : betweenGap;
+        return `<div style="margin-top:${mt}px;">${matchHTML(no, false)}</div>`;
+      }).join('');
+      return { html: cards, title: r.title, spacing: r.spacing, count: r.nos.length, betweenGap, firstTopPad };
+    });
+
+    let output = '';
+    roundCols.forEach((r, ri) => {
+      // For the Final column, append 3rd place below with a gap
+      let colExtra = '';
+      if (ri === roundCols.length - 1) {
+        const sf = roundCols[ri - 1]; // semi-finals column
+        const sfSlot = sf.betweenGap + CARD_H;
+        // 3rd place sits just below the Final with a small gap
+        const THIRD_GAP = 16;
+        colExtra = `<div style="margin-top:${THIRD_GAP}px;">${matchHTML(103, true)}</div>`;
+      }
+
+      output += `<div class="bracket-round-col" id="bk-round-${ri}">
+        <div class="bracket-round-hdr">${r.title}</div>
+        ${r.html}${colExtra}
+      </div>`;
+
+      // Connector SVG between rounds
+      if (ri < roundCols.length - 1) {
+        const next = roundCols[ri + 1];
+        const srcSpacing = r.betweenGap + CARD_H;
+        const tgtSpacing = next.betweenGap + CARD_H;
+        const srcTop = r.firstTopPad + CARD_H / 2;
+        const tgtTop = next.firstTopPad + CARD_H / 2;
+        const hdrH = 28;
+
+        let paths = '';
+        for (let i = 0; i < next.count; i++) {
+          const src1Y = srcTop + (i * 2)     * srcSpacing;
+          const src2Y = srcTop + (i * 2 + 1) * srcSpacing;
+          const tgtY  = tgtTop + i            * tgtSpacing;
+          const midX  = CONN_W / 2;
+          paths += `<line x1="0" y1="${src1Y}" x2="${midX}" y2="${src1Y}" stroke="rgba(240,192,64,0.4)" stroke-width="1.5"/>`;
+          paths += `<line x1="0" y1="${src2Y}" x2="${midX}" y2="${src2Y}" stroke="rgba(240,192,64,0.4)" stroke-width="1.5"/>`;
+          paths += `<line x1="${midX}" y1="${src1Y}" x2="${midX}" y2="${src2Y}" stroke="rgba(240,192,64,0.4)" stroke-width="1.5"/>`;
+          paths += `<line x1="${midX}" y1="${tgtY}" x2="${CONN_W}" y2="${tgtY}" stroke="rgba(240,192,64,0.4)" stroke-width="1.5"/>`;
+        }
+
+        // Bronze dotted lines from SF losers to 3rd place (only on SF→Final connector)
+        if (ri === roundCols.length - 2) {
+          const sfSlot = r.betweenGap + CARD_H;
+          const sf1Y = srcTop;                 // midpoint of SF1
+          const sf2Y = srcTop + sfSlot;        // midpoint of SF2
+          // 3rd place card is: Final midpoint + CARD_H/2 + 16 (gap) + CARD_H/2
+          const thirdY = tgtTop + CARD_H + 16 + CARD_H / 2;
+          const bronzeMidY = (sf1Y + sf2Y) / 2;
+          const midX = CONN_W / 2;
+          // Bracket from SF1 and SF2 midpoints down to bronze mid, then across to 3rd place
+          paths += `<line x1="0" y1="${sf1Y}" x2="${midX}" y2="${sf1Y}" stroke="${BRONZE}" stroke-width="1.5" stroke-dasharray="4,3"/>`;
+          paths += `<line x1="0" y1="${sf2Y}" x2="${midX}" y2="${sf2Y}" stroke="${BRONZE}" stroke-width="1.5" stroke-dasharray="4,3"/>`;
+          paths += `<line x1="${midX}" y1="${sf1Y}" x2="${midX}" y2="${sf2Y}" stroke="${BRONZE}" stroke-width="1.5" stroke-dasharray="4,3"/>`;
+          paths += `<line x1="${midX}" y1="${thirdY}" x2="${CONN_W}" y2="${thirdY}" stroke="${BRONZE}" stroke-width="1.5" stroke-dasharray="4,3"/>`;
+        }
+
+        const thisH = r.firstTopPad + r.count * CARD_H + (r.count - 1) * r.betweenGap + r.firstTopPad + 200;
+        output += `<div class="bracket-connector" style="padding-top:${hdrH}px;">
+          <svg width="${CONN_W}" height="${thisH}" style="overflow:visible;">${paths}</svg>
+        </div>`;
+      }
+    });
+
+    el.innerHTML = output;
+
+    // Axis locking
+    const scroller = document.getElementById('bracket-scroller');
+    let startX = 0, startY = 0, axis = null;
+    scroller.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY; axis = null;
+    }, { passive: true });
+    scroller.addEventListener('touchmove', e => {
+      if (!axis) {
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+        if (dx > 5 || dy > 5) axis = dx > dy ? 'x' : 'y';
+      }
+      if (axis === 'x') {
+        e.preventDefault();
+        scroller.scrollLeft += startX - e.touches[0].clientX;
+        startX = e.touches[0].clientX;
+      }
+    }, { passive: false });
   }
 
   function applyBtnState(btn, state) {
@@ -1143,6 +1373,7 @@ function buildFixturesPanel() {
     buildArchivePanel();
   buildLeaderboard();
     buildKOShell();
+    buildBracket();
   updateBadges();
 </script>
 </body>
