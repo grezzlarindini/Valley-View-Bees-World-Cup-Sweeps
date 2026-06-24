@@ -280,6 +280,31 @@
   .bracket-coming-soon h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 10px; }
   .bracket-coming-soon p { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.45); }
 
+  
+  /* ── KNOCKOUT SHELL ── */
+  .ko-wrap { max-width: 560px; margin: 0 auto 28px; padding: 0 12px; }
+
+  /* Progress bar */
+  .ko-progress-track { height: 5px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden; margin-bottom: 14px; }
+  .ko-progress-fill  { height: 100%; background: linear-gradient(90deg, var(--gold), #f5c842); border-radius: 99px; }
+
+  /* Player pills */
+  .ko-players { display: flex; gap: 6px; justify-content: center; flex-wrap: nowrap; margin-bottom: 10px; margin-top: 0; }
+  .ko-player-pill { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 8px 8px; border-radius: 14px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: #fff; flex: 1; min-width: 0; }
+  .ko-pill-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; }
+  .ko-pill-initial { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #fff; flex-shrink: 0; }
+  .ko-pill-name { font-size: 11px; font-weight: 700; }
+  .ko-pill-count { font-size: 10px; opacity: 0.6; font-weight: 400; }
+
+  /* Round navigation pills */
+  .ko-rounds { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .ko-round-pill { padding: 5px 12px; border-radius: 20px; font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 0.05em; border: none; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45); }
+  .ko-round-pill.active { background: var(--gold); color: #1a3a1a; }
+
+  /* Dark bracket panel */
+  .ko-panel { background: rgba(0,0,0,0.30); border-radius: 14px; padding: 20px 16px; min-height: 200px; }
+  .ko-panel-placeholder { text-align: center; font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.3); padding: 40px 0; }
+
   </style>
 </head>
 <body>
@@ -295,10 +320,7 @@
 </div>
 
 <div id="phase-bracket" style="display:none;">
-  <div class="bracket-coming-soon">
-    <h2>⚔️ Knock Out Stage</h2>
-    <p>This page is currently being tested — knockout stage content coming soon.</p>
-  </div>
+  <div class="ko-wrap" id="ko-wrap"></div>
 </div>
 
 <div id="phase-group">
@@ -458,11 +480,11 @@
 <div class="archive-panel" id="archive-panel"></div>
 </div><!-- /phase-group -->
 
-<div class="footer">Last updated: 15 June 2026 · Matchday 1–2</div>
+<div class="footer" id="footer-text"></div>
 
 <script>
   const MAX_RESULTS = 8;
-  const GAMES_TOTAL = 72;
+  const GAMES_TOTAL = 104;
   const GAMES_PLAYED = 48; // updated per result submission
 
   const players = [
@@ -529,12 +551,12 @@
 
   
   function buildProgressBar() {
-    const pct = Math.round((GAMES_PLAYED / GAMES_TOTAL) * 100);
+    const pct = Math.round((GAMES_PLAYED / 72) * 100);
     const wrap = document.getElementById('progress-bar');
     if (!wrap) return;
     wrap.innerHTML = `
       <div class="progress-label">
-        <span>⚽ Group Stage · ${GAMES_PLAYED} of ${GAMES_TOTAL} games</span>
+        <span>⚽ Group Stage · ${GAMES_PLAYED} of 72 games</span>
         <strong>${pct}%</strong>
       </div>
       <div class="progress-track">
@@ -889,6 +911,74 @@ function buildFixturesPanel() {
     document.getElementById('tab-group').className   = 'phase-tab ' + (phase === 'group'   ? 'active' : 'inactive');
   }
 
+  
+  function buildKOShell() {
+    const el = document.getElementById('ko-wrap');
+    if (!el) return;
+
+    // Progress: games played out of 72 group stage
+    const pct = Math.round((GAMES_PLAYED / GAMES_TOTAL) * 100);
+
+    // Player alive counts: count non-eliminated teams per player
+    function getAliveCount(playerId) {
+      const list = document.getElementById('list-' + playerId);
+      if (!list) return '?';
+      const all = list.querySelectorAll('li[data-team]');
+      const alive = Array.from(all).filter(li => !li.classList.contains('eliminated'));
+      return alive.length;
+    }
+
+    // Player pills HTML with avatar
+    const playerPills = players.map(p => {
+      const avatarEl = document.getElementById('avatar-' + p.id);
+      const img = avatarEl && avatarEl.querySelector('img');
+      const avatarHTML = img
+        ? `<img class="ko-pill-avatar" src="${img.src}" alt="${p.name}">`
+        : `<div class="ko-pill-initial" style="background:${p.color}">${p.name[0]}</div>`;
+      const alive = getAliveCount(p.id);
+      return `<div class="ko-player-pill" style="background:${p.color}22;border:1px solid ${p.color}44;">
+        ${avatarHTML}
+        <span class="ko-pill-name">${p.name}</span>
+        <span class="ko-pill-count">${alive} left</span>
+      </div>`;
+    }).join('');
+
+    // Round nav pills
+    const rounds = ['R32', 'R16', 'QF', 'SF', '🏆'];
+    let activeRound = 'R32';
+    const roundPills = rounds.map(r =>
+      `<button class="ko-round-pill${r === activeRound ? ' active' : ''}" onclick="setKORound('${r}')">${r}</button>`
+    ).join('');
+
+    el.innerHTML = `
+      <div style="text-align:center;background:rgba(240,192,64,0.12);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.55);">
+        ⚙️ This page is currently being built — content will update as the tournament progresses
+      </div>
+      <div class="progress-label">
+        <span>⚽ Games Played · ${GAMES_PLAYED} of ${GAMES_TOTAL}</span>
+        <strong>${pct}%</strong>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" style="width:${pct}%"></div>
+      </div>
+      <div style="background:rgba(0,0,0,0.22);border-radius:14px;padding:12px 10px 10px;margin-top:16px;margin-bottom:14px;">
+        <div class="ko-players">${playerPills}</div>
+        <div class="ko-rounds" id="ko-rounds">${roundPills}</div>
+      </div>
+      <div class="ko-panel" id="ko-panel">
+        <div class="ko-panel-placeholder">Bracket content coming here · Round: <span id="ko-active-round">${activeRound}</span></div>
+      </div>`;
+
+    window.setKORound = function(r) {
+      activeRound = r;
+      // Update pill styles
+      document.querySelectorAll('.ko-round-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim() === r);
+      });
+      document.getElementById('ko-active-round').textContent = r;
+    };
+  }
+
   function applyBtnState(btn, state) {
     btn.dataset.state = state || '';
     btn.className = 'result-btn' + (state ? ' state-' + state : '');
@@ -1049,8 +1139,10 @@ function buildFixturesPanel() {
     buildProgressBar();
     buildFixturesPanel();
     buildWoesPanel();
+    document.getElementById('footer-text').textContent = 'Last updated: ' + WOES.timestamp;
     buildArchivePanel();
   buildLeaderboard();
+    buildKOShell();
   updateBadges();
 </script>
 </body>
