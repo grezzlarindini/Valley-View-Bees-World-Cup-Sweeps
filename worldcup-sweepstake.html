@@ -349,7 +349,7 @@
         <div class="subtitle">⭐ France</div>
       </div>
       <div class="form-strip" id="form-jill"></div>
-      <span class="survive-badge" id="badge-jill">9 left</span>
+      <span class="survive-badge" id="badge-jill">8 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-jill">
@@ -360,7 +360,7 @@
       <li data-team="germany" data-group="E"><span class="flag">🇩🇪</span><span class="team-name">Germany</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="caboverde" data-group="H"><span class="flag">🇨🇻</span><span class="team-name">Cape Verde</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="france" data-group="I" class="big5"><span class="flag">🇫🇷</span><span class="team-name">France</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="uzbekistan" data-group="K"><span class="flag">🇺🇿</span><span class="team-name">Uzbekistan</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="uzbekistan" data-group="K" class="eliminated"><span class="flag">🇺🇿</span><span class="team-name">Uzbekistan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="croatia" data-group="L"><span class="flag">🇭🇷</span><span class="team-name">Croatia</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
@@ -424,7 +424,7 @@
         <div class="subtitle">⭐ England</div>
       </div>
       <div class="form-strip" id="form-al"></div>
-      <span class="survive-badge" id="badge-al">8 left</span>
+      <span class="survive-badge" id="badge-al">7 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-al">
@@ -436,7 +436,7 @@
       <li data-team="senegal" data-group="I"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="jordan" data-group="J" class="eliminated"><span class="flag">🇯🇴</span><span class="team-name">Jordan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="england" data-group="L" class="big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="panama" data-group="L"><span class="flag">🇵🇦</span><span class="team-name">Panama</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="panama" data-group="L" class="eliminated"><span class="flag">🇵🇦</span><span class="team-name">Panama</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -463,7 +463,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 72;
-  const GAMES_PLAYED = 46; // updated per result submission
+  const GAMES_PLAYED = 48; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -486,7 +486,7 @@
     brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }],
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }],
     // JILL
-    croatia:     [{ r: 'L', seq: 4 }],
+    croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }],
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }],
@@ -504,7 +504,7 @@
     turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }],
     newzealand:  [{ r: 'D', seq: 0 }, { r: 'L', seq: 22 }],
     japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }],
-    colombia:    [{ r: 'W', seq: 5 }],
+    colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }],
     // KATY
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
@@ -521,7 +521,7 @@
     england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }],
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }],
-    panama:      [{ r: 'L', seq: 6 }],
+    panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }],
     bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }],
     southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }],
     iran:        [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }],
@@ -571,8 +571,8 @@
     { date: '22 Jun', group: 'J', home: 'Jordan', away: 'Algeria', score: '1-2' },
     { date: '23 Jun', group: 'K', home: 'Portugal', away: 'Uzbekistan', score: '1-1' },
     { date: '23 Jun', group: 'L', home: 'England', away: 'Ghana', score: '0-0' },
-    { date: '23 Jun', group: 'L', home: 'Panama', away: 'Croatia' },
-    { date: '23 Jun', group: 'K', home: 'Colombia', away: 'DR Congo' },
+    { date: '23 Jun', group: 'L', home: 'Panama', away: 'Croatia', score: '0-1' },
+    { date: '23 Jun', group: 'K', home: 'Colombia', away: 'DR Congo', score: '1-0' },
     { date: '24 Jun', group: 'B', home: 'Switzerland', away: 'Canada' },
     { date: '24 Jun', group: 'B', home: 'Bosnia & Herzegovina', away: 'Qatar' },
     { date: '24 Jun', group: 'C', home: 'Scotland', away: 'Brazil' },
@@ -600,7 +600,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 27;
+  const FIXTURES_PLAYED = 29;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -773,6 +773,8 @@ function buildFixturesPanel() {
     { team: 'Haiti', flag: '🇭🇹', player: 'katy', group: 'C' },
     { team: 'Tunisia', flag: '🇹🇳', player: 'graham', group: 'F' },
     { team: 'Jordan', flag: '🇯🇴', player: 'al', group: 'J' },
+    { team: 'Panama', flag: '🇵🇦', player: 'al', group: 'L' },
+    { team: 'Uzbekistan', flag: '🇺🇿', player: 'jill', group: 'K' },
   ];
 
 
@@ -806,12 +808,16 @@ function buildFixturesPanel() {
     {
       timestamp: '23 Jun, 06:15',
       text: `Group I is a banger — <strong>Jill's</strong> France cruise past <strong>Katy's</strong> Iraq, while <strong>Katy's</strong> Norway edge a thriller against <strong>Alison's</strong> Senegal. Good news for Katy, rough night for Alison. Meanwhile <strong>Graham's</strong> Algeria sneak past <strong>Alison's</strong> Jordan — Jordan are eliminated and Alison loses two in one night. Ouch. 😬`
+    },
+    {
+      timestamp: '23 Jun, 23:00',
+      text: `History made at Valley View — Ronaldo scores twice as <strong>Katy's</strong> Portugal demolish <strong>Jill's</strong> Uzbekistan 5-0. The man becomes the first player ever to score in six World Cups. <strong>Katy</strong> will take that. <strong>Jill</strong> less so — Uzbekistan are looking very much like group stage tourists. 🐐 Meanwhile <strong>Alison's</strong> England and <strong>Graham's</strong> Ghana cancel each other out in a tense 0-0. Group L is wide open going into the final matchday.`
     }
   ];
 
   const WOES = {
-    timestamp: '23 Jun, 23:00',
-    text: `History made at Valley View — Ronaldo scores twice as <strong>Katy's</strong> Portugal demolish <strong>Jill's</strong> Uzbekistan 5-0. The man becomes the first player ever to score in six World Cups. <strong>Katy</strong> will take that. <strong>Jill</strong> less so — Uzbekistan are looking very much like group stage tourists. 🐐 Meanwhile <strong>Alison's</strong> England and <strong>Graham's</strong> Ghana cancel each other out in a tense 0-0. Group L is wide open going into the final matchday.`
+    timestamp: '24 Jun, 08:15',
+    text: `Group L drama — <strong>Jill's</strong> Croatia get their first win, beating <strong>Alison's</strong> Panama who are now eliminated. Two gone for Alison in as many days. <strong>Laura's</strong> Colombia continue to impress with a 1-0 over DR Congo, while Uzbekistan are shown the door — bad news for <strong>Jill</strong> who loses her second team in 24 hours. It's a tale of two Jills right now: Croatia flying, Uzbekistan gone. 😅`
   };
 
   function buildWoesPanel() {
