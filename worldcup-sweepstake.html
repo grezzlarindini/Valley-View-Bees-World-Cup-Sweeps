@@ -525,7 +525,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 50; // updated per result submission
+  const GAMES_PLAYED = 52; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -545,7 +545,7 @@
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }],
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }],
     algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }],
-    brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }],
+    brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }, { r: 'W', seq: 34 }],
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }],
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }],
@@ -556,7 +556,7 @@
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }],
     uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }],
     caboverde:   [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }],
-    scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }],
+    scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }, { r: 'L', seq: 34 }],
     // LAURA
     curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
     argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }],
@@ -567,13 +567,13 @@
     newzealand:  [{ r: 'D', seq: 0 }, { r: 'L', seq: 22 }],
     japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }],
     colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }],
-    morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }],
+    morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }],
     // KATY
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
     portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }],
-    haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }],
+    haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }],
     switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }],
     egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }],
@@ -637,8 +637,8 @@
     { date: '23 Jun', group: 'K', home: 'Colombia', away: 'DR Congo', score: '1-0' },
     { date: '24 Jun', group: 'B', home: 'Switzerland', away: 'Canada', score: '2-1' },
     { date: '24 Jun', group: 'B', home: 'Bosnia & Herzegovina', away: 'Qatar', score: '3-1' },
-    { date: '24 Jun', group: 'C', home: 'Scotland', away: 'Brazil' },
-    { date: '24 Jun', group: 'C', home: 'Morocco', away: 'Haiti' },
+    { date: '24 Jun', group: 'C', home: 'Scotland', away: 'Brazil', score: '0-3' },
+    { date: '24 Jun', group: 'C', home: 'Morocco', away: 'Haiti', score: '4-2' },
     { date: '24 Jun', group: 'A', home: 'Czechia', away: 'Mexico' },
     { date: '24 Jun', group: 'A', home: 'South Africa', away: 'South Korea' },
     { date: '25 Jun', group: 'E', home: 'Ecuador', away: 'Germany' },
@@ -662,7 +662,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 31;
+  const FIXTURES_PLAYED = 33;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -879,12 +879,16 @@ function buildFixturesPanel() {
     {
       timestamp: '24 Jun, 08:15',
       text: `Group L drama — <strong>Jill's</strong> Croatia get their first win, beating <strong>Alison's</strong> Panama who are now eliminated. Two gone for Alison in as many days. <strong>Laura's</strong> Colombia continue to impress with a 1-0 over DR Congo, while Uzbekistan are shown the door — bad news for <strong>Jill</strong> who loses her second team in 24 hours. It's a tale of two Jills right now: Croatia flying, Uzbekistan gone. 😅`
+    },
+    {
+      timestamp: '24 Jun, 22:15',
+      text: `Group B wraps up with fireworks — <strong>Katy's</strong> Switzerland beat <strong>Jill's</strong> Canada to go through, while <strong>Alison's</strong> Bosnia put three past <strong>Katy's</strong> Qatar who are now eliminated. Mixed bag for Katy — one through, one out. <strong>Jill</strong> takes another hit. <strong>Alison's</strong> Bosnia are quietly on a roll. 🔥`
     }
   ];
 
   const WOES = {
-    timestamp: '24 Jun, 22:15',
-    text: `Group B wraps up with fireworks — <strong>Katy's</strong> Switzerland beat <strong>Jill's</strong> Canada to go through, while <strong>Alison's</strong> Bosnia put three past <strong>Katy's</strong> Qatar who are now eliminated. Mixed bag for Katy — one through, one out. <strong>Jill</strong> takes another hit. <strong>Alison's</strong> Bosnia are quietly on a roll. 🔥`
+    timestamp: '25 Jun, 01:45',
+    text: `<strong>Laura's</strong> Morocco are flying — 4-2 against <strong>Katy's</strong> Haiti, who are having a nightmare of a tournament. <strong>Graham's</strong> Brazil meanwhile put three past <strong>Jill's</strong> Scotland to stamp their authority on Group C. Graham and Laura pulling away at the top — the pressure is on. 🇧🇷🇲🇦`
   };
 
   function buildWoesPanel() {
@@ -1035,8 +1039,8 @@ function buildFixturesPanel() {
       // R32
       73:{t1:null,t2:'Canada',s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
       74:{t1:'Germany',t2:null,s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
-      75:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
-      76:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
+      75:{t1:null,t2:'Morocco',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
+      76:{t1:'Brazil',t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       77:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       78:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       79:{t1:'Mexico',t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
