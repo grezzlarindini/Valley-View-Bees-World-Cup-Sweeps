@@ -437,12 +437,12 @@
         <div class="subtitle">⭐ Argentina</div>
       </div>
       <div class="form-strip" id="form-laura"></div>
-      <span class="survive-badge" id="badge-laura">8 left</span>
+      <span class="survive-badge" id="badge-laura">7 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-laura">
       <li data-team="turkiye" data-group="D" class="eliminated"><span class="flag">🇹🇷</span><span class="team-name">Türkiye</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="curacao" data-group="E"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="curacao" data-group="E" class="eliminated"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="japan" data-group="F"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="netherlands" data-group="F"><span class="flag">🇳🇱</span><span class="team-name">Netherlands</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="sweden" data-group="F"><span class="flag">🇸🇪</span><span class="team-name">Sweden</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -526,7 +526,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 54; // updated per result submission
+  const GAMES_PLAYED = 56; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -554,12 +554,12 @@
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }],
-    germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }],
+    germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }, { r: 'L', seq: 37 }],
     uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }],
     caboverde:   [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }],
     scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }, { r: 'L', seq: 34 }],
     // LAURA
-    curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
+    curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'L', seq: 38 }],
     argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }],
     uruguay:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }],
     netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }],
@@ -570,7 +570,7 @@
     colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }],
     // KATY
-    ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }],
+    ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }],
     portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }],
@@ -642,8 +642,8 @@
     { date: '24 Jun', group: 'C', home: 'Morocco', away: 'Haiti', score: '4-2' },
     { date: '24 Jun', group: 'A', home: 'Czechia', away: 'Mexico', score: '0-3' },
     { date: '24 Jun', group: 'A', home: 'South Africa', away: 'South Korea', score: '1-0' },
-    { date: '25 Jun', group: 'E', home: 'Ecuador', away: 'Germany' },
-    { date: '25 Jun', group: 'E', home: 'Curaçao', away: 'Ivory Coast' },
+    { date: '25 Jun', group: 'E', home: 'Ecuador', away: 'Germany', score: '2-1' },
+    { date: '25 Jun', group: 'E', home: 'Curaçao', away: 'Ivory Coast', score: '0-2' },
     { date: '25 Jun', group: 'F', home: 'Tunisia', away: 'Netherlands' },
     { date: '25 Jun', group: 'F', home: 'Japan', away: 'Sweden' },
     { date: '25 Jun', group: 'D', home: 'Turkey', away: 'United States' },
@@ -663,7 +663,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 35;
+  const FIXTURES_PLAYED = 37;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -840,6 +840,7 @@ function buildFixturesPanel() {
     { team: 'Uzbekistan', flag: '🇺🇿', player: 'jill', group: 'K' },
     { team: 'Qatar', flag: '🇶🇦', player: 'katy', group: 'B' },
     { team: 'Czechia', flag: '🇨🇿', player: 'graham', group: 'A' },
+    { team: 'Curaçao', flag: '🇨🇼', player: 'laura', group: 'E' },
   ];
 
 
@@ -889,12 +890,16 @@ function buildFixturesPanel() {
     {
       timestamp: '25 Jun, 01:45',
       text: `<strong>Laura's</strong> Morocco are flying — 4-2 against <strong>Katy's</strong> Haiti confirms Morocco's place in the knockout stage. <strong>Graham's</strong> Brazil put three past <strong>Jill's</strong> Scotland to book their own spot in the last 32. Scotland are sweating — they need other results to go their way to survive. Haiti are already out. <strong>Graham</strong> and <strong>Laura</strong> pulling away at the top. 🇧🇷🇲🇦`
+    },
+    {
+      timestamp: '25 Jun, 07:30',
+      text: `<strong>Alison's</strong> Mexico make it three wins from three — a 3-0 demolition of <strong>Graham's</strong> Czechia, who are eliminated. Alison is flying in Group A. South Africa also make it two wins with a narrow 1-0 over South Korea — bad news for the Koreans who now face a nervy wait to see if they scrape through. <strong>Graham</strong> loses Czechia but Brazil are still very much alive. 🇲🇽`
     }
   ];
 
   const WOES = {
-    timestamp: '25 Jun, 07:30',
-    text: `<strong>Alison's</strong> Mexico make it three wins from three — a 3-0 demolition of <strong>Graham's</strong> Czechia, who are eliminated. Alison is flying in Group A. South Africa also make it two wins with a narrow 1-0 over South Korea — bad news for the Koreans who now face a nervy wait to see if they scrape through. <strong>Graham</strong> loses Czechia but Brazil are still very much alive. 🇲🇽`
+    timestamp: '25 Jun, 23:00',
+    text: `Against all odds, <strong>Katy's</strong> Ecuador pull off a stunning 2-1 win over <strong>Jill's</strong> Germany — their first knockout qualification since 2006. A huge result for Katy and a gut punch for Jill. <strong>Laura's</strong> Curaçao are eliminated after a 2-0 loss to Ivory Coast, losing Laura another team. Scotland's hopes dim further — they needed Germany to win and they didn't. 😬`
   };
 
   function buildWoesPanel() {
@@ -1049,7 +1054,7 @@ function buildFixturesPanel() {
       75:{t1:null,t2:'Morocco',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       76:{t1:'Brazil',t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       77:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
-      78:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
+      78:{t1:'Ivory Coast',t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       79:{t1:'Mexico',t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       80:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       81:{t1:'United States',t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
@@ -1173,7 +1178,7 @@ function buildFixturesPanel() {
         const flagMap = {
           'England':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','France':'🇫🇷','Spain':'🇪🇸','Germany':'🇩🇪','Portugal':'🇵🇹',
           'Argentina':'🇦🇷','Brazil':'🇧🇷','Netherlands':'🇳🇱','Belgium':'🇧🇪','Croatia':'🇭🇷',
-          'Morocco':'🇲🇦','Senegal':'🇸🇳','Japan':'🇯🇵','Australia':'🇦🇺','USA':'🇺🇸','United States':'🇺🇸',
+          'Morocco':'🇲🇦','Senegal':'🇸🇳','Japan':'🇯🇵','Australia':'🇦🇺','USA':'🇺🇸','United States':'🇺🇸','Ivory Coast':'🇨🇮',
           'Mexico':'🇲🇽','Ecuador':'🇪🇨','Uruguay':'🇺🇾','Colombia':'🇨🇴','Norway':'🇳🇴',
           'Sweden':'🇸🇪','Denmark':'🇩🇰','Switzerland':'🇨🇭','Poland':'🇵🇱','Serbia':'🇷🇸',
           'Tunisia':'🇹🇳','Ghana':'🇬🇭','Canada':'🇨🇦','South Korea':'🇰🇷','Saudi Arabia':'🇸🇦',
