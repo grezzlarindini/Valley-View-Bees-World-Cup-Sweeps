@@ -1035,25 +1035,25 @@ function buildFixturesPanel() {
     const LABEL_W = 14; // match number label width px
 
     const ROUNDS = [
-      { key: 'R32',   title: 'Round of 32',       nos: [73,75,74,77,76,78,79,80,81,82,83,84,85,87,86,88] },
-      { key: 'R16',   title: 'Round of 16',       nos: [90,89,91,92,94,93,96,95] },
+      { key: 'R32',   title: 'Round of 32',       nos: [74,77,73,75,83,84,81,82,76,78,79,80,86,88,85,87] },
+      { key: 'R16',   title: 'Round of 16',       nos: [89,90,93,94,91,92,95,96] },
       { key: 'QF',    title: 'Quarter-Finals',    nos: [97,98,99,100] },
-      { key: 'SF',    title: 'Semi-Finals',       nos: [101,102] },
+      { key: 'SF',    title: 'Semi-Finals',       nos: [101, 102] },
       { key: 'FINAL', title: 'Final',             nos: [104] },
     ];
 
-    const MATCHES = {
+        const MATCHES = {
       // R32
       73:{t1:'South Africa',t2:'Canada',s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
       74:{t1:'Germany',t2:null,s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
       75:{t1:null,t2:'Morocco',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       76:{t1:'Brazil',t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
-      77:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
+      77:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       78:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
-      79:{t1:'Mexico',t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
+      79:{t1:'Mexico',t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       80:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
-      81:{t1:'United States',t2:null,s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
-      82:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
+      81:{t1:'United States',t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
+      82:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       83:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
       84:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
       85:{t1:'Switzerland',t2:null,s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
@@ -1083,23 +1083,25 @@ function buildFixturesPanel() {
     };
 
     // FEED: maps winner/loser of each match into downstream slots
-    const FEED = {
-      73:  { match:90,  slot:'t1', type:'winner' },
+            const FEED = {
+      // R32 → R16
       74:  { match:89,  slot:'t1', type:'winner' },
+      77:  { match:89,  slot:'t2', type:'winner' },
+      73:  { match:90,  slot:'t1', type:'winner' },
       75:  { match:90,  slot:'t2', type:'winner' },
       76:  { match:91,  slot:'t1', type:'winner' },
-      77:  { match:89,  slot:'t2', type:'winner' },
       78:  { match:91,  slot:'t2', type:'winner' },
       79:  { match:92,  slot:'t1', type:'winner' },
       80:  { match:92,  slot:'t2', type:'winner' },
-      81:  { match:94,  slot:'t1', type:'winner' },
-      82:  { match:94,  slot:'t2', type:'winner' },
       83:  { match:93,  slot:'t1', type:'winner' },
       84:  { match:93,  slot:'t2', type:'winner' },
-      85:  { match:96,  slot:'t1', type:'winner' },
+      81:  { match:94,  slot:'t1', type:'winner' },
+      82:  { match:94,  slot:'t2', type:'winner' },
       86:  { match:95,  slot:'t1', type:'winner' },
-      87:  { match:96,  slot:'t2', type:'winner' },
       88:  { match:95,  slot:'t2', type:'winner' },
+      85:  { match:96,  slot:'t1', type:'winner' },
+      87:  { match:96,  slot:'t2', type:'winner' },
+      // R16 → QF (working back from QF order [97,99,98,100])
       89:  { match:97,  slot:'t1', type:'winner' },
       90:  { match:97,  slot:'t2', type:'winner' },
       91:  { match:99,  slot:'t1', type:'winner' },
@@ -1108,10 +1110,12 @@ function buildFixturesPanel() {
       94:  { match:98,  slot:'t2', type:'winner' },
       95:  { match:100, slot:'t1', type:'winner' },
       96:  { match:100, slot:'t2', type:'winner' },
+      // QF → SF (working back from SF order [101,102])
       97:  { match:101, slot:'t1', type:'winner' },
       98:  { match:101, slot:'t2', type:'winner' },
       99:  { match:102, slot:'t1', type:'winner' },
       100: { match:102, slot:'t2', type:'winner' },
+      // SF → Final + 3rd
       101: [{ match:104, slot:'t1', type:'winner' }, { match:103, slot:'t1', type:'loser' }],
       102: [{ match:104, slot:'t2', type:'winner' }, { match:103, slot:'t2', type:'loser' }],
     };
