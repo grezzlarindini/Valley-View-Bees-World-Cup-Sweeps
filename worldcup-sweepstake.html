@@ -315,6 +315,7 @@
 
   
   /* ── BRACKET CARDS ── */
+  .bk-match-no-label { font-size: 9px; font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.3); writing-mode: vertical-rl; text-orientation: mixed; padding: 4px 2px; flex-shrink: 0; letter-spacing: 0.05em; }
   .bk-round-hdr { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.06em; color: var(--gold); text-align: center; padding: 8px 0; position: sticky; top: 0; background: rgba(20,50,24,0.97); z-index: 2; }
   .bk-card { background: rgba(0,0,0,0.28); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; }
   .bk-team { display: flex; align-items: center; justify-content: space-between; padding: 0 8px; gap: 4px; flex: 1; min-height: 0; font-family: 'Inter', sans-serif; font-size: 11px; color: rgba(255,255,255,0.8); }
@@ -355,8 +356,8 @@
 </header>
 
 <div class="phase-tabs" id="phase-tabs">
-  <button class="phase-tab inactive" id="tab-bracket" onclick="switchPhase('bracket')">⚔️ Knock Out Stage</button>
   <button class="phase-tab active"   id="tab-group"   onclick="switchPhase('group')">🏅 Match Center</button>
+  <button class="phase-tab inactive" id="tab-bracket" onclick="switchPhase('bracket')">⚔️ Knock Out Stage</button>
 </div>
 
 <div id="phase-bracket" style="display:none;">
@@ -888,7 +889,7 @@ function buildFixturesPanel() {
 
   const WOES = {
     timestamp: '25 Jun, 01:45',
-    text: `<strong>Laura's</strong> Morocco are flying — 4-2 against <strong>Katy's</strong> Haiti, who are having a nightmare of a tournament. <strong>Graham's</strong> Brazil meanwhile put three past <strong>Jill's</strong> Scotland to stamp their authority on Group C. Graham and Laura pulling away at the top — the pressure is on. 🇧🇷🇲🇦`
+    text: `<strong>Laura's</strong> Morocco are flying — 4-2 against <strong>Katy's</strong> Haiti confirms Morocco's place in the knockout stage. <strong>Graham's</strong> Brazil put three past <strong>Jill's</strong> Scotland to book their own spot in the last 32. Scotland are sweating — they need other results to go their way to survive. Haiti are already out. <strong>Graham</strong> and <strong>Laura</strong> pulling away at the top. 🇧🇷🇲🇦`
   };
 
   function buildWoesPanel() {
@@ -1026,6 +1027,7 @@ function buildFixturesPanel() {
     const MH       = 54;
     const SLOT_GAP = 10;
     // GAP is now dynamic — see getGAP(mw)
+    const LABEL_W = 14; // match number label width px
 
     const ROUNDS = [
       { key: 'R32',   title: 'Round of 32',       nos: [73,75,74,77,76,78,79,80,81,82,83,84,85,87,86,88] },
@@ -1194,17 +1196,31 @@ function buildFixturesPanel() {
         const w1 = decided && (m.p1 !== null ? m.p1 > m.p2 : m.s1 > m.s2);
         const w2 = decided && (m.p2 !== null ? m.p2 > m.p1 : m.s2 > m.s1);
         if (no === 104) {
-          return `<div class="bk-card-final" style="width:${mw}px;height:${MH}px;" id="bm-${no}">
-            <div class="bk-final-label">🏆 Final</div>
+          const dateFmtF = m.date ? (() => { const p=m.date.split(' '); const mN={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}; return p[0]+'/'+mN[p[1]]; })() : '';
+          return `<div style="display:flex;align-items:stretch;">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:space-around;">
+              <span class="bk-match-no-label">M${no}</span>
+              <span class="bk-match-no-label">${dateFmtF}</span>
+            </div>
+            <div class="bk-card-final" style="width:${mw}px;height:${MH}px;" id="bm-${no}">
+              <div class="bk-final-label">🏆 Final</div>
+              ${teamRow(m.t1, m.s1, w1, m.p1)}
+              <div class="bk-divider"></div>
+              ${teamRow(m.t2, m.s2, w2, m.p2)}
+            </div>
+          </div>`;
+        }
+        const dateFmt = m.date ? (() => { const p=m.date.split(' '); const mN={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}; return p[0]+'/'+mN[p[1]]; })() : '';
+        return `<div style="display:flex;align-items:stretch;">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:space-around;">
+            <span class="bk-match-no-label">M${no}</span>
+            <span class="bk-match-no-label">${dateFmt}</span>
+          </div>
+          <div class="bk-card" style="width:${mw}px;height:${MH}px;" id="bm-${no}">
             ${teamRow(m.t1, m.s1, w1, m.p1)}
             <div class="bk-divider"></div>
             ${teamRow(m.t2, m.s2, w2, m.p2)}
-          </div>`;
-        }
-        return `<div class="bk-card" style="width:${mw}px;height:${MH}px;" id="bm-${no}">
-          ${teamRow(m.t1, m.s1, w1, m.p1)}
-          <div class="bk-divider"></div>
-          ${teamRow(m.t2, m.s2, w2, m.p2)}
+          </div>
         </div>`;
       }
 
@@ -1224,7 +1240,12 @@ function buildFixturesPanel() {
           const d3 = m3.t1 && m3.t2 && m3.s1 !== null && m3.s2 !== null && m3.s1 !== m3.s2;
           const w3a = d3 && m3.s1 > m3.s2;
           const w3b = d3 && m3.s2 > m3.s1;
-          extraCard = `<div style="margin-top:16px;">
+          const dateFmt3 = m3.date ? (() => { const p=m3.date.split(' '); const mN3={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}; return p[0]+'/'+mN3[p[1]]; })() : '';
+          extraCard = `<div style="margin-top:16px;display:flex;align-items:stretch;">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:space-around;">
+              <span class="bk-match-no-label">M103</span>
+              <span class="bk-match-no-label">${dateFmt3}</span>
+            </div>
             <div class="bk-card-3rd" style="width:${mw}px;height:${MH}px;" id="bm-103">
               <div class="bk-3rd-label">3rd Place</div>
               ${teamRow(m3.t1, m3.s1, w3a, m3.p1)}
@@ -1247,6 +1268,8 @@ function buildFixturesPanel() {
         // Remove any existing SVG
         const existingSvg = track.querySelector('.bracket-svg');
         if (existingSvg) existingSvg.remove();
+
+
 
         const trackRect = track.getBoundingClientRect();
         const totalW = ROUNDS.length * colW;
@@ -1295,9 +1318,9 @@ function buildFixturesPanel() {
             return y;
           });
 
-          // X positions
-          const srcX = ri * colW + mw;        // right edge of source card
-          const tgtX = (ri + 1) * colW;       // left edge of target card
+          // X positions (account for LABEL_W on left of each card)
+          const srcX = ri * colW + LABEL_W + mw;   // right edge of source card
+          const tgtX = (ri + 1) * colW + LABEL_W;   // left edge of target card
           const midX = srcX + gap / 2;
 
           // Each pair of source cards connects to one target
@@ -1366,8 +1389,8 @@ function buildFixturesPanel() {
           const finalFirstMT = Math.round(finalSh / 2 - MH / 2);
           const card3Y = finalHdrH + finalFirstMT + MH + 16 + MH / 2;
 
-          const bx  = sfRi * colW + mw;      // right edge of SF column
-          const tx  = finalRi * colW;         // left edge of Final column
+          const bx  = sfRi * colW + LABEL_W + mw;   // right edge of SF column
+          const tx  = finalRi * colW + LABEL_W;          // left edge of Final column
           const gap  = getGAP(mw);
           const bmx = bx + gap / 2;           // bronze mid X
           const bronze = 'rgba(205,127,50,0.65)';
