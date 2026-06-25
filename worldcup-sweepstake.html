@@ -1025,7 +1025,7 @@ function buildFixturesPanel() {
 
     // ── Bracket constants ──
     const MH       = 56;
-    const SLOT_GAP = 10;
+    const SLOT_GAP = 8;
     // GAP is now dynamic — see getGAP(mw)
     const LABEL_W = 14; // match number label width px
 
@@ -1296,26 +1296,21 @@ function buildFixturesPanel() {
           const nFirstMT = Math.round(nextSh / 2 - MH / 2);
           const nSubMT   = Math.round(nextSh - MH);
 
-          // Measure actual header height for this round column
-          const srcCol = document.getElementById('bk-round-' + ri);
-          const tgtCol = document.getElementById('bk-round-' + (ri + 1));
-          const srcHdr = srcCol ? srcCol.querySelector('.bk-round-hdr') : null;
-          const tgtHdr = tgtCol ? tgtCol.querySelector('.bk-round-hdr') : null;
-          const srcHdrH = srcHdr ? srcHdr.offsetHeight : 0;
-          const tgtHdrH = tgtHdr ? tgtHdr.offsetHeight : 0;
+          // Measure card midpoints directly from DOM
+          const trackTop = track.getBoundingClientRect().top;
 
-          // Y positions of each source card midpoint (relative to track top, offset by header)
-          const srcYs = r.nos.map((no, i) => {
-            let y = srcHdrH + firstMT + MH / 2;
-            if (i > 0) y += subMT * i + MH * i;
-            return y;
+          const srcYs = r.nos.map(no => {
+            const card = document.getElementById('bm-' + no);
+            if (!card) return 0;
+            const r2 = card.getBoundingClientRect();
+            return r2.top - trackTop + r2.height / 2;
           });
 
-          // Y positions of each target card midpoint
-          const tgtYs = nextR.nos.map((no, i) => {
-            let y = tgtHdrH + nFirstMT + MH / 2;
-            if (i > 0) y += nSubMT * i + MH * i;
-            return y;
+          const tgtYs = nextR.nos.map(no => {
+            const card = document.getElementById('bm-' + no);
+            if (!card) return 0;
+            const r2 = card.getBoundingClientRect();
+            return r2.top - trackTop + r2.height / 2;
           });
 
           // X positions (account for LABEL_W on left of each card)
@@ -1367,27 +1362,19 @@ function buildFixturesPanel() {
         const sfRi = 3; // Semi-Finals index
         const sfR  = ROUNDS[sfRi];
         const finalRi = 4;
-        const sfCol = document.getElementById('bk-round-' + sfRi);
-        const sfHdr = sfCol ? sfCol.querySelector('.bk-round-hdr') : null;
-        const sfHdrH = sfHdr ? sfHdr.offsetHeight : 0;
-        const sfSh   = slotH(sfRi);
-        const sfFirstMT = Math.round(sfSh / 2 - MH / 2);
-        const sfSubMT   = Math.round(sfSh - MH);
-
         const finalCol = document.getElementById('bk-round-' + finalRi);
         const card103  = finalCol ? finalCol.querySelector('#bm-103') : null;
 
         if (card103 && sfR) {
-          // SF card midpoints (loser = opposite of winner = both midpoints)
-          const sf1Y = sfHdrH + sfFirstMT + MH / 2;
-          const sf2Y = sfHdrH + sfFirstMT + MH / 2 + sfSubMT + MH;
+          // Measure SF card midpoints from DOM
+          const sf1El = document.getElementById('bm-' + sfR.nos[0]);
+          const sf2El = document.getElementById('bm-' + sfR.nos[1]);
+          const card3El = document.getElementById('bm-103');
+          const trkTop = track.getBoundingClientRect().top;
 
-          // 3rd place card Y — Final header + Final firstMT + MH + 16 (gap) + MH/2
-          const finalHdr  = finalCol ? finalCol.querySelector('.bk-round-hdr') : null;
-          const finalHdrH = finalHdr ? finalHdr.offsetHeight : 0;
-          const finalSh   = slotH(finalRi);
-          const finalFirstMT = Math.round(finalSh / 2 - MH / 2);
-          const card3Y = finalHdrH + finalFirstMT + MH + 16 + MH / 2;
+          const sf1Y  = sf1El  ? sf1El.getBoundingClientRect().top  - trkTop + sf1El.getBoundingClientRect().height  / 2 : 0;
+          const sf2Y  = sf2El  ? sf2El.getBoundingClientRect().top  - trkTop + sf2El.getBoundingClientRect().height  / 2 : 0;
+          const card3Y = card3El ? card3El.getBoundingClientRect().top - trkTop + card3El.getBoundingClientRect().height / 2 : 0;
 
           const bx  = sfRi * colW + LABEL_W + mw;   // right edge of SF column
           const tx  = finalRi * colW + LABEL_W;          // left edge of Final column
