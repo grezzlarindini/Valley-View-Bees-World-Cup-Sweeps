@@ -387,11 +387,11 @@
         <div class="subtitle">⭐ Spain</div>
       </div>
       <div class="form-strip" id="form-graham"></div>
-      <span class="survive-badge" id="badge-graham">8 left</span>
+      <span class="survive-badge" id="badge-graham">7 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-graham">
-      <li data-team="czechia" data-group="A"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="czechia" data-group="A" class="eliminated"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="brazil" data-group="C"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="usa" data-group="D"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="tunisia" data-group="F" class="eliminated"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -526,7 +526,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 52; // updated per result submission
+  const GAMES_PLAYED = 54; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -547,7 +547,7 @@
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }],
     algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }],
     brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }, { r: 'W', seq: 34 }],
-    czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }],
+    czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }],
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }],
@@ -582,11 +582,11 @@
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }],
     england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }],
-    mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }],
+    mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }],
     bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }, { r: 'W', seq: 32 }],
-    southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }],
+    southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'W', seq: 36 }],
     iran:        [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }],
   };
 
@@ -640,8 +640,8 @@
     { date: '24 Jun', group: 'B', home: 'Bosnia & Herzegovina', away: 'Qatar', score: '3-1' },
     { date: '24 Jun', group: 'C', home: 'Scotland', away: 'Brazil', score: '0-3' },
     { date: '24 Jun', group: 'C', home: 'Morocco', away: 'Haiti', score: '4-2' },
-    { date: '24 Jun', group: 'A', home: 'Czechia', away: 'Mexico' },
-    { date: '24 Jun', group: 'A', home: 'South Africa', away: 'South Korea' },
+    { date: '24 Jun', group: 'A', home: 'Czechia', away: 'Mexico', score: '0-3' },
+    { date: '24 Jun', group: 'A', home: 'South Africa', away: 'South Korea', score: '1-0' },
     { date: '25 Jun', group: 'E', home: 'Ecuador', away: 'Germany' },
     { date: '25 Jun', group: 'E', home: 'Curaçao', away: 'Ivory Coast' },
     { date: '25 Jun', group: 'F', home: 'Tunisia', away: 'Netherlands' },
@@ -663,7 +663,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 33;
+  const FIXTURES_PLAYED = 35;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -839,6 +839,7 @@ function buildFixturesPanel() {
     { team: 'Panama', flag: '🇵🇦', player: 'al', group: 'L' },
     { team: 'Uzbekistan', flag: '🇺🇿', player: 'jill', group: 'K' },
     { team: 'Qatar', flag: '🇶🇦', player: 'katy', group: 'B' },
+    { team: 'Czechia', flag: '🇨🇿', player: 'graham', group: 'A' },
   ];
 
 
@@ -884,12 +885,16 @@ function buildFixturesPanel() {
     {
       timestamp: '24 Jun, 22:15',
       text: `Group B wraps up with fireworks — <strong>Katy's</strong> Switzerland beat <strong>Jill's</strong> Canada to go through, while <strong>Alison's</strong> Bosnia put three past <strong>Katy's</strong> Qatar who are now eliminated. Mixed bag for Katy — one through, one out. <strong>Jill</strong> takes another hit. <strong>Alison's</strong> Bosnia are quietly on a roll. 🔥`
+    },
+    {
+      timestamp: '25 Jun, 01:45',
+      text: `<strong>Laura's</strong> Morocco are flying — 4-2 against <strong>Katy's</strong> Haiti confirms Morocco's place in the knockout stage. <strong>Graham's</strong> Brazil put three past <strong>Jill's</strong> Scotland to book their own spot in the last 32. Scotland are sweating — they need other results to go their way to survive. Haiti are already out. <strong>Graham</strong> and <strong>Laura</strong> pulling away at the top. 🇧🇷🇲🇦`
     }
   ];
 
   const WOES = {
-    timestamp: '25 Jun, 01:45',
-    text: `<strong>Laura's</strong> Morocco are flying — 4-2 against <strong>Katy's</strong> Haiti confirms Morocco's place in the knockout stage. <strong>Graham's</strong> Brazil put three past <strong>Jill's</strong> Scotland to book their own spot in the last 32. Scotland are sweating — they need other results to go their way to survive. Haiti are already out. <strong>Graham</strong> and <strong>Laura</strong> pulling away at the top. 🇧🇷🇲🇦`
+    timestamp: '25 Jun, 07:30',
+    text: `<strong>Alison's</strong> Mexico make it three wins from three — a 3-0 demolition of <strong>Graham's</strong> Czechia, who are eliminated. Alison is flying in Group A. South Africa also make it two wins with a narrow 1-0 over South Korea — bad news for the Koreans who now face a nervy wait to see if they scrape through. <strong>Graham</strong> loses Czechia but Brazil are still very much alive. 🇲🇽`
   };
 
   function buildWoesPanel() {
@@ -1039,7 +1044,7 @@ function buildFixturesPanel() {
 
     const MATCHES = {
       // R32
-      73:{t1:null,t2:'Canada',s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
+      73:{t1:'South Africa',t2:'Canada',s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
       74:{t1:'Germany',t2:null,s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
       75:{t1:null,t2:'Morocco',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       76:{t1:'Brazil',t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
