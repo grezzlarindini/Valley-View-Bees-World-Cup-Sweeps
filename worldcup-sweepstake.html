@@ -526,7 +526,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 56; // updated per result submission
+  const GAMES_PLAYED = 60; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -541,8 +541,8 @@
     // GRAHAM
     austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }],
     spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }],
-    tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }],
-    usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }],
+    tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }, { r: 'L', seq: 39 }],
+    usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }],
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }],
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }],
     algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }],
@@ -551,7 +551,7 @@
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }],
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }],
-    australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }],
+    australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }],
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }, { r: 'L', seq: 37 }],
@@ -562,11 +562,11 @@
     curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'L', seq: 38 }],
     argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }],
     uruguay:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }],
-    netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }],
-    sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }],
-    turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }],
+    netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }, { r: 'W', seq: 39 }],
+    sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }, { r: 'D', seq: 40 }],
+    turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }, { r: 'W', seq: 41 }],
     newzealand:  [{ r: 'D', seq: 0 }, { r: 'L', seq: 22 }],
-    japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }],
+    japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }, { r: 'D', seq: 40 }],
     colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }],
     // KATY
@@ -579,7 +579,7 @@
     switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }],
     egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }],
     // AL
-    paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }],
+    paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }],
     england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }],
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }],
@@ -644,10 +644,10 @@
     { date: '24 Jun', group: 'A', home: 'South Africa', away: 'South Korea', score: '1-0' },
     { date: '25 Jun', group: 'E', home: 'Ecuador', away: 'Germany', score: '2-1' },
     { date: '25 Jun', group: 'E', home: 'Curaçao', away: 'Ivory Coast', score: '0-2' },
-    { date: '25 Jun', group: 'F', home: 'Tunisia', away: 'Netherlands' },
-    { date: '25 Jun', group: 'F', home: 'Japan', away: 'Sweden' },
+    { date: '25 Jun', group: 'F', home: 'Tunisia', away: 'Netherlands', score: '1-3' },
+    { date: '25 Jun', group: 'F', home: 'Japan', away: 'Sweden', score: '1-1' },
     { date: '25 Jun', group: 'D', home: 'Turkey', away: 'United States' },
-    { date: '25 Jun', group: 'D', home: 'Paraguay', away: 'Australia' },
+    { date: '25 Jun', group: 'D', home: 'Paraguay', away: 'Australia', score: '0-0' },
     { date: '26 Jun', group: 'I', home: 'Norway', away: 'France' },
     { date: '26 Jun', group: 'I', home: 'Senegal', away: 'Iraq' },
     { date: '26 Jun', group: 'H', home: 'Uruguay', away: 'Spain' },
@@ -663,7 +663,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 37;
+  const FIXTURES_PLAYED = 41;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -894,12 +894,16 @@ function buildFixturesPanel() {
     {
       timestamp: '25 Jun, 07:30',
       text: `<strong>Alison's</strong> Mexico make it three wins from three — a 3-0 demolition of <strong>Graham's</strong> Czechia, who are eliminated. Alison is flying in Group A. South Africa also make it two wins with a narrow 1-0 over South Korea — bad news for the Koreans who now face a nervy wait to see if they scrape through. <strong>Graham</strong> loses Czechia but Brazil are still very much alive. 🇲🇽`
+    },
+    {
+      timestamp: '25 Jun, 23:00',
+      text: `Against all odds, <strong>Katy's</strong> Ecuador pull off a stunning 2-1 win over <strong>Jill's</strong> Germany — their first knockout qualification since 2006. A huge result for Katy and a gut punch for Jill. <strong>Laura's</strong> Curaçao are eliminated after a 2-0 loss to Ivory Coast, losing Laura another team. Scotland's hopes dim further — they needed Germany to win and they didn't. 😬`
     }
   ];
 
   const WOES = {
-    timestamp: '25 Jun, 23:00',
-    text: `Against all odds, <strong>Katy's</strong> Ecuador pull off a stunning 2-1 win over <strong>Jill's</strong> Germany — their first knockout qualification since 2006. A huge result for Katy and a gut punch for Jill. <strong>Laura's</strong> Curaçao are eliminated after a 2-0 loss to Ivory Coast, losing Laura another team. Scotland's hopes dim further — they needed Germany to win and they didn't. 😬`
+    timestamp: '26 Jun, 08:00',
+    text: `Chaos in Groups D and F. <strong>Laura's</strong> Netherlands cruise past Tunisia 3-1 while <strong>Laura's</strong> Turkey beat <strong>Graham's</strong> USA 3-2 — a huge night for Laura who wins with three different teams. <strong>Graham</strong> loses USA and Tunisia in the same session. <strong>Laura's</strong> Japan and Sweden cancel each other out in a 1-1 draw. <strong>Alison's</strong> Paraguay and <strong>Jill's</strong> Australia also share the spoils 0-0. Busy night, mixed bags all round. 🌀`
   };
 
   function buildWoesPanel() {
@@ -1051,20 +1055,20 @@ function buildFixturesPanel() {
       // R32
       73:{t1:'South Africa',t2:'Canada',s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
       74:{t1:'Germany',t2:null,s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
-      75:{t1:null,t2:'Morocco',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
-      76:{t1:'Brazil',t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
+      75:{t1:'Netherlands',t2:'Morocco',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
+      76:{t1:'Brazil',t2:'Japan',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       77:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       78:{t1:'Ivory Coast',t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       79:{t1:'Mexico',t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       80:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
-      81:{t1:'United States',t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
+      81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       82:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       83:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
       84:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
       85:{t1:'Switzerland',t2:null,s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       86:{t1:'Argentina',t2:null,s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       87:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
-      88:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
+      88:{t1:'Australia',t2:null,s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       // R16
       89:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'04 Jul'},
       90:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'04 Jul'},
