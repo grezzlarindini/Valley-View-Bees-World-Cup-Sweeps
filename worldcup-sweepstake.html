@@ -266,8 +266,8 @@
   .archive-entry { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
   .archive-entry:last-child { border-bottom: none; }
   .archive-ts { font-size: 11px; color: rgba(255,255,255,0.3); font-family: 'Inter', sans-serif; margin-bottom: 6px; }
-  .woes-view-archive { display: block; width: 100%; margin-top: 12px; padding: 8px 0; background: var(--gold); color: #1a3a1a; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.08em; border: none; border-radius: 20px; cursor: pointer; text-align: center; }
-  .woes-view-archive:hover { opacity: 0.9; }
+  .woes-view-archive { display: block; width: 100%; margin-top: 12px; padding: 6px 0; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.04em; border: none; border-radius: 20px; cursor: pointer; text-align: center; }
+  .woes-view-archive:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); }
 
   
   /* ── PHASE TABS ── */
@@ -345,6 +345,9 @@
   .bk-card.dimmed, .bk-card-final.dimmed, .bk-card-3rd.dimmed { opacity: 0.25; transition: opacity 0.2s; }
   .bk-card.highlighted, .bk-card-final.highlighted, .bk-card-3rd.highlighted { opacity: 1; transition: opacity 0.2s; }
   .ko-player-pill.selected { box-shadow: 0 0 0 2px #fff; }
+
+    .woes-ko-btn { display: block; width: 100%; margin-top: 8px; padding: 9px 0; background: var(--gold); color: #1a3a1a; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.08em; border: none; border-radius: 20px; cursor: pointer; text-align: center; }
+  .woes-ko-btn:hover { opacity: 0.9; }
 
   </style>
 </head>
@@ -929,6 +932,7 @@ function buildFixturesPanel() {
       </div>
       <div class="woes-body${isOpen ? ' open' : ''}" id="woes-body">
         <p class="woes-text">${WOES.text}</p>
+        <button class="woes-ko-btn" onclick="switchPhase('bracket')">⚔️ Check the Knockout Bracket</button>
         <button class="woes-view-archive" onclick="openArchive()">📖 View the Archives</button>
       </div>`;
 
