@@ -349,6 +349,11 @@
     .woes-ko-btn { display: block; width: 100%; margin-top: 8px; padding: 9px 0; background: var(--gold); color: #1a3a1a; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.08em; border: none; border-radius: 20px; cursor: pointer; text-align: center; }
   .woes-ko-btn:hover { opacity: 0.9; }
 
+  
+  .ko-quicklinks { display: flex; gap: 8px; margin-bottom: 0; }
+  .ko-quicklink  { flex: 1; padding: 7px 0; border: none; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+  .ko-quicklink:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
   </style>
 </head>
 <body>
@@ -359,15 +364,15 @@
 </header>
 
 <div class="phase-tabs" id="phase-tabs">
-  <button class="phase-tab active"   id="tab-group"   onclick="switchPhase('group')">🏅 Match Center</button>
-  <button class="phase-tab inactive" id="tab-bracket" onclick="switchPhase('bracket')">⚔️ Knock Out Stage</button>
+  <button class="phase-tab inactive" id="tab-group"   onclick="switchPhase('group')">🏅 Match Center</button>
+  <button class="phase-tab active"   id="tab-bracket" onclick="switchPhase('bracket')">⚔️ Knock Out Stage</button>
 </div>
 
-<div id="phase-bracket" style="display:none;">
+<div id="phase-bracket" style="display:block;">
   <div class="ko-wrap" id="ko-wrap"></div>
 </div>
 
-<div id="phase-group">
+<div id="phase-group" style="display:none;">
 <div class="progress-wrap" id="progress-bar"></div>
 
 <div class="leaderboard">
@@ -663,6 +668,23 @@
     { date: '27 Jun', group: 'K', home: 'DR Congo', away: 'Uzbekistan', score: '3-1' },
     { date: '27 Jun', group: 'J', home: 'Jordan', away: 'Argentina', score: '1-3' },
     { date: '27 Jun', group: 'J', home: 'Algeria', away: 'Austria', score: '3-3' },
+    // ── KNOCKOUT STAGE ──
+    { date: '28 Jun', group: 'R32', home: 'South Africa',          away: 'Canada' },
+    { date: '28 Jun', group: 'R32', home: 'Germany',               away: 'Paraguay' },
+    { date: '29 Jun', group: 'R32', home: 'Netherlands',           away: 'Morocco' },
+    { date: '29 Jun', group: 'R32', home: 'Brazil',                away: 'Japan' },
+    { date: '29 Jun', group: 'R32', home: 'France',                away: 'Sweden' },
+    { date: '30 Jun', group: 'R32', home: 'Ivory Coast',           away: 'Norway' },
+    { date: '30 Jun', group: 'R32', home: 'Mexico',                away: 'Ecuador' },
+    { date: '01 Jul', group: 'R32', home: 'England',               away: 'DR Congo' },
+    { date: '01 Jul', group: 'R32', home: 'United States',         away: 'Bosnia & Herzegovina' },
+    { date: '01 Jul', group: 'R32', home: 'Belgium',               away: 'Senegal' },
+    { date: '02 Jul', group: 'R32', home: 'Portugal',              away: 'Croatia' },
+    { date: '02 Jul', group: 'R32', home: 'Spain',                 away: 'Austria' },
+    { date: '03 Jul', group: 'R32', home: 'Switzerland',           away: 'Algeria' },
+    { date: '03 Jul', group: 'R32', home: 'Argentina',             away: 'Cape Verde' },
+    { date: '03 Jul', group: 'R32', home: 'Colombia',              away: 'Ghana' },
+    { date: '03 Jul', group: 'R32', home: 'Australia',             away: 'Egypt' },
   ];
 
   // How many fixtures have been played (consumed from top of list)
@@ -1038,9 +1060,7 @@ function buildFixturesPanel() {
     ).join('');
 
     el.innerHTML = `
-      <div style="text-align:center;background:rgba(240,192,64,0.12);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.55);">
-        ⚙️ This page is currently being built — content will update as the tournament progresses
-      </div>
+
       <div class="progress-label">
         <span>⚽ Games Played · ${GAMES_PLAYED} of ${GAMES_TOTAL}</span>
         <strong>${pct}%</strong>
@@ -1048,7 +1068,13 @@ function buildFixturesPanel() {
       <div class="progress-track">
         <div class="progress-fill" style="width:${pct}%"></div>
       </div>
-      <div style="background:rgba(0,0,0,0.22);border-radius:14px;padding:12px 10px 10px;margin-top:16px;margin-bottom:14px;">
+      <div style="background:rgba(0,0,0,0.22);border-radius:14px;padding:10px 10px;margin-top:12px;margin-bottom:0;">
+        <div class="ko-quicklinks">
+          <button class="ko-quicklink" onclick="goToFixtures()">📋 Fixtures</button>
+          <button class="ko-quicklink" onclick="goToWoes()">🤖 Wins &amp; Woes</button>
+        </div>
+      </div>
+      <div style="background:rgba(0,0,0,0.22);border-radius:14px;padding:12px 10px 10px;margin-top:8px;margin-bottom:14px;">
         <div class="ko-players">${playerPills}</div>
         <div class="ko-rounds" id="ko-rounds">${roundPills}</div>
       </div>
@@ -1554,6 +1580,40 @@ function buildFixturesPanel() {
       card.classList.toggle('highlighted', isMatch);
       card.classList.toggle('dimmed', !isMatch);
     });
+  };
+
+  
+  window.goToFixtures = function() {
+    switchPhase('group');
+    // Open Pulse and switch to Just Played tab
+    const body = document.getElementById('fixtures-body');
+    const chev = document.getElementById('fixtures-chevron');
+    if (body && !body.classList.contains('open')) {
+      body.classList.add('open');
+      if (chev) chev.style.transform = 'rotate(90deg)';
+    }
+    window.switchTab('played');
+    // Scroll to pulse panel
+    setTimeout(() => {
+      const el = document.getElementById('next-up');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
+  window.goToWoes = function() {
+    switchPhase('group');
+    // Open Woes
+    const body = document.getElementById('woes-body');
+    const chev = document.getElementById('woes-chevron');
+    if (body && !body.classList.contains('open')) {
+      body.classList.add('open');
+      if (chev) chev.style.transform = 'rotate(90deg)';
+    }
+    // Scroll to woes panel
+    setTimeout(() => {
+      const el = document.getElementById('woes-panel');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   function applyBtnState(btn, state) {
