@@ -415,12 +415,12 @@
         <div class="subtitle">⭐ France</div>
       </div>
       <div class="form-strip" id="form-jill"></div>
-      <span class="survive-badge" id="badge-jill">8 left</span>
+      <span class="survive-badge" id="badge-jill">7 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-jill">
       <li data-team="canada" data-group="B"><span class="flag">🇨🇦</span><span class="team-name">Canada</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="scotland" data-group="C"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="team-name">Scotland</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="scotland" data-group="C" class="eliminated"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="team-name">Scotland</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="australia" data-group="D"><span class="flag">🇦🇺</span><span class="team-name">Australia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="belgium" data-group="E"><span class="flag">🇧🇪</span><span class="team-name">Belgium</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="germany" data-group="E"><span class="flag">🇩🇪</span><span class="team-name">Germany</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -490,7 +490,7 @@
         <div class="subtitle">⭐ England</div>
       </div>
       <div class="form-strip" id="form-al"></div>
-      <span class="survive-badge" id="badge-al">7 left</span>
+      <span class="survive-badge" id="badge-al">6 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-al">
@@ -498,7 +498,7 @@
       <li data-team="southafrica" data-group="A"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="bosnia" data-group="B"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="paraguay" data-group="D"><span class="flag">🇵🇾</span><span class="team-name">Paraguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="iran" data-group="G"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="iran" data-group="G" class="eliminated"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="senegal" data-group="I"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="jordan" data-group="J" class="eliminated"><span class="flag">🇯🇴</span><span class="team-name">Jordan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="england" data-group="L" class="big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -529,7 +529,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 66; // updated per result submission
+  const GAMES_PLAYED = 72; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -542,39 +542,39 @@
   // Hardcoded results per team: array of up to 8 values, each null | 'W' | 'D' | 'L'
   const RESULTS = {
     // GRAHAM
-    austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }],
+    austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }, { r: 'D', seq: 53 }],
     spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }],
     tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }, { r: 'L', seq: 39 }],
     usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }],
-    ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }],
+    ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }],
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }, { r: 'D', seq: 45 }],
-    algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }],
+    algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }, { r: 'D', seq: 53 }],
     brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }, { r: 'W', seq: 34 }],
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
-    croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }],
+    croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }],
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }],
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }, { r: 'L', seq: 37 }],
-    uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }],
+    uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }, { r: 'L', seq: 52 }],
     caboverde:   [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }, { r: 'D', seq: 45 }],
     scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }, { r: 'L', seq: 34 }],
     // LAURA
     curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'L', seq: 38 }],
-    argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }],
+    argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }, { r: 'W', seq: 54 }],
     uruguay:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }, { r: 'L', seq: 46 }],
     netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }, { r: 'W', seq: 39 }],
     sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }, { r: 'D', seq: 40 }],
     turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }, { r: 'W', seq: 41 }],
     newzealand:  [{ r: 'D', seq: 0 }, { r: 'L', seq: 22 }, { r: 'L', seq: 47 }],
     japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }, { r: 'D', seq: 40 }],
-    colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }],
+    colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }, { r: 'D', seq: 51 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }],
     // KATY
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }],
-    portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }],
+    portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
@@ -584,10 +584,10 @@
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }],
-    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }],
+    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }],
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }],
-    jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }],
-    panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }],
+    jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
+    panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
     bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }, { r: 'W', seq: 32 }],
     southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'W', seq: 36 }],
     iran:        [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'D', seq: 48 }],
@@ -657,16 +657,16 @@
     { date: '26 Jun', group: 'H', home: 'Cape Verde', away: 'Saudi Arabia', score: '0-0' },
     { date: '26 Jun', group: 'G', home: 'New Zealand', away: 'Belgium', score: '1-5' },
     { date: '26 Jun', group: 'G', home: 'Egypt', away: 'Iran', score: '1-1' },
-    { date: '27 Jun', group: 'L', home: 'Panama', away: 'England' },
-    { date: '27 Jun', group: 'L', home: 'Croatia', away: 'Ghana' },
-    { date: '27 Jun', group: 'K', home: 'Colombia', away: 'Portugal' },
-    { date: '27 Jun', group: 'K', home: 'DR Congo', away: 'Uzbekistan' },
-    { date: '27 Jun', group: 'J', home: 'Jordan', away: 'Argentina' },
-    { date: '27 Jun', group: 'J', home: 'Algeria', away: 'Austria' },
+    { date: '27 Jun', group: 'L', home: 'Panama', away: 'England', score: '0-2' },
+    { date: '27 Jun', group: 'L', home: 'Croatia', away: 'Ghana', score: '2-1' },
+    { date: '27 Jun', group: 'K', home: 'Colombia', away: 'Portugal', score: '0-0' },
+    { date: '27 Jun', group: 'K', home: 'DR Congo', away: 'Uzbekistan', score: '3-1' },
+    { date: '27 Jun', group: 'J', home: 'Jordan', away: 'Argentina', score: '1-3' },
+    { date: '27 Jun', group: 'J', home: 'Algeria', away: 'Austria', score: '3-3' },
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 47;
+  const FIXTURES_PLAYED = 53;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -848,6 +848,9 @@ function buildFixturesPanel() {
     { team: 'Uruguay', flag: '🇺🇾', player: 'laura', group: 'H' },
     { team: 'Saudi Arabia', flag: '🇸🇦', player: 'graham', group: 'H' },
     { team: 'New Zealand', flag: '🇳🇿', player: 'laura', group: 'G' },
+    { team: 'South Korea', flag: '🇰🇷', player: null, group: 'A' },
+    { team: 'Scotland', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', player: 'jill', group: 'C' },
+    { team: 'Iran', flag: '🇮🇷', player: 'al', group: 'G' },
   ];
 
 
@@ -913,12 +916,16 @@ function buildFixturesPanel() {
     {
       timestamp: '26 Jun, 22:15',
       text: `<strong>Jill's</strong> France are imperious — a 4-1 thumping of <strong>Katy's</strong> Norway books their place in the knockout stage. Both qualify from Group I, but it's France's night. <strong>Alison's</strong> Senegal put five past <strong>Katy's</strong> Iraq who are now eliminated — a brutal scoreline. Katy loses Iraq and takes a heavy defeat with Norway in the same evening. Tough watch. 😬`
+    },
+    {
+      timestamp: '27 Jun, 06:40',
+      text: `History made in Group H — Cape Verde, the minnows nobody gave a chance, hold Saudi Arabia to a goalless draw and qualify for the knockout stage for the first time ever. Incredible. <strong>Jill's</strong> Cape Verde are through. <strong>Graham's</strong> Spain beat <strong>Lozenge's</strong> Uruguay 1-0 to top the group — Uruguay eliminated. Saudi Arabia also eliminated, taking <strong>Graham's</strong> loss count up. <strong>Jill's</strong> Belgium run riot 5-1 against <strong>Lozenge's</strong> New Zealand who are also out. And <strong>Katy's</strong> Egypt share a 1-1 draw with <strong>Alison's</strong> Iran — both still alive. Big night. 🇨🇻🌍`
     }
   ];
 
   const WOES = {
-    timestamp: '27 Jun, 06:40',
-    text: `History made in Group H — Cape Verde, the minnows nobody gave a chance, hold Saudi Arabia to a goalless draw and qualify for the knockout stage for the first time ever. Incredible. <strong>Jill's</strong> Cape Verde are through. <strong>Graham's</strong> Spain beat <strong>Lozenge's</strong> Uruguay 1-0 to top the group — Uruguay eliminated. Saudi Arabia also eliminated, taking <strong>Graham's</strong> loss count up. <strong>Jill's</strong> Belgium run riot 5-1 against <strong>Lozenge's</strong> New Zealand who are also out. And <strong>Katy's</strong> Egypt share a 1-1 draw with <strong>Alison's</strong> Iran — both still alive. Big night. 🇨🇻🌍`
+    timestamp: '28 Jun, 08:40',
+    text: `The group stage is done. What a finale. <strong>Alison's</strong> England put two past Panama, <strong>Jill's</strong> Croatia edge Ghana — both through from Group L. <strong>Lozenge's</strong> Colombia and <strong>Katy's</strong> Portugal play out a 0-0, both qualify from Group K. DR Congo (🐶 Ollie) hammer <strong>Jill's</strong> Uzbekistan 3-1. Algeria and <strong>Graham's</strong> Austria draw 3-3 — both through from Group J alongside <strong>Lozenge's</strong> Argentina who beat Jordan 3-1. The knockout bracket is now full. Bring it on. ⚔️`
   };
 
   function buildWoesPanel() {
@@ -1075,15 +1082,15 @@ function buildFixturesPanel() {
       76:{t1:'Brazil',t2:'Japan',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       77:{t1:'France',t2:'Sweden',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       78:{t1:'Ivory Coast',t2:'Norway',s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
-      79:{t1:'Mexico',t2:null,s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
-      80:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
+      79:{t1:'Mexico',t2:'Ecuador',s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
+      80:{t1:'England',t2:'DR Congo',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
-      82:{t1:'Belgium',t2:null,s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
-      83:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
-      84:{t1:'Spain',t2:null,s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
-      85:{t1:'Switzerland',t2:null,s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
+      82:{t1:'Belgium',t2:'Senegal',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
+      83:{t1:'Portugal',t2:'Croatia',s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
+      84:{t1:'Spain',t2:'Austria',s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
+      85:{t1:'Switzerland',t2:'Algeria',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       86:{t1:'Argentina',t2:'Cape Verde',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
-      87:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
+      87:{t1:'Colombia',t2:'Ghana',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       88:{t1:'Australia',t2:'Egypt',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       // R16
       89:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'04 Jul'},
