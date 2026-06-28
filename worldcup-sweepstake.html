@@ -502,12 +502,12 @@
         <div class="subtitle">⭐ England</div>
       </div>
       <div class="form-strip" id="form-al"></div>
-      <span class="survive-badge" id="badge-al">6 left</span>
+      <span class="survive-badge" id="badge-al">5 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-al">
       <li data-team="mexico" data-group="A"><span class="flag">🇲🇽</span><span class="team-name">Mexico</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="southafrica" data-group="A"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="southafrica" data-group="A" class="eliminated"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="bosnia" data-group="B"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="paraguay" data-group="D"><span class="flag">🇵🇾</span><span class="team-name">Paraguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="iran" data-group="G" class="eliminated"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -541,7 +541,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 72; // updated per result submission
+  const GAMES_PLAYED = 73; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -567,7 +567,7 @@
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }],
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }],
-    canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }],
+    canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }],
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }, { r: 'L', seq: 37 }],
     uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }, { r: 'L', seq: 52 }],
@@ -601,7 +601,7 @@
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
     bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }, { r: 'W', seq: 32 }],
-    southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'W', seq: 36 }],
+    southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'W', seq: 36 }, { r: 'L', seq: 55 }],
     iran:        [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'D', seq: 48 }],
   };
 
@@ -695,7 +695,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 53;
+  const FIXTURES_PLAYED = 54;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -880,6 +880,7 @@ function buildFixturesPanel() {
     { team: 'South Korea', flag: '🇰🇷', player: null, group: 'A' },
     { team: 'Scotland', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', player: 'jill', group: 'C' },
     { team: 'Iran', flag: '🇮🇷', player: 'al', group: 'G' },
+    { team: 'South Africa', flag: '🇿🇦', player: 'al', group: 'KO' },
   ];
 
 
@@ -949,12 +950,16 @@ function buildFixturesPanel() {
     {
       timestamp: '27 Jun, 06:40',
       text: `History made in Group H — Cape Verde, the minnows nobody gave a chance, hold Saudi Arabia to a goalless draw and qualify for the knockout stage for the first time ever. Incredible. <strong>Jill's</strong> Cape Verde are through. <strong>Graham's</strong> Spain beat <strong>Lozenge's</strong> Uruguay 1-0 to top the group — Uruguay eliminated. Saudi Arabia also eliminated, taking <strong>Graham's</strong> loss count up. <strong>Jill's</strong> Belgium run riot 5-1 against <strong>Lozenge's</strong> New Zealand who are also out. And <strong>Katy's</strong> Egypt share a 1-1 draw with <strong>Alison's</strong> Iran — both still alive. Big night. 🇨🇻🌍`
+    },
+    {
+      timestamp: '28 Jun, 08:40',
+      text: `The group stage is done. What a finale. <strong>Alison's</strong> England put two past Panama, <strong>Jill's</strong> Croatia edge Ghana — both through from Group L. <strong>Lozenge's</strong> Colombia and <strong>Katy's</strong> Portugal play out a 0-0, both qualify from Group K. DR Congo (🐶 Ollie) hammer <strong>Jill's</strong> Uzbekistan 3-1. Algeria and <strong>Graham's</strong> Austria draw 3-3 — both through from Group J alongside <strong>Lozenge's</strong> Argentina who beat Jordan 3-1. The knockout bracket is now full. Bring it on. ⚔️`
     }
   ];
 
   const WOES = {
-    timestamp: '28 Jun, 08:40',
-    text: `The group stage is done. What a finale. <strong>Alison's</strong> England put two past Panama, <strong>Jill's</strong> Croatia edge Ghana — both through from Group L. <strong>Lozenge's</strong> Colombia and <strong>Katy's</strong> Portugal play out a 0-0, both qualify from Group K. DR Congo (🐶 Ollie) hammer <strong>Jill's</strong> Uzbekistan 3-1. Algeria and <strong>Graham's</strong> Austria draw 3-3 — both through from Group J alongside <strong>Lozenge's</strong> Argentina who beat Jordan 3-1. The knockout bracket is now full. Bring it on. ⚔️`
+    timestamp: '28 Jun, 22:55',
+    text: `The Round of 32 is underway — and what a way to start. <strong>Jill's</strong> Canada edge out <strong>Alison's</strong> South Africa 1-0 in the first match of the knockout stage. A tight, tense affair — South Africa bow out but gave everything. It's also worth noting that <strong>Jill</strong> topped the group stage standings with a remarkable 40 points from 27 games played. The trophy hunt begins. ⚔️🇨🇦`
   };
 
   function buildWoesPanel() {
@@ -1109,7 +1114,7 @@ function buildFixturesPanel() {
 
         const MATCHES = {
       // R32
-      73:{t1:'South Africa',t2:'Canada',s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
+      73:{t1:'South Africa',t2:'Canada',s1:0,s2:1,p1:null,p2:null,date:'28 Jun'},
       74:{t1:'Germany',t2:'Paraguay',s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
       75:{t1:'Netherlands',t2:'Morocco',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       76:{t1:'Brazil',t2:'Japan',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
