@@ -456,13 +456,13 @@
         <div class="subtitle">⭐ Argentina</div>
       </div>
       <div class="form-strip" id="form-laura"></div>
-      <span class="survive-badge" id="badge-laura">5 left</span>
+      <span class="survive-badge" id="badge-laura">4 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-laura">
       <li data-team="turkiye" data-group="D" class="eliminated"><span class="flag">🇹🇷</span><span class="team-name">Türkiye</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="curacao" data-group="E" class="eliminated"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="japan" data-group="F"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="japan" data-group="F" class="eliminated"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="netherlands" data-group="F"><span class="flag">🇳🇱</span><span class="team-name">Netherlands</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="sweden" data-group="F"><span class="flag">🇸🇪</span><span class="team-name">Sweden</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="newzealand" data-group="G" class="eliminated"><span class="flag">🇳🇿</span><span class="team-name">New Zealand</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 73; // updated per result submission
+  const GAMES_PLAYED = 74; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -565,7 +565,7 @@
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }],
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }, { r: 'D', seq: 45 }],
     algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }, { r: 'D', seq: 53 }],
-    brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }, { r: 'W', seq: 34 }],
+    brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }, { r: 'W', seq: 34 }, { r: 'W', seq: 56 }],
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }],
@@ -585,7 +585,7 @@
     sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }, { r: 'D', seq: 40 }],
     turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }, { r: 'W', seq: 41 }],
     newzealand:  [{ r: 'D', seq: 0 }, { r: 'L', seq: 22 }, { r: 'L', seq: 47 }],
-    japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }, { r: 'D', seq: 40 }],
+    japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }, { r: 'D', seq: 40 }, { r: 'L', seq: 56 }],
     colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }, { r: 'D', seq: 51 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }],
     // KATY
@@ -683,7 +683,7 @@
     { date: '28 Jun', group: 'R32', home: 'South Africa',          away: 'Canada' },
     { date: '28 Jun', group: 'R32', home: 'Germany',               away: 'Paraguay' },
     { date: '29 Jun', group: 'R32', home: 'Netherlands',           away: 'Morocco' },
-    { date: '29 Jun', group: 'R32', home: 'Brazil',                away: 'Japan' },
+    { date: '29 Jun', group: 'R32', home: 'Brazil',                away: 'Japan', score: '2-1' },
     { date: '29 Jun', group: 'R32', home: 'France',                away: 'Sweden' },
     { date: '30 Jun', group: 'R32', home: 'Ivory Coast',           away: 'Norway' },
     { date: '30 Jun', group: 'R32', home: 'Mexico',                away: 'Ecuador' },
@@ -699,7 +699,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 54;
+  const FIXTURES_PLAYED = 55;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -958,17 +958,17 @@ function buildFixturesPanel() {
     {
       timestamp: '28 Jun, 08:40',
       text: `The group stage is done. What a finale. <strong>Alison's</strong> England put two past Panama, <strong>Jill's</strong> Croatia edge Ghana — both through from Group L. <strong>Lozenge's</strong> Colombia and <strong>Katy's</strong> Portugal play out a 0-0, both qualify from Group K. DR Congo (🐶 Ollie) hammer <strong>Jill's</strong> Uzbekistan 3-1. Algeria and <strong>Graham's</strong> Austria draw 3-3 — both through from Group J alongside <strong>Lozenge's</strong> Argentina who beat Jordan 3-1. The knockout bracket is now full. Bring it on. ⚔️`
+    },
+    {
+      timestamp: '28 Jun, 22:55',
+      text: `The Round of 32 is underway — <strong>Jill's</strong> Canada edge out <strong>Alison's</strong> South Africa 1-0 in the opener. Tight, tense, and a sign of things to come. Worth noting that <strong>Jill</strong> topped the group stage with a remarkable 40 points from 27 games played. 🏅<br><br>
+Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Netherlands v Morocco) and <strong>Graham</strong> in M84 (Spain v Austria) — both face inevitable heartbreak. Key cross-player battles: France v Sweden (Jill v Lozenge), Brazil v Japan (Graham v Lozenge), Portugal v Croatia (Katy v Jill), Colombia v Ghana (Lozenge v Graham). Early call: <strong>Jill</strong> to go all the way, with <strong>Graham's</strong> Spain as the dark horse. 👀`
     }
   ];
 
   const WOES = {
-    timestamp: '28 Jun, 22:55',
-    text: `The Round of 32 is underway — <strong>Jill's</strong> Canada edge out <strong>Alison's</strong> South Africa 1-0 in the opener. Tight, tense, and a sign of things to come. Worth noting that <strong>Jill</strong> topped the group stage with a remarkable 40 points from 27 games played. 🏅<br><br>
-Now for the long-term view. Here's what I'm watching as the bracket fills out.<br><br>
-<strong>🔥 Watch out for internal clashes:</strong> <strong>Lozenge</strong> is already playing herself in M75 — Netherlands v Morocco. She can't lose but she can't win either. Same goes for <strong>Graham</strong> in M84 — Spain v Austria — a free hit with a sting in the tail.<br><br>
-<strong>⚡ Cross-player battles to circle:</strong> Germany (Jill) v Paraguay (Alison) kicks off on 28 Jun. France (Jill) v Sweden (Lozenge) is a tasty R32 matchup. Brazil (Graham) v Japan (Lozenge) could be spicy. Portugal (Katy) v Croatia (Jill) on 2 Jul is a genuine 50/50. And Colombia (Lozenge) v Ghana (Graham) could be the surprise package of the round.<br><br>
-<strong>🏆 Who goes all the way?</strong> <strong>Jill</strong> has the most firepower — France, Belgium, Germany and Croatia all in the mix, and she's already running away with the points table. <strong>Graham</strong> has Spain (tournament favourite) and Brazil in his corner. <strong>Lozenge</strong> has Argentina and Colombia both flying. <strong>Katy</strong> has Portugal and Switzerland, dark horses both. <strong>Alison</strong> has England and Mexico — capable of an upset but probably need something special.<br><br>
-My early call: <strong>Jill</strong> to be the last one standing. Don't rule out <strong>Graham</strong> though. Spain are ominous. 👀`
+    timestamp: '29 Jun, 21:25',
+    text: `<strong>Graham's</strong> Brazil are through — a 2-1 win over <strong>Lozenge's</strong> Japan sends the Samba Boys into the last 16. Japan put up a fight but Brazil's quality told in the end. Another team gone for Lozenge, who is now down to 4 in the knockout stage. Brazil progress to face the winner of M75 (Netherlands v Morocco) — both Lozenge teams, meaning Graham is guaranteed a familiar opponent. 🇧🇷<br><br>A heartbreaking exit for Japan though. They played with such courage and quality throughout — all the neutrals in the room wanted them to go further. A real tournament highlight, even in defeat. 🇯🇵`
   };
 
   function buildWoesPanel() {
@@ -1126,7 +1126,7 @@ My early call: <strong>Jill</strong> to be the last one standing. Don't rule out
       73:{t1:'South Africa',t2:'Canada',s1:0,s2:1,p1:null,p2:null,date:'28 Jun'},
       74:{t1:'Germany',t2:'Paraguay',s1:null,s2:null,p1:null,p2:null,date:'28 Jun'},
       75:{t1:'Netherlands',t2:'Morocco',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
-      76:{t1:'Brazil',t2:'Japan',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
+      76:{t1:'Brazil',t2:'Japan',s1:2,s2:1,p1:null,p2:null,date:'29 Jun'},
       77:{t1:'France',t2:'Sweden',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
       78:{t1:'Ivory Coast',t2:'Norway',s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       79:{t1:'Mexico',t2:'Ecuador',s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
