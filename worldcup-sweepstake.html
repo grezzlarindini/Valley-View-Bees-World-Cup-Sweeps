@@ -320,9 +320,13 @@
   .bk-card { background: rgba(0,0,0,0.28); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; }
   .bk-team { display: flex; align-items: center; justify-content: space-between; padding: 0 8px; gap: 4px; flex: 1; min-height: 0; font-family: 'Inter', sans-serif; font-size: 11px; color: rgba(255,255,255,0.8); }
   .bk-tbc  { display: flex; align-items: center; justify-content: space-between; padding: 0 8px; gap: 4px; flex: 1; min-height: 0; font-family: 'Inter', sans-serif; font-size: 11px; color: rgba(255,255,255,0.25); font-style: italic; }
-  .bk-winner { font-weight: 700; color: #fff; background: rgba(240,192,64,0.12); }
+  .bk-winner { font-weight: 700; color: #1a3a1a; background: var(--gold); }
+  .bk-loser  { opacity: 0.5; }
   .bk-name  { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0; }
   .bk-score { font-weight: 700; font-size: 11px; color: var(--gold); flex-shrink: 0; }
+  .bk-winner .bk-score { color: #1a3a1a; }
+  .bk-winner .bk-pen   { color: rgba(0,0,0,0.5); }
+  .bk-winner .bk-flag  { filter: none; }
   .bk-tbc .bk-score { display: none; }
   .bk-divider { height: 1px; background: rgba(255,255,255,0.08); flex-shrink: 0; }
 
@@ -1255,8 +1259,9 @@ function buildFixturesPanel() {
         return flagMap[teamName] || '🏳️';
       }
 
-      function teamRow(name, score, isWinner, pen) {
-        const cls = !name ? 'bk-tbc' : isWinner ? 'bk-team bk-winner' : 'bk-team';
+      function teamRow(name, score, isWinner, pen, decided) {
+        const isLoser = decided && name && !isWinner;
+        const cls = !name ? 'bk-tbc' : isWinner ? 'bk-team bk-winner' : isLoser ? 'bk-team bk-loser' : 'bk-team';
         const avatar = getTeamAvatar(name);
         const flag   = name ? `<span class="bk-flag">${getTeamFlag(name)}</span>` : '';
         const penStr = pen !== null && pen !== undefined ? `(${pen})` : '';
@@ -1283,9 +1288,9 @@ function buildFixturesPanel() {
             </div>
             <div class="bk-card-final" style="width:${mw}px;height:${MH}px;" id="bm-${no}">
               <div class="bk-final-label">🏆 Final</div>
-              ${teamRow(m.t1, m.s1, w1, m.p1)}
+              ${teamRow(m.t1, m.s1, w1, m.p1, decided)}
               <div class="bk-divider"></div>
-              ${teamRow(m.t2, m.s2, w2, m.p2)}
+              ${teamRow(m.t2, m.s2, w2, m.p2, decided)}
             </div>
           </div>`;
         }
@@ -1296,9 +1301,9 @@ function buildFixturesPanel() {
             <span class="bk-match-no-label">${dateFmt}</span>
           </div>
           <div class="bk-card" style="width:${mw}px;height:${MH}px;" id="bm-${no}">
-            ${teamRow(m.t1, m.s1, w1, m.p1)}
+            ${teamRow(m.t1, m.s1, w1, m.p1, decided)}
             <div class="bk-divider"></div>
-            ${teamRow(m.t2, m.s2, w2, m.p2)}
+            ${teamRow(m.t2, m.s2, w2, m.p2, decided)}
           </div>
         </div>`;
       }
@@ -1316,7 +1321,7 @@ function buildFixturesPanel() {
         let extraCard = '';
         if (r.key === 'FINAL') {
           const m3 = MATCHES[103] || { t1:null, t2:null, s1:null, s2:null };
-          const d3 = m3.t1 && m3.t2 && m3.s1 !== null && m3.s2 !== null && m3.s1 !== m3.s2;
+          const d3 = m3.t1 && m3.t2 && m3.s1 !== null && m3.s2 !== null && (m3.s1 !== m3.s2 || (m3.p1 !== null && m3.p2 !== null));
           const w3a = d3 && m3.s1 > m3.s2;
           const w3b = d3 && m3.s2 > m3.s1;
           const dateFmt3 = m3.date ? (() => { const p=m3.date.split(' '); const mN3={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}; return p[0]+'/'+mN3[p[1]]; })() : '';
@@ -1327,9 +1332,9 @@ function buildFixturesPanel() {
             </div>
             <div class="bk-card-3rd" style="width:${mw}px;height:${MH}px;" id="bm-103">
               <div class="bk-3rd-label">3rd Place</div>
-              ${teamRow(m3.t1, m3.s1, w3a, m3.p1)}
+              ${teamRow(m3.t1, m3.s1, w3a, m3.p1, d3)}
               <div class="bk-divider"></div>
-              ${teamRow(m3.t2, m3.s2, w3b, m3.p2)}
+              ${teamRow(m3.t2, m3.s2, w3b, m3.p2, d3)}
             </div>
           </div>`;
         }
