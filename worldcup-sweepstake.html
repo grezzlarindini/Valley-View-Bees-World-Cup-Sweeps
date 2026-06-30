@@ -611,16 +611,15 @@
 
   
   function buildProgressBar() {
-    const pct = Math.round((GAMES_PLAYED / 72) * 100);
     const wrap = document.getElementById('progress-bar');
     if (!wrap) return;
     wrap.innerHTML = `
       <div class="progress-label">
-        <span>⚽ Group Stage · ${GAMES_PLAYED} of 72 games</span>
-        <strong>${pct}%</strong>
+        <span>72 of 72 · Group Stage ✅</span>
+        <strong>100%</strong>
       </div>
       <div class="progress-track">
-        <div class="progress-fill" style="width:${pct}%"></div>
+        <div class="progress-fill" style="width:100%"></div>
       </div>`;
   }
 
