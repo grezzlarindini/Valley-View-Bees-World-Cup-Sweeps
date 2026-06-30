@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 76; // updated per result submission
+  const GAMES_PLAYED = 77; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -592,7 +592,7 @@
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }],
     portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
-    norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }],
+    norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }, { r: 'L', seq: 44 }],
     switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }],
@@ -684,7 +684,7 @@
     { date: '29 Jun', group: 'R32', home: 'Netherlands',           away: 'Morocco', score: '1-1 (2-3 pens)' },
     { date: '29 Jun', group: 'R32', home: 'Brazil',                away: 'Japan', score: '2-1' },
     { date: '29 Jun', group: 'R32', home: 'France',                away: 'Sweden' },
-    { date: '30 Jun', group: 'R32', home: 'Ivory Coast',           away: 'Norway' },
+    { date: '30 Jun', group: 'R32', home: 'Ivory Coast',           away: 'Norway', score: '1-2' },
     { date: '30 Jun', group: 'R32', home: 'Mexico',                away: 'Ecuador' },
     { date: '01 Jul', group: 'R32', home: 'England',               away: 'DR Congo' },
     { date: '01 Jul', group: 'R32', home: 'United States',         away: 'Bosnia & Herzegovina' },
@@ -698,7 +698,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 57;
+  const FIXTURES_PLAYED = 58;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -887,6 +887,7 @@ function buildFixturesPanel() {
     { team: 'Japan', flag: '🇯🇵', player: 'laura', group: 'KO' },
     { team: 'Germany', flag: '🇩🇪', player: 'jill', group: 'KO' },
     { team: 'Netherlands', flag: '🇳🇱', player: 'laura', group: 'KO' },
+    { team: 'Ivory Coast', flag: '🇨🇮', player: null, group: 'KO' },
   ];
 
 
@@ -969,12 +970,16 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '29 Jun, 21:25',
       text: `<strong>Graham's</strong> Brazil are through — a 2-1 win over <strong>Lozenge's</strong> Japan sends the Samba Boys into the last 16. Japan put up a fight but Brazil's quality told in the end. Another team gone for Lozenge, who is now down to 4 in the knockout stage. Brazil progress to face the winner of M75 (Netherlands v Morocco) — both Lozenge teams, meaning Graham is guaranteed a familiar opponent. 🇧🇷<br><br>A heartbreaking exit for Japan though. They played with such courage and quality throughout — all the neutrals in the room wanted them to go further. A real tournament highlight, even in defeat. 🇯🇵`
+    },
+    {
+      timestamp: '30 Jun, 21:00',
+      text: `Back-to-back penalty shootouts and the underdogs come out on top both times. <strong>Alison's</strong> Paraguay edge <strong>Jill's</strong> Germany 4-3 on penalties after a 1-1 draw — Germany eliminated in a huge upset. Then <strong>Lozenge's</strong> Morocco beat her own Netherlands 3-2 on pens after another 1-1 draw — meaning Lozenge knocks herself out of the tournament with Morocco surviving. Both results count as draws on the table, so Jill, Alison and Lozenge all pick up a point apiece. But the romance is all with the underdogs tonight — Paraguay and Morocco both through against the odds. 🐎`
     }
   ];
 
   const WOES = {
     timestamp: '30 Jun, 08:15',
-    text: `Back-to-back penalty shootouts and the underdogs come out on top both times. <strong>Alison's</strong> Paraguay edge <strong>Jill's</strong> Germany 4-3 on penalties after a 1-1 draw — Germany eliminated in a huge upset. Then <strong>Lozenge's</strong> Morocco beat her own Netherlands 3-2 on pens after another 1-1 draw — meaning Lozenge knocks herself out of the tournament with Morocco surviving. Both results count as draws on the table, so Jill, Alison and Lozenge all pick up a point apiece. But the romance is all with the underdogs tonight — Paraguay and Morocco both through against the odds. 🐎`
+    text: `<strong>Katy's</strong> Norway march into the last 16 with a 2-1 win over Ivory Coast (🐶 Daisy). A comfortable enough win in the end — Norway looking dangerous. Ivory Coast's fairytale run is over. Good for Katy who needed the points. 🇳🇴`
   };
 
   function buildWoesPanel() {
@@ -1134,7 +1139,7 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       75:{t1:'Netherlands',t2:'Morocco',s1:1,s2:1,p1:2,p2:3,date:'29 Jun'},
       76:{t1:'Brazil',t2:'Japan',s1:2,s2:1,p1:null,p2:null,date:'29 Jun'},
       77:{t1:'France',t2:'Sweden',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
-      78:{t1:'Ivory Coast',t2:'Norway',s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
+      78:{t1:'Ivory Coast',t2:'Norway',s1:1,s2:2,p1:null,p2:null,date:'30 Jun'},
       79:{t1:'Mexico',t2:'Ecuador',s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
       80:{t1:'England',t2:'DR Congo',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
