@@ -456,7 +456,7 @@
         <div class="subtitle">⭐ Argentina</div>
       </div>
       <div class="form-strip" id="form-laura"></div>
-      <span class="survive-badge" id="badge-laura">3 left</span>
+      <span class="survive-badge" id="badge-laura">2 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-laura">
@@ -464,7 +464,7 @@
       <li data-team="curacao" data-group="E" class="eliminated"><span class="flag">🇨🇼</span><span class="team-name">Curaçao</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="japan" data-group="F" class="eliminated"><span class="flag">🇯🇵</span><span class="team-name">Japan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="netherlands" data-group="F" class="eliminated"><span class="flag">🇳🇱</span><span class="team-name">Netherlands</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="sweden" data-group="F"><span class="flag">🇸🇪</span><span class="team-name">Sweden</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="sweden" data-group="F" class="eliminated"><span class="flag">🇸🇪</span><span class="team-name">Sweden</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="newzealand" data-group="G" class="eliminated"><span class="flag">🇳🇿</span><span class="team-name">New Zealand</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="uruguay" data-group="H" class="eliminated"><span class="flag">🇺🇾</span><span class="team-name">Uruguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="argentina" data-group="J" class="big5"><span class="flag">🇦🇷</span><span class="team-name">Argentina</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -481,7 +481,7 @@
         <div class="subtitle">⭐ Portugal</div>
       </div>
       <div class="form-strip" id="form-katy"></div>
-      <span class="survive-badge" id="badge-katy">6 left</span>
+      <span class="survive-badge" id="badge-katy">5 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
@@ -489,7 +489,7 @@
       <li data-team="switzerland" data-group="B"><span class="flag">🇨🇭</span><span class="team-name">Switzerland</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="haiti" data-group="C" class="eliminated"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="morocco" data-group="C"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="ecuador" data-group="E"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="ecuador" data-group="E" class="eliminated"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="egypt" data-group="G"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="iraq" data-group="I" class="eliminated"><span class="flag">🇮🇶</span><span class="team-name">Iraq</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="norway" data-group="I"><span class="flag">🇳🇴</span><span class="team-name">Norway</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 77; // updated per result submission
+  const GAMES_PLAYED = 79; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -569,7 +569,7 @@
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }],
-    france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }],
+    france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }],
@@ -582,14 +582,14 @@
     argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }, { r: 'W', seq: 54 }],
     uruguay:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }, { r: 'L', seq: 46 }],
     netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }, { r: 'W', seq: 39 }, { r: 'D', seq: 58 }],
-    sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }, { r: 'D', seq: 40 }],
+    sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }, { r: 'D', seq: 40 }, { r: 'L', seq: 60 }],
     turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }, { r: 'W', seq: 41 }],
     newzealand:  [{ r: 'D', seq: 0 }, { r: 'L', seq: 22 }, { r: 'L', seq: 47 }],
     japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }, { r: 'D', seq: 40 }, { r: 'L', seq: 56 }],
     colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }, { r: 'D', seq: 51 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }],
     // KATY
-    ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }],
+    ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }, { r: 'L', seq: 61 }],
     portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }],
@@ -601,7 +601,7 @@
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }],
     england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }],
-    mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }],
+    mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }, { r: 'W', seq: 61 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
     bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }, { r: 'W', seq: 32 }],
@@ -684,8 +684,8 @@
     { date: '29 Jun', group: 'R32', home: 'Netherlands',           away: 'Morocco', score: '1-1 (2-3 pens)' },
     { date: '29 Jun', group: 'R32', home: 'Brazil',                away: 'Japan', score: '2-1' },
     { date: '30 Jun', group: 'R32', home: 'Ivory Coast',           away: 'Norway', score: '1-2' },
-    { date: '29 Jun', group: 'R32', home: 'France',                away: 'Sweden' },
-    { date: '30 Jun', group: 'R32', home: 'Mexico',                away: 'Ecuador' },
+    { date: '29 Jun', group: 'R32', home: 'France',                away: 'Sweden', score: '3-0' },
+    { date: '30 Jun', group: 'R32', home: 'Mexico',                away: 'Ecuador', score: '2-0' },
     { date: '01 Jul', group: 'R32', home: 'England',               away: 'DR Congo' },
     { date: '01 Jul', group: 'R32', home: 'United States',         away: 'Bosnia & Herzegovina' },
     { date: '01 Jul', group: 'R32', home: 'Belgium',               away: 'Senegal' },
@@ -698,7 +698,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 58;
+  const FIXTURES_PLAYED = 60;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -888,6 +888,8 @@ function buildFixturesPanel() {
     { team: 'Germany', flag: '🇩🇪', player: 'jill', group: 'KO' },
     { team: 'Netherlands', flag: '🇳🇱', player: 'laura', group: 'KO' },
     { team: 'Ivory Coast', flag: '🇨🇮', player: null, group: 'KO' },
+    { team: 'Sweden', flag: '🇸🇪', player: 'laura', group: 'KO' },
+    { team: 'Ecuador', flag: '🇪🇨', player: 'katy', group: 'KO' },
   ];
 
 
@@ -978,8 +980,8 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
   ];
 
   const WOES = {
-    timestamp: '30 Jun, 08:15',
-    text: `<strong>Katy's</strong> Norway march into the last 16 with a 2-1 win over Ivory Coast (🐶 Daisy). A comfortable enough win in the end — Norway looking dangerous. Ivory Coast's fairytale run is over. Good for Katy who needed the points. 🇳🇴`
+    timestamp: '30 Jun, 21:00',
+    text: `<strong>Katy's</strong> Norway march into the last 16 with a 2-1 win over Ivory Coast (🐶 Daisy). Ivory Coast's fairytale run is over. 🇳🇴<br><br><strong>Jill's</strong> France follow up with a commanding 3-0 demolition of <strong>Lozenge's</strong> Sweden — utterly ruthless. France are looking like genuine contenders. Sweden eliminated, another one gone for Lozenge who is now down to just 2 teams. <br><br><strong>Alison's</strong> Mexico then wrap up the evening with a 2-0 win over <strong>Katy's</strong> Ecuador — Ecuador eliminated. Mexico are flying. Alison has every reason to be smiling. 🇲🇽`
   };
 
   function buildWoesPanel() {
@@ -1138,9 +1140,9 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       74:{t1:'Germany',t2:'Paraguay',s1:1,s2:1,p1:3,p2:4,date:'28 Jun'},
       75:{t1:'Netherlands',t2:'Morocco',s1:1,s2:1,p1:2,p2:3,date:'29 Jun'},
       76:{t1:'Brazil',t2:'Japan',s1:2,s2:1,p1:null,p2:null,date:'29 Jun'},
-      77:{t1:'France',t2:'Sweden',s1:null,s2:null,p1:null,p2:null,date:'29 Jun'},
+      77:{t1:'France',t2:'Sweden',s1:3,s2:0,p1:null,p2:null,date:'29 Jun'},
       78:{t1:'Ivory Coast',t2:'Norway',s1:1,s2:2,p1:null,p2:null,date:'30 Jun'},
-      79:{t1:'Mexico',t2:'Ecuador',s1:null,s2:null,p1:null,p2:null,date:'30 Jun'},
+      79:{t1:'Mexico',t2:'Ecuador',s1:2,s2:0,p1:null,p2:null,date:'30 Jun'},
       80:{t1:'England',t2:'DR Congo',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       82:{t1:'Belgium',t2:'Senegal',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
