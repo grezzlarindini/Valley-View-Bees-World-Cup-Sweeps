@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 79; // updated per result submission
+  const GAMES_PLAYED = 80; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -600,7 +600,7 @@
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }],
-    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }],
+    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }],
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }, { r: 'W', seq: 61 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
@@ -686,7 +686,7 @@
     { date: '30 Jun', group: 'R32', home: 'Ivory Coast',           away: 'Norway', score: '1-2' },
     { date: '29 Jun', group: 'R32', home: 'France',                away: 'Sweden', score: '3-0' },
     { date: '30 Jun', group: 'R32', home: 'Mexico',                away: 'Ecuador', score: '2-0' },
-    { date: '01 Jul', group: 'R32', home: 'England',               away: 'DR Congo' },
+    { date: '01 Jul', group: 'R32', home: 'England',               away: 'DR Congo', score: '2-1' },
     { date: '01 Jul', group: 'R32', home: 'United States',         away: 'Bosnia & Herzegovina' },
     { date: '01 Jul', group: 'R32', home: 'Belgium',               away: 'Senegal' },
     { date: '02 Jul', group: 'R32', home: 'Portugal',              away: 'Croatia' },
@@ -698,7 +698,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 60;
+  const FIXTURES_PLAYED = 61;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -890,6 +890,7 @@ function buildFixturesPanel() {
     { team: 'Ivory Coast', flag: '🇨🇮', player: null, group: 'KO' },
     { team: 'Sweden', flag: '🇸🇪', player: 'laura', group: 'KO' },
     { team: 'Ecuador', flag: '🇪🇨', player: 'katy', group: 'KO' },
+    { team: 'DR Congo', flag: '🇨🇩', player: null, group: 'KO' },
   ];
 
 
@@ -1143,7 +1144,7 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       77:{t1:'France',t2:'Sweden',s1:3,s2:0,p1:null,p2:null,date:'29 Jun'},
       78:{t1:'Ivory Coast',t2:'Norway',s1:1,s2:2,p1:null,p2:null,date:'30 Jun'},
       79:{t1:'Mexico',t2:'Ecuador',s1:2,s2:0,p1:null,p2:null,date:'30 Jun'},
-      80:{t1:'England',t2:'DR Congo',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
+      80:{t1:'England',t2:'DR Congo',s1:2,s2:1,p1:null,p2:null,date:'01 Jul'},
       81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       82:{t1:'Belgium',t2:'Senegal',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
       83:{t1:'Portugal',t2:'Croatia',s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
