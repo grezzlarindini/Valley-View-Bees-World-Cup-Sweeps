@@ -406,7 +406,7 @@
         <div class="subtitle">⭐ Spain</div>
       </div>
       <div class="form-strip" id="form-graham"></div>
-      <span class="survive-badge" id="badge-graham">6 left</span>
+      <span class="survive-badge" id="badge-graham">5 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-graham">
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 82; // updated per result submission
+  const GAMES_PLAYED = 83; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -558,8 +558,8 @@
   // Hardcoded results per team: array of up to 8 values, each null | 'W' | 'D' | 'L'
   const RESULTS = {
     // GRAHAM
-    austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }, { r: 'D', seq: 53 }],
-    spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }],
+    austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }, { r: 'D', seq: 53 }, { r: 'L', seq: 65 }],
+    spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }, { r: 'W', seq: 65 }],
     tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }, { r: 'L', seq: 39 }],
     usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }, { r: 'W', seq: 64 }],
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }],
@@ -690,7 +690,7 @@
     { date: '01 Jul', group: 'R32', home: 'United States',         away: 'Bosnia & Herzegovina', score: '2-0' },
     { date: '01 Jul', group: 'R32', home: 'Belgium',               away: 'Senegal', score: '3-2' },
     { date: '02 Jul', group: 'R32', home: 'Portugal',              away: 'Croatia' },
-    { date: '02 Jul', group: 'R32', home: 'Spain',                 away: 'Austria' },
+    { date: '02 Jul', group: 'R32', home: 'Spain',                 away: 'Austria', score: '3-0' },
     { date: '03 Jul', group: 'R32', home: 'Switzerland',           away: 'Algeria' },
     { date: '03 Jul', group: 'R32', home: 'Argentina',             away: 'Cape Verde' },
     { date: '03 Jul', group: 'R32', home: 'Colombia',              away: 'Ghana' },
@@ -698,7 +698,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 63;
+  const FIXTURES_PLAYED = 64;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -893,6 +893,7 @@ function buildFixturesPanel() {
     { team: 'DR Congo', flag: '🇨🇩', player: null, group: 'KO' },
     { team: 'Senegal', flag: '🇸🇳', player: 'al', group: 'KO' },
     { team: 'Bosnia & Herzegovina', flag: '🇧🇦', player: 'al', group: 'KO' },
+    { team: 'Austria', flag: '🇦🇹', player: 'graham', group: 'KO' },
   ];
 
 
@@ -1150,7 +1151,7 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:2,s2:0,p1:null,p2:null,date:'01 Jul'},
       82:{t1:'Belgium',t2:'Senegal',s1:3,s2:2,p1:null,p2:null,date:'01 Jul'},
       83:{t1:'Portugal',t2:'Croatia',s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
-      84:{t1:'Spain',t2:'Austria',s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
+      84:{t1:'Spain',t2:'Austria',s1:3,s2:0,p1:null,p2:null,date:'02 Jul'},
       85:{t1:'Switzerland',t2:'Algeria',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       86:{t1:'Argentina',t2:'Cape Verde',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       87:{t1:'Colombia',t2:'Ghana',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
