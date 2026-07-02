@@ -506,16 +506,16 @@
         <div class="subtitle">⭐ England</div>
       </div>
       <div class="form-strip" id="form-al"></div>
-      <span class="survive-badge" id="badge-al">5 left</span>
+      <span class="survive-badge" id="badge-al">3 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-al">
       <li data-team="mexico" data-group="A"><span class="flag">🇲🇽</span><span class="team-name">Mexico</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="southafrica" data-group="A" class="eliminated"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="bosnia" data-group="B"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="bosnia" data-group="B" class="eliminated"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="paraguay" data-group="D"><span class="flag">🇵🇾</span><span class="team-name">Paraguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="iran" data-group="G" class="eliminated"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="senegal" data-group="I"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="senegal" data-group="I" class="eliminated"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="jordan" data-group="J" class="eliminated"><span class="flag">🇯🇴</span><span class="team-name">Jordan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="england" data-group="L" class="big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="panama" data-group="L" class="eliminated"><span class="flag">🇵🇦</span><span class="team-name">Panama</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 80; // updated per result submission
+  const GAMES_PLAYED = 82; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -561,7 +561,7 @@
     austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }, { r: 'D', seq: 53 }],
     spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }],
     tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }, { r: 'L', seq: 39 }],
-    usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }],
+    usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }, { r: 'W', seq: 64 }],
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }],
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }, { r: 'D', seq: 45 }],
     algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }, { r: 'D', seq: 53 }],
@@ -572,7 +572,7 @@
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }],
-    belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }],
+    belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }, { r: 'W', seq: 63 }],
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }, { r: 'L', seq: 37 }, { r: 'D', seq: 57 }],
     uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }, { r: 'L', seq: 52 }],
     caboverde:   [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }, { r: 'D', seq: 45 }],
@@ -599,12 +599,12 @@
     egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }, { r: 'D', seq: 48 }],
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }],
-    senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }],
+    senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }, { r: 'L', seq: 63 }],
     england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }],
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }, { r: 'W', seq: 61 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
-    bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }, { r: 'W', seq: 32 }],
+    bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }, { r: 'W', seq: 32 }, { r: 'L', seq: 64 }],
     southafrica: [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'W', seq: 36 }, { r: 'L', seq: 55 }],
     iran:        [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'D', seq: 48 }],
   };
@@ -687,8 +687,8 @@
     { date: '29 Jun', group: 'R32', home: 'France',                away: 'Sweden', score: '3-0' },
     { date: '30 Jun', group: 'R32', home: 'Mexico',                away: 'Ecuador', score: '2-0' },
     { date: '01 Jul', group: 'R32', home: 'England',               away: 'DR Congo', score: '2-1' },
-    { date: '01 Jul', group: 'R32', home: 'United States',         away: 'Bosnia & Herzegovina' },
-    { date: '01 Jul', group: 'R32', home: 'Belgium',               away: 'Senegal' },
+    { date: '01 Jul', group: 'R32', home: 'United States',         away: 'Bosnia & Herzegovina', score: '2-0' },
+    { date: '01 Jul', group: 'R32', home: 'Belgium',               away: 'Senegal', score: '3-2' },
     { date: '02 Jul', group: 'R32', home: 'Portugal',              away: 'Croatia' },
     { date: '02 Jul', group: 'R32', home: 'Spain',                 away: 'Austria' },
     { date: '03 Jul', group: 'R32', home: 'Switzerland',           away: 'Algeria' },
@@ -698,7 +698,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 61;
+  const FIXTURES_PLAYED = 63;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -891,6 +891,8 @@ function buildFixturesPanel() {
     { team: 'Sweden', flag: '🇸🇪', player: 'laura', group: 'KO' },
     { team: 'Ecuador', flag: '🇪🇨', player: 'katy', group: 'KO' },
     { team: 'DR Congo', flag: '🇨🇩', player: null, group: 'KO' },
+    { team: 'Senegal', flag: '🇸🇳', player: 'al', group: 'KO' },
+    { team: 'Bosnia & Herzegovina', flag: '🇧🇦', player: 'al', group: 'KO' },
   ];
 
 
@@ -981,8 +983,8 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
   ];
 
   const WOES = {
-    timestamp: '01 Jul, 20:00',
-    text: `Harry Kane to the rescue — <strong>Alison's</strong> England were staring down an embarrassing exit before Kane stepped up to seal a 2-1 win over DR Congo (🐶 Ollie). It was nervy, it was ugly at times, but England are through. Alison will take it. DR Congo bow out having given everything. ⚽🏴󠁧󠁢󠁥󠁮󠁧󠁿`
+    timestamp: '02 Jul, 08:13',
+    text: `Harry Kane to the rescue first — <strong>Alison's</strong> England were staring down an embarrassing exit before Kane stepped up to seal a nervy 2-1 win over DR Congo (🐶 Ollie). Ugly at times but Alison will take it. 🏴󠁧󠁢󠁥󠁮󠁧󠁿<br><br><strong>Jill's</strong> Belgium then edge out <strong>Alison's</strong> Senegal 3-2 in a cracking game — Senegal eliminated. A big win for Jill, a painful one for Alison. <strong>Graham's</strong> USA follow up with a composed 2-0 to knock out <strong>Alison's</strong> Bosnia & Herzegovina. A double blow for Alison in the same session — down to just 3 teams now. Graham picking up points quietly with USA. The bracket is tightening. 🇧🇪🇺🇸`
   };
 
   function buildWoesPanel() {
@@ -1145,8 +1147,8 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       78:{t1:'Ivory Coast',t2:'Norway',s1:1,s2:2,p1:null,p2:null,date:'30 Jun'},
       79:{t1:'Mexico',t2:'Ecuador',s1:2,s2:0,p1:null,p2:null,date:'30 Jun'},
       80:{t1:'England',t2:'DR Congo',s1:2,s2:1,p1:null,p2:null,date:'01 Jul'},
-      81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
-      82:{t1:'Belgium',t2:'Senegal',s1:null,s2:null,p1:null,p2:null,date:'01 Jul'},
+      81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:2,s2:0,p1:null,p2:null,date:'01 Jul'},
+      82:{t1:'Belgium',t2:'Senegal',s1:3,s2:2,p1:null,p2:null,date:'01 Jul'},
       83:{t1:'Portugal',t2:'Croatia',s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
       84:{t1:'Spain',t2:'Austria',s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
       85:{t1:'Switzerland',t2:'Algeria',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
