@@ -406,7 +406,7 @@
         <div class="subtitle">⭐ Spain</div>
       </div>
       <div class="form-strip" id="form-graham"></div>
-      <span class="survive-badge" id="badge-graham">5 left</span>
+      <span class="survive-badge" id="badge-graham">4 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-graham">
@@ -416,7 +416,7 @@
       <li data-team="tunisia" data-group="F" class="eliminated"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="saudiarabia" data-group="H" class="eliminated"><span class="flag">🇸🇦</span><span class="team-name">Saudi Arabia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="spain" data-group="H" class="big5"><span class="flag">🇪🇸</span><span class="team-name">Spain</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="algeria" data-group="J"><span class="flag">🇩🇿</span><span class="team-name">Algeria</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="algeria" data-group="J" class="eliminated"><span class="flag">🇩🇿</span><span class="team-name">Algeria</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="austria" data-group="J" class="eliminated"><span class="flag">🇦🇹</span><span class="team-name">Austria</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="ghana" data-group="L"><span class="flag">🇬🇭</span><span class="team-name">Ghana</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
@@ -431,7 +431,7 @@
         <div class="subtitle">⭐ France</div>
       </div>
       <div class="form-strip" id="form-jill"></div>
-      <span class="survive-badge" id="badge-jill">6 left</span>
+      <span class="survive-badge" id="badge-jill">5 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-jill">
@@ -443,7 +443,7 @@
       <li data-team="caboverde" data-group="H"><span class="flag">🇨🇻</span><span class="team-name">Cape Verde</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="france" data-group="I" class="big5"><span class="flag">🇫🇷</span><span class="team-name">France</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="uzbekistan" data-group="K" class="eliminated"><span class="flag">🇺🇿</span><span class="team-name">Uzbekistan</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="croatia" data-group="L"><span class="flag">🇭🇷</span><span class="team-name">Croatia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="croatia" data-group="L" class="eliminated"><span class="flag">🇭🇷</span><span class="team-name">Croatia</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 83; // updated per result submission
+  const GAMES_PLAYED = 85; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -564,11 +564,11 @@
     usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }, { r: 'W', seq: 64 }],
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }],
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }, { r: 'D', seq: 45 }],
-    algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }, { r: 'D', seq: 53 }],
+    algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }, { r: 'D', seq: 53 }, { r: 'L', seq: 67 }],
     brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }, { r: 'W', seq: 34 }, { r: 'W', seq: 56 }],
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
-    croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }],
+    croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }, { r: 'L', seq: 66 }],
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }],
@@ -589,13 +589,13 @@
     colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }, { r: 'D', seq: 51 }],
     // KATY
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }, { r: 'L', seq: 61 }],
-    portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }],
+    portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }, { r: 'W', seq: 66 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }, { r: 'L', seq: 44 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }],
-    switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }],
+    switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }, { r: 'W', seq: 67 }],
     egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }, { r: 'D', seq: 48 }],
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }],
@@ -689,16 +689,16 @@
     { date: '01 Jul', group: 'R32', home: 'England',               away: 'DR Congo', score: '2-1' },
     { date: '01 Jul', group: 'R32', home: 'United States',         away: 'Bosnia & Herzegovina', score: '2-0' },
     { date: '01 Jul', group: 'R32', home: 'Belgium',               away: 'Senegal', score: '3-2' },
-    { date: '02 Jul', group: 'R32', home: 'Portugal',              away: 'Croatia' },
+    { date: '02 Jul', group: 'R32', home: 'Portugal',              away: 'Croatia', score: '2-1' },
     { date: '02 Jul', group: 'R32', home: 'Spain',                 away: 'Austria', score: '3-0' },
-    { date: '03 Jul', group: 'R32', home: 'Switzerland',           away: 'Algeria' },
+    { date: '03 Jul', group: 'R32', home: 'Switzerland',           away: 'Algeria', score: '2-0' },
     { date: '03 Jul', group: 'R32', home: 'Argentina',             away: 'Cape Verde' },
     { date: '03 Jul', group: 'R32', home: 'Colombia',              away: 'Ghana' },
     { date: '03 Jul', group: 'R32', home: 'Australia',             away: 'Egypt' },
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 64;
+  const FIXTURES_PLAYED = 66;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -894,6 +894,8 @@ function buildFixturesPanel() {
     { team: 'Senegal', flag: '🇸🇳', player: 'al', group: 'KO' },
     { team: 'Bosnia & Herzegovina', flag: '🇧🇦', player: 'al', group: 'KO' },
     { team: 'Austria', flag: '🇦🇹', player: 'graham', group: 'KO' },
+    { team: 'Croatia', flag: '🇭🇷', player: 'jill', group: 'KO' },
+    { team: 'Algeria', flag: '🇩🇿', player: 'graham', group: 'KO' },
   ];
 
 
@@ -980,12 +982,20 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '30 Jun, 21:00',
       text: `Back-to-back penalty shootouts and the underdogs come out on top both times. <strong>Alison's</strong> Paraguay edge <strong>Jill's</strong> Germany 4-3 on penalties after a 1-1 draw — Germany eliminated in a huge upset. Then <strong>Lozenge's</strong> Morocco beat her own Netherlands 3-2 on pens after another 1-1 draw — meaning Lozenge knocks herself out of the tournament with Morocco surviving. Both results count as draws on the table, so Jill, Alison and Lozenge all pick up a point apiece. But the romance is all with the underdogs tonight — Paraguay and Morocco both through against the odds. 🐎`
+    },
+    {
+      timestamp: '02 Jul, 08:13',
+      text: `Harry Kane to the rescue first — <strong>Alison's</strong> England were staring down an embarrassing exit before Kane stepped up to seal a nervy 2-1 win over DR Congo (🐶 Ollie). Ugly at times but Alison will take it. 🏴󠁧󠁢󠁥󠁮󠁧󠁿<br><br><strong>Jill's</strong> Belgium then edge out <strong>Alison's</strong> Senegal 3-2 in a cracking game — Senegal eliminated. A big win for Jill, a painful one for Alison. <strong>Graham's</strong> USA follow up with a composed 2-0 to knock out <strong>Alison's</strong> Bosnia & Herzegovina. A double blow for Alison in the same session — down to just 3 teams now. Graham picking up points quietly with USA. The bracket is tightening. 🇧🇪🇺🇸`
+    },
+    {
+      timestamp: '02 Jul, 08:13',
+      text: `<strong>Graham's</strong> Spain are ruthless — a 3-0 demolition of his own Austria. Graham knocks himself out of the tournament with Austria eliminated, but Spain look like genuine title contenders. Mixed feelings in the Graham camp — but mostly good ones. Down to 5 teams but Spain are right in the hunt. 🇪🇸`
     }
   ];
 
   const WOES = {
-    timestamp: '02 Jul, 08:13',
-    text: `<strong>Graham's</strong> Spain are ruthless — a 3-0 demolition of his own Austria. Graham knocks himself out of the tournament with Austria eliminated, but Spain look like genuine title contenders. Mixed feelings in the Graham camp — but mostly good ones. Down to 5 teams but Spain are right in the hunt. 🇪🇸`
+    timestamp: '03 Jul, 08:34',
+    text: `<strong>Katy's</strong> Portugal edge past <strong>Jill's</strong> Croatia 2-1 — Croatia eliminated. A good result for Katy, a blow for Jill who loses another team and is now down to 5. Portugal looking solid. 🇵🇹<br><br><strong>Katy's</strong> Switzerland then put in a clean 2-0 over <strong>Graham's</strong> Algeria — Algeria eliminated, Graham down to 4. A brilliant double session for Katy who has two teams through to the last 16. <strong>Graham</strong> meanwhile has now lost Austria and Algeria in quick succession — Spain carrying his hopes. 🇨🇭`
   };
 
   function buildWoesPanel() {
@@ -1150,9 +1160,9 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       80:{t1:'England',t2:'DR Congo',s1:2,s2:1,p1:null,p2:null,date:'01 Jul'},
       81:{t1:'United States',t2:'Bosnia & Herzegovina',s1:2,s2:0,p1:null,p2:null,date:'01 Jul'},
       82:{t1:'Belgium',t2:'Senegal',s1:3,s2:2,p1:null,p2:null,date:'01 Jul'},
-      83:{t1:'Portugal',t2:'Croatia',s1:null,s2:null,p1:null,p2:null,date:'02 Jul'},
+      83:{t1:'Portugal',t2:'Croatia',s1:2,s2:1,p1:null,p2:null,date:'02 Jul'},
       84:{t1:'Spain',t2:'Austria',s1:3,s2:0,p1:null,p2:null,date:'02 Jul'},
-      85:{t1:'Switzerland',t2:'Algeria',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
+      85:{t1:'Switzerland',t2:'Algeria',s1:2,s2:0,p1:null,p2:null,date:'03 Jul'},
       86:{t1:'Argentina',t2:'Cape Verde',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       87:{t1:'Colombia',t2:'Ghana',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
       88:{t1:'Australia',t2:'Egypt',s1:null,s2:null,p1:null,p2:null,date:'03 Jul'},
