@@ -431,11 +431,11 @@
         <div class="subtitle">⭐ France</div>
       </div>
       <div class="form-strip" id="form-jill"></div>
-      <span class="survive-badge" id="badge-jill">3 left</span>
+      <span class="survive-badge" id="badge-jill">2 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-jill">
-      <li data-team="canada" data-group="B"><span class="flag">🇨🇦</span><span class="team-name">Canada</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="canada" data-group="B" class="eliminated"><span class="flag">🇨🇦</span><span class="team-name">Canada</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="scotland" data-group="C" class="eliminated"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="team-name">Scotland</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="australia" data-group="D" class="eliminated"><span class="flag">🇦🇺</span><span class="team-name">Australia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="belgium" data-group="E"><span class="flag">🇧🇪</span><span class="team-name">Belgium</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 88; // updated per result submission
+  const GAMES_PLAYED = 89; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -571,7 +571,7 @@
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }, { r: 'L', seq: 66 }],
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }, { r: 'D', seq: 68 }],
-    canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }],
+    canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }, { r: 'L', seq: 71 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }, { r: 'W', seq: 63 }],
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }, { r: 'L', seq: 37 }, { r: 'D', seq: 57 }],
     uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }, { r: 'L', seq: 52 }],
@@ -594,7 +594,7 @@
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }, { r: 'L', seq: 44 }],
-    morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }],
+    morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }, { r: 'W', seq: 71 }],
     switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }, { r: 'W', seq: 67 }],
     egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }, { r: 'D', seq: 48 }, { r: 'D', seq: 68 }],
     // AL
@@ -696,7 +696,7 @@
     { date: '03 Jul', group: 'R32', home: 'Colombia',              away: 'Ghana', score: '1-0' },
     { date: '03 Jul', group: 'R32', home: 'Australia',             away: 'Egypt', score: '1-1 (2-4 pens)' },
     // ── ROUND OF 16 ──
-    { date: '04 Jul', group: 'R16', home: 'Canada',               away: 'Morocco' },
+    { date: '04 Jul', group: 'R16', home: 'Canada',               away: 'Morocco', score: '0-3' },
     { date: '04 Jul', group: 'R16', home: 'Paraguay',             away: 'France' },
     { date: '05 Jul', group: 'R16', home: 'Brazil',               away: 'Norway' },
     { date: '05 Jul', group: 'R16', home: 'Mexico',               away: 'England' },
@@ -719,7 +719,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 69;
+  const FIXTURES_PLAYED = 70;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -920,6 +920,7 @@ function buildFixturesPanel() {
     { team: 'Australia', flag: '🇦🇺', player: 'jill', group: 'KO' },
     { team: 'Cape Verde', flag: '🇨🇻', player: 'jill', group: 'KO' },
     { team: 'Ghana', flag: '🇬🇭', player: 'graham', group: 'KO' },
+    { team: 'Canada', flag: '🇨🇦', player: 'jill', group: 'KO' },
   ];
 
 
@@ -1022,20 +1023,16 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '03 Jul, 22:54',
       text: `Another penalty shootout — <strong>Katy's</strong> Egypt knock out <strong>Jill's</strong> Australia 4-2 on pens after a 1-1 draw. Both pick up a draw point, but it's Katy who goes through. Another team gone for Jill who is now down to 4. Egypt are quietly becoming a story — <strong>Katy</strong> now has Portugal, Switzerland and Egypt all in the last 16. A very good night for Katy. 🇪🇬`
+    },
+    {
+      timestamp: '04 Jul, 08:00',
+      text: `The people's champions Cape Verde took <strong>Lozenge's</strong> Argentina — the world number ones and reigning champions — all the way to extra time in what may go down as one of the greatest World Cup matches ever played. The Blue Sharks equalised twice, their goalkeeper Vozinha made eight saves including four on Messi alone, and at countless stages they looked every bit the superior team. Sidny Cabral's curling equaliser in the 103rd minute to make it 2-2 was simply stunning. Argentina finally crept through via an own goal in the 111th minute. Cape Verde are gone, but they leave as legends. Lozenge will have very mixed feelings — through with Argentina, but heartbroken for those extraordinary Blue Sharks. 🇨🇻❤️<br><br>Meanwhile <strong>Lozenge's</strong> Colombia sneak past <strong>Graham's</strong> Ghana 1-0 — Ghana eliminated, Graham down to just 3 teams. 🇨🇴`
     }
   ];
 
   const WOES = {
-    timestamp: '04 Jul, 08:00',
-    text: `The people's champions Cape Verde took <strong>Lozenge's</strong> Argentina — the world number ones and reigning champions — all the way to extra time in what may go down as one of the greatest World Cup matches ever played. The Blue Sharks equalised twice, their goalkeeper Vozinha made eight saves including four on Messi alone, and at countless stages they looked every bit the superior team. Sidny Cabral's curling equaliser in the 103rd minute to make it 2-2 was simply stunning. Argentina finally crept through via an own goal in the 111th minute. Cape Verde are gone, but they leave as legends. Lozenge will have very mixed feelings — through with Argentina, but heartbroken for those extraordinary Blue Sharks. 🇨🇻❤️<br><br>
-Meanwhile <strong>Lozenge's</strong> Colombia sneak past <strong>Graham's</strong> Ghana 1-0 — Ghana eliminated, Graham down to just 3 teams. 🇨🇴<br><br>
-<strong>The Round of 32 is done. Here's what's coming in the last 16 👀</strong><br><br>
-<strong>M89 — Paraguay v France:</strong> Alison's underdogs v Jill's juggernaut. France smashed Sweden 3-0 — Paraguay snuck past Germany on pens. This should be straightforward for Jill… but Paraguay have form for drama. 🎲<br><br>
-<strong>M90 — Canada v Morocco:</strong> Jill v Katy. Canada quietly got the job done; Morocco knocked out Lozenge's Netherlands on pens. Genuinely hard to call. 🍁🆚🇲🇦<br><br>
-<strong>M91 — Brazil v Norway:</strong> Graham's Brazil against Katy's Norway. Brazil are tournament favourites. Norway have been solid but this could be a step too far. 🇧🇷<br><br>
-<strong>M92 — Mexico v England:</strong> Alison v Alison — she's playing herself again. Mexico have been excellent; England barely scraped through. Alison gets through either way, which is very annoying for the rest of us. 😅<br><br>
-<strong>M93 — Portugal v Spain:</strong> The Iberian derby — Katy v Graham. Two heavyweights. Spain looked ominous with that 3-0 over Austria. Tie of the round. 🔥<br><br>
-<strong>M94 — USA v Belgium:</strong> Graham's USA v Jill's Belgium. Belgium were excellent against Senegal. USA solid but unspectacular. Jill fancied here. 🇧🇪`
+    timestamp: '04 Jul, 20:54',
+    text: `<strong>Katy's</strong> Morocco are on fire — a stunning 3-0 demolition of <strong>Jill's</strong> Canada in the last 16. Canada were excellent to get this far but Morocco were in a different class tonight. Katy's tournament is going from strength to strength — Morocco, Portugal, Switzerland and Egypt all still alive. Jill loses another team and is now down to just 2. Morocco march into the quarter-finals. 🇲🇦`
   };
 
   function buildWoesPanel() {
@@ -1208,7 +1205,7 @@ Meanwhile <strong>Lozenge's</strong> Colombia sneak past <strong>Graham's</stron
       88:{t1:'Australia',t2:'Egypt',s1:1,s2:1,p1:2,p2:4,date:'03 Jul'},
       // R16
       89:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'04 Jul'},
-      90:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'04 Jul'},
+      90:{t1:'Canada',t2:'Morocco',s1:0,s2:3,p1:null,p2:null,date:'04 Jul'},
       91:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'05 Jul'},
       92:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'05 Jul'},
       93:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'06 Jul'},
