@@ -406,12 +406,12 @@
         <div class="subtitle">⭐ Spain</div>
       </div>
       <div class="form-strip" id="form-graham"></div>
-      <span class="survive-badge" id="badge-graham">3 left</span>
+      <span class="survive-badge" id="badge-graham">2 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-graham">
       <li data-team="czechia" data-group="A" class="eliminated"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="brazil" data-group="C"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="brazil" data-group="C" class="eliminated"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="usa" data-group="D"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="tunisia" data-group="F" class="eliminated"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="saudiarabia" data-group="H" class="eliminated"><span class="flag">🇸🇦</span><span class="team-name">Saudi Arabia</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -506,11 +506,11 @@
         <div class="subtitle">⭐ England</div>
       </div>
       <div class="form-strip" id="form-al"></div>
-      <span class="survive-badge" id="badge-al">2 left</span>
+      <span class="survive-badge" id="badge-al">1 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-al">
-      <li data-team="mexico" data-group="A"><span class="flag">🇲🇽</span><span class="team-name">Mexico</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="mexico" data-group="A" class="eliminated"><span class="flag">🇲🇽</span><span class="team-name">Mexico</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="southafrica" data-group="A" class="eliminated"><span class="flag">🇿🇦</span><span class="team-name">South Africa</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="bosnia" data-group="B" class="eliminated"><span class="flag">🇧🇦</span><span class="team-name">Bosnia &amp; Herzegovina</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="paraguay" data-group="D" class="eliminated"><span class="flag">🇵🇾</span><span class="team-name">Paraguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 90; // updated per result submission
+  const GAMES_PLAYED = 92; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -565,7 +565,7 @@
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }, { r: 'L', seq: 70 }],
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }, { r: 'D', seq: 45 }],
     algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }, { r: 'D', seq: 53 }, { r: 'L', seq: 67 }],
-    brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }, { r: 'W', seq: 34 }, { r: 'W', seq: 56 }],
+    brazil:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 13 }, { r: 'W', seq: 34 }, { r: 'W', seq: 56 }, { r: 'L', seq: 73 }],
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }, { r: 'L', seq: 66 }],
@@ -591,7 +591,7 @@
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }, { r: 'L', seq: 61 }],
     portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }, { r: 'W', seq: 66 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
-    norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }],
+    norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }, { r: 'W', seq: 73 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }, { r: 'L', seq: 44 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }, { r: 'W', seq: 71 }],
@@ -600,8 +600,8 @@
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }, { r: 'L', seq: 72 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }, { r: 'L', seq: 63 }],
-    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }],
-    mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }, { r: 'W', seq: 61 }],
+    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }, { r: 'W', seq: 74 }],
+    mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }, { r: 'W', seq: 61 }, { r: 'L', seq: 74 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
     bosnia:      [{ r: 'D', seq: 0 }, { r: 'L', seq: 8 }, { r: 'W', seq: 32 }, { r: 'L', seq: 64 }],
@@ -698,8 +698,8 @@
     // ── ROUND OF 16 ──
     { date: '04 Jul', group: 'R16', home: 'Canada',               away: 'Morocco', score: '0-3' },
     { date: '04 Jul', group: 'R16', home: 'Paraguay',             away: 'France', score: '0-1' },
-    { date: '05 Jul', group: 'R16', home: 'Brazil',               away: 'Norway' },
-    { date: '05 Jul', group: 'R16', home: 'Mexico',               away: 'England' },
+    { date: '05 Jul', group: 'R16', home: 'Brazil',               away: 'Norway', score: '1-2' },
+    { date: '05 Jul', group: 'R16', home: 'Mexico',               away: 'England', score: '2-3' },
     { date: '06 Jul', group: 'R16', home: 'Portugal',             away: 'Spain' },
     { date: '06 Jul', group: 'R16', home: 'United States',        away: 'Belgium' },
     { date: '07 Jul', group: 'R16', home: 'Argentina',            away: 'Egypt' },
@@ -719,7 +719,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 71;
+  const FIXTURES_PLAYED = 73;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -922,6 +922,8 @@ function buildFixturesPanel() {
     { team: 'Ghana', flag: '🇬🇭', player: 'graham', group: 'KO' },
     { team: 'Canada', flag: '🇨🇦', player: 'jill', group: 'KO' },
     { team: 'Paraguay', flag: '🇵🇾', player: 'al', group: 'KO' },
+    { team: 'Brazil', flag: '🇧🇷', player: 'graham', group: 'KO' },
+    { team: 'Mexico', flag: '🇲🇽', player: 'al', group: 'KO' },
   ];
 
 
@@ -1036,14 +1038,18 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '04 Jul, 20:45',
       text: `<strong>Katy's</strong> Morocco are on fire — a stunning 3-0 demolition of <strong>Jill's</strong> Canada in the last 16. Canada were excellent to get this far but Morocco were in a different class tonight. Katy's tournament is going from strength to strength — Morocco, Portugal, Switzerland and Egypt all still alive. Jill loses another team and is now down to just 2. Morocco march into the quarter-finals. 🇲🇦`
+    },
+    {
+      timestamp: '05 Jul, 09:00',
+      text: `Two quarter-final spots sealed on Saturday and <strong>Katy</strong> and <strong>Jill</strong> are both still very much in this. <strong>Morocco (Katy) 3-0 Canada (Jill)</strong> — Ounahi double, Rahimi late third. Morocco ruthless. Jill down to 2. <strong>Paraguay (Alison) 0-1 France (Jill)</strong> — Mbappé penalty on 70 minutes. 7 goals at the tournament. France v Morocco in Boston on 9 July — Jill v Katy, quarter-final. Circle it. 🔥`
     }
   ];
 
   const WOES = {
-    timestamp: '05 Jul, 09:00',
-    text: `Two quarter-final spots sealed on Saturday and <strong>Katy</strong> and <strong>Jill</strong> are both still very much in this. 🎉<br><br>
-<strong>Morocco (Katy) 3-0 Canada (Jill) — Houston:</strong> Azzedine Ounahi was the hero, scoring twice in the second half before Soufiane Rahimi added a late third on the counter. Canada had their moments — keeper Bounou made two big saves in the first half — but Morocco were ruthless when it mattered. The 3-0 scoreline was harsh on Canada, who held 0.78 xG to Morocco's 0.85, but Katy won't care. Morocco now make it back-to-back World Cup quarter-finals, matching their historic run in Qatar 2022. Jill loses Canada and is down to just 2 teams. 🇲🇦<br><br>
-<strong>Paraguay (Alison) 0-1 France (Jill) — Philadelphia:</strong> Mbappé. That's really all you need to say. His 70th minute penalty — won by Désire Doué after a VAR review — was the difference in a scrappy, attritional contest. Paraguay fought hard and kept France at arm's length for long spells, but with 66% possession and 15 attempts to Paraguay's 5, France always looked like finding a way. Mbappé now has 7 goals at this tournament, level with Messi but leading on assists in the Golden Boot race. Paraguay bow out having declared a national holiday after beating Germany — they were brilliant value for this run. Alison loses her underdog heroes. <strong>France v Morocco in Boston on 9 July</strong> — Jill v Katy, quarter-final. Circle it. 🔥`
+    timestamp: '06 Jul, 04:30',
+    text: `Two more quarter-finals booked — and what a night. 🌙<br><br>
+<strong>Brazil (Graham) 1-2 Norway (Katy) — New York:</strong> Haaland. That's the story. The Manchester City striker sat quiet for 79 minutes as Brazil dominated possession, then delivered one of the great World Cup cameos — a towering header over Gabriel in the 79th minute, then a stunning long-range low drive into the corner moments later to seal it. Neymar's stoppage-time penalty was too little too late. Norway's first-ever World Cup quarter-final. Their first World Cup in 28 years. <cite index="16-1">Brazil's earliest exit since 1990.</cite> For Graham, it's a gut punch — Brazil were supposed to go deep. For Katy, Norway join Portugal, Switzerland, Morocco and Egypt in a frankly extraordinary haul of teams still alive. 🇳🇴<br><br>
+<strong>Mexico (Alison) 2-3 England (Alison) — Azteca, Mexico City:</strong> Alison played herself again — and England won, meaning she gets through either way but loses Mexico along the way. What a match though. Bellingham scored twice in 98 seconds to make it 2-0, Quiñones pulled one back, then England went down to 10 men when Quansah was sent off. Kane converted a penalty to make it 3-1 — then scored and conceded a penalty in the same match, making him the first player since at least 1966 to do that at a World Cup. Jiménez converted for Mexico to make it 3-2. England then held on for over 40 minutes with 10 men in a fortress Azteca that had never seen a World Cup defeat. Incredible scenes. Mexico are out — 40 more years of hurt. England face Norway in Miami on Saturday. Alison's last team. 🏴󠁧󠁢󠁥󠁮󠁧󠁿`
   };
 
   function buildWoesPanel() {
@@ -1217,8 +1223,8 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       // R16
       89:{t1:'Paraguay',t2:'France',s1:0,s2:1,p1:null,p2:null,date:'04 Jul'},
       90:{t1:'Canada',t2:'Morocco',s1:0,s2:3,p1:null,p2:null,date:'04 Jul'},
-      91:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'05 Jul'},
-      92:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'05 Jul'},
+      91:{t1:'Brazil',t2:'Norway',s1:1,s2:2,p1:null,p2:null,date:'05 Jul'},
+      92:{t1:'Mexico',t2:'England',s1:2,s2:3,p1:null,p2:null,date:'05 Jul'},
       93:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'06 Jul'},
       94:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'06 Jul'},
       95:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'07 Jul'},
