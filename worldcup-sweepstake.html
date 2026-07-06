@@ -481,7 +481,7 @@
         <div class="subtitle">⭐ Portugal</div>
       </div>
       <div class="form-strip" id="form-katy"></div>
-      <span class="survive-badge" id="badge-katy">5 left</span>
+      <span class="survive-badge" id="badge-katy">4 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 92; // updated per result submission
+  const GAMES_PLAYED = 93; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -559,7 +559,7 @@
   const RESULTS = {
     // GRAHAM
     austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }, { r: 'D', seq: 53 }, { r: 'L', seq: 65 }],
-    spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }, { r: 'W', seq: 65 }],
+    spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }, { r: 'W', seq: 65 }, { r: 'W', seq: 75 }],
     tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }, { r: 'L', seq: 39 }],
     usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }, { r: 'W', seq: 64 }],
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }, { r: 'L', seq: 70 }],
@@ -589,7 +589,7 @@
     colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }, { r: 'D', seq: 51 }, { r: 'W', seq: 70 }],
     // KATY
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }, { r: 'L', seq: 61 }],
-    portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }, { r: 'W', seq: 66 }],
+    portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }, { r: 'W', seq: 66 }, { r: 'L', seq: 75 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }, { r: 'W', seq: 73 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
@@ -700,7 +700,7 @@
     { date: '04 Jul', group: 'R16', home: 'Paraguay',             away: 'France', score: '0-1' },
     { date: '05 Jul', group: 'R16', home: 'Brazil',               away: 'Norway', score: '1-2' },
     { date: '05 Jul', group: 'R16', home: 'Mexico',               away: 'England', score: '2-3' },
-    { date: '06 Jul', group: 'R16', home: 'Portugal',             away: 'Spain' },
+    { date: '06 Jul', group: 'R16', home: 'Portugal',             away: 'Spain', score: '0-1' },
     { date: '06 Jul', group: 'R16', home: 'United States',        away: 'Belgium' },
     { date: '07 Jul', group: 'R16', home: 'Argentina',            away: 'Egypt' },
     { date: '07 Jul', group: 'R16', home: 'Switzerland',          away: 'Colombia' },
@@ -719,7 +719,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 73;
+  const FIXTURES_PLAYED = 74;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -924,6 +924,7 @@ function buildFixturesPanel() {
     { team: 'Paraguay', flag: '🇵🇾', player: 'al', group: 'KO' },
     { team: 'Brazil', flag: '🇧🇷', player: 'graham', group: 'KO' },
     { team: 'Mexico', flag: '🇲🇽', player: 'al', group: 'KO' },
+    { team: 'Portugal', flag: '🇵🇹', player: 'katy', group: 'KO' },
   ];
 
 
@@ -1042,14 +1043,17 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '05 Jul, 09:00',
       text: `Two quarter-final spots sealed on Saturday and <strong>Katy</strong> and <strong>Jill</strong> are both still very much in this. <strong>Morocco (Katy) 3-0 Canada (Jill)</strong> — Ounahi double, Rahimi late third. Morocco ruthless. Jill down to 2. <strong>Paraguay (Alison) 0-1 France (Jill)</strong> — Mbappé penalty on 70 minutes. 7 goals at the tournament. France v Morocco in Boston on 9 July — Jill v Katy, quarter-final. Circle it. 🔥`
+    },
+    {
+      timestamp: '06 Jul, 04:30',
+      text: `Two more quarter-finals booked — and what a night. <strong>Brazil (Graham) 1-2 Norway (Katy)</strong> — Haaland double in the final 10 minutes. Norway's first-ever World Cup quarter-final. Graham gutted, Katy flying. <strong>Mexico (Alison) 2-3 England (Alison)</strong> — Bellingham brace, Kane penalty, Alison plays herself and England survive 40 minutes with 10 men at the Azteca. Remarkable. Mexico eliminated. England face Norway in Miami on Saturday. 🏴󠁧󠁢󠁥󠁮󠁧󠁿`
     }
   ];
 
   const WOES = {
-    timestamp: '06 Jul, 04:30',
-    text: `Two more quarter-finals booked — and what a night. 🌙<br><br>
-<strong>Brazil (Graham) 1-2 Norway (Katy) — New York:</strong> Haaland. That's the story. The Manchester City striker sat quiet for 79 minutes as Brazil dominated possession, then delivered one of the great World Cup cameos — a towering header over Gabriel in the 79th minute, then a stunning long-range low drive into the corner moments later to seal it. Neymar's stoppage-time penalty was too little too late. Norway's first-ever World Cup quarter-final. Their first World Cup in 28 years. <cite index="16-1">Brazil's earliest exit since 1990.</cite> For Graham, it's a gut punch — Brazil were supposed to go deep. For Katy, Norway join Portugal, Switzerland, Morocco and Egypt in a frankly extraordinary haul of teams still alive. 🇳🇴<br><br>
-<strong>Mexico (Alison) 2-3 England (Alison) — Azteca, Mexico City:</strong> Alison played herself again — and England won, meaning she gets through either way but loses Mexico along the way. What a match though. Bellingham scored twice in 98 seconds to make it 2-0, Quiñones pulled one back, then England went down to 10 men when Quansah was sent off. Kane converted a penalty to make it 3-1 — then scored and conceded a penalty in the same match, making him the first player since at least 1966 to do that at a World Cup. Jiménez converted for Mexico to make it 3-2. England then held on for over 40 minutes with 10 men in a fortress Azteca that had never seen a World Cup defeat. Incredible scenes. Mexico are out — 40 more years of hurt. England face Norway in Miami on Saturday. Alison's last team. 🏴󠁧󠁢󠁥󠁮󠁧󠁿`
+    timestamp: '06 Jul, 22:00',
+    text: `It was supposed to be Ronaldo's night. It ended as his last World Cup match. <strong>Graham's</strong> Spain beat <strong>Katy's</strong> Portugal 1-0 in Dallas thanks to Mikel Merino's stoppage-time winner — a gorgeous Ferran Torres throughball, coolly finished in the 90th minute. Portugal had their moments; Ronaldo hit the post with a trademark bicycle kick in the first half, Diogo Costa made two breathtaking saves to deny Yamal and Baena, and a Nuno Mendes effort rattled the crossbar. But Spain were just better. Lamine Yamal — who wasn't even born when Ronaldo made his World Cup debut in 2006 — was unplayable. Rodri and Pedri suffocated Portugal's midfield. This was the Iberian changing of the guard, played out on a grand stage in Texas. 🌹<br><br>
+For the sweepstake: <strong>Graham</strong> is delighted — Spain are into the quarter-finals and looking ominous. <strong>Katy</strong> loses Portugal, but she still has Morocco, Norway, Switzerland and Egypt. The woman is an army. Down to 4 teams, all still breathing. 🔥`
   };
 
   function buildWoesPanel() {
@@ -1225,7 +1229,7 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       90:{t1:'Canada',t2:'Morocco',s1:0,s2:3,p1:null,p2:null,date:'04 Jul'},
       91:{t1:'Brazil',t2:'Norway',s1:1,s2:2,p1:null,p2:null,date:'05 Jul'},
       92:{t1:'Mexico',t2:'England',s1:2,s2:3,p1:null,p2:null,date:'05 Jul'},
-      93:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'06 Jul'},
+      93:{t1:'Portugal',t2:'Spain',s1:0,s2:1,p1:null,p2:null,date:'06 Jul'},
       94:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'06 Jul'},
       95:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'07 Jul'},
       96:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'07 Jul'},
