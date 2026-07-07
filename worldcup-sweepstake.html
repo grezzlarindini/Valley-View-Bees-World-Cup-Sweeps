@@ -406,13 +406,13 @@
         <div class="subtitle">⭐ Spain</div>
       </div>
       <div class="form-strip" id="form-graham"></div>
-      <span class="survive-badge" id="badge-graham">2 left</span>
+      <span class="survive-badge" id="badge-graham">1 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-graham">
       <li data-team="czechia" data-group="A" class="eliminated"><span class="flag">🇨🇿</span><span class="team-name">Czechia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="brazil" data-group="C" class="eliminated"><span class="flag">🇧🇷</span><span class="team-name">Brazil</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="usa" data-group="D"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="usa" data-group="D" class="eliminated"><span class="flag">🇺🇸</span><span class="team-name">USA</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="tunisia" data-group="F" class="eliminated"><span class="flag">🇹🇳</span><span class="team-name">Tunisia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="saudiarabia" data-group="H" class="eliminated"><span class="flag">🇸🇦</span><span class="team-name">Saudi Arabia</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="spain" data-group="H" class="big5"><span class="flag">🇪🇸</span><span class="team-name">Spain</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 93; // updated per result submission
+  const GAMES_PLAYED = 94; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -561,7 +561,7 @@
     austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }, { r: 'D', seq: 53 }, { r: 'L', seq: 65 }],
     spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }, { r: 'W', seq: 65 }, { r: 'W', seq: 75 }],
     tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }, { r: 'L', seq: 39 }],
-    usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }, { r: 'W', seq: 64 }],
+    usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }, { r: 'W', seq: 64 }, { r: 'L', seq: 76 }],
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }, { r: 'L', seq: 70 }],
     saudiarabia: [{ r: 'D', seq: 0 }, { r: 'L', seq: 19 }, { r: 'D', seq: 45 }],
     algeria:     [{ r: 'L', seq: 2 }, { r: 'W', seq: 26 }, { r: 'D', seq: 53 }, { r: 'L', seq: 67 }],
@@ -572,7 +572,7 @@
     france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }, { r: 'W', seq: 72 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }, { r: 'D', seq: 68 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }, { r: 'L', seq: 71 }],
-    belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }, { r: 'W', seq: 63 }],
+    belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }, { r: 'W', seq: 63 }, { r: 'W', seq: 76 }],
     germany:     [{ r: 'W', seq: 0 }, { r: 'W', seq: 16 }, { r: 'L', seq: 37 }, { r: 'D', seq: 57 }],
     uzbekistan:  [{ r: 'L', seq: 5 }, { r: 'L', seq: 27 }, { r: 'L', seq: 52 }],
     caboverde:   [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }, { r: 'D', seq: 45 }, { r: 'L', seq: 69 }],
@@ -701,7 +701,7 @@
     { date: '05 Jul', group: 'R16', home: 'Brazil',               away: 'Norway', score: '1-2' },
     { date: '05 Jul', group: 'R16', home: 'Mexico',               away: 'England', score: '2-3' },
     { date: '06 Jul', group: 'R16', home: 'Portugal',             away: 'Spain', score: '0-1' },
-    { date: '06 Jul', group: 'R16', home: 'United States',        away: 'Belgium' },
+    { date: '06 Jul', group: 'R16', home: 'United States',        away: 'Belgium', score: '1-4' },
     { date: '07 Jul', group: 'R16', home: 'Argentina',            away: 'Egypt' },
     { date: '07 Jul', group: 'R16', home: 'Switzerland',          away: 'Colombia' },
     // ── QUARTER-FINALS ──
@@ -719,7 +719,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 74;
+  const FIXTURES_PLAYED = 75;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -925,6 +925,7 @@ function buildFixturesPanel() {
     { team: 'Brazil', flag: '🇧🇷', player: 'graham', group: 'KO' },
     { team: 'Mexico', flag: '🇲🇽', player: 'al', group: 'KO' },
     { team: 'Portugal', flag: '🇵🇹', player: 'katy', group: 'KO' },
+    { team: 'United States', flag: '🇺🇸', player: 'graham', group: 'KO' },
   ];
 
 
@@ -1047,13 +1048,18 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '06 Jul, 04:30',
       text: `Two more quarter-finals booked — and what a night. <strong>Brazil (Graham) 1-2 Norway (Katy)</strong> — Haaland double in the final 10 minutes. Norway's first-ever World Cup quarter-final. Graham gutted, Katy flying. <strong>Mexico (Alison) 2-3 England (Alison)</strong> — Bellingham brace, Kane penalty, Alison plays herself and England survive 40 minutes with 10 men at the Azteca. Remarkable. Mexico eliminated. England face Norway in Miami on Saturday. 🏴󠁧󠁢󠁥󠁮󠁧󠁿`
+    },
+    {
+      timestamp: '06 Jul, 22:00',
+      text: `It was supposed to be Ronaldo's night. It ended as his last World Cup match. <strong>Graham's</strong> Spain beat <strong>Katy's</strong> Portugal 1-0 in Dallas — Mikel Merino with a stoppage-time winner off a gorgeous Ferran Torres ball. Ronaldo had an acrobatic bicycle kick saved, a Nuno Mendes effort rattled the bar, Diogo Costa was brilliant. But Spain — and Lamine Yamal — were just better. The Iberian changing of the guard. Graham delighted, Katy loses Portugal but still has Morocco, Norway, Switzerland and Egypt. Four teams. Still an army. 🔥`
     }
   ];
 
   const WOES = {
-    timestamp: '06 Jul, 22:00',
-    text: `It was supposed to be Ronaldo's night. It ended as his last World Cup match. <strong>Graham's</strong> Spain beat <strong>Katy's</strong> Portugal 1-0 in Dallas thanks to Mikel Merino's stoppage-time winner — a gorgeous Ferran Torres throughball, coolly finished in the 90th minute. Portugal had their moments; Ronaldo hit the post with a trademark bicycle kick in the first half, Diogo Costa made two breathtaking saves to deny Yamal and Baena, and a Nuno Mendes effort rattled the crossbar. But Spain were just better. Lamine Yamal — who wasn't even born when Ronaldo made his World Cup debut in 2006 — was unplayable. Rodri and Pedri suffocated Portugal's midfield. This was the Iberian changing of the guard, played out on a grand stage in Texas. 🌹<br><br>
-For the sweepstake: <strong>Graham</strong> is delighted — Spain are into the quarter-finals and looking ominous. <strong>Katy</strong> loses Portugal, but she still has Morocco, Norway, Switzerland and Egypt. The woman is an army. Down to 4 teams, all still breathing. 🔥`
+    timestamp: '07 Jul, 07:45',
+    text: `Cheaters never prosper — and the USA found that out the hard way. After Donald Trump personally pressured FIFA to overturn Folarin Balogun's red card suspension, the USMNT repaid their president's intervention with a dismal 4-1 capitulation against <strong>Jill's</strong> Belgium in Seattle. Balogun managed just 10 touches in the first half. Ten. <strong>Graham</strong>, watching on, reportedly turned to the room and said: "Yeah, happy to lose the USA for sure — don't want cheats like that on my roster." We can neither confirm nor deny this. 🫢<br><br>
+The details: <cite index="11-1">Charles De Ketelaere scored twice and assisted another</cite> to run the show. Tillman's brilliant deflected free kick briefly made it 1-1, but <cite index="12-1">Freese's catastrophic error in the 57th minute</cite> — coming off his line and turning the ball straight to De Ketelaere — killed the game. <cite index="20-1">Lukaku, Doku and De Bruyne all started on the bench, and Belgium were already 3-1 up before any of them came on.</cite> Lukaku added a fourth in stoppage time for good measure. Belgium are into the quarter-finals and face <strong>Graham's</strong> Spain on Friday. So Graham faces his own team in the last eight.<br><br>
+For the sweepstake: <strong>Jill's</strong> Belgium are through. <strong>Graham</strong> is down to just Spain — one team, everything riding on it. 🇧🇪🇪🇸`
   };
 
   function buildWoesPanel() {
@@ -1230,7 +1236,7 @@ For the sweepstake: <strong>Graham</strong> is delighted — Spain are into the 
       91:{t1:'Brazil',t2:'Norway',s1:1,s2:2,p1:null,p2:null,date:'05 Jul'},
       92:{t1:'Mexico',t2:'England',s1:2,s2:3,p1:null,p2:null,date:'05 Jul'},
       93:{t1:'Portugal',t2:'Spain',s1:0,s2:1,p1:null,p2:null,date:'06 Jul'},
-      94:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'06 Jul'},
+      94:{t1:'United States',t2:'Belgium',s1:1,s2:4,p1:null,p2:null,date:'06 Jul'},
       95:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'07 Jul'},
       96:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'07 Jul'},
       // QF
