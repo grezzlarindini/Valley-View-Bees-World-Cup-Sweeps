@@ -456,7 +456,7 @@
         <div class="subtitle">⭐ Argentina</div>
       </div>
       <div class="form-strip" id="form-laura"></div>
-      <span class="survive-badge" id="badge-laura">2 left</span>
+      <span class="survive-badge" id="badge-laura">1 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-laura">
@@ -468,7 +468,7 @@
       <li data-team="newzealand" data-group="G" class="eliminated"><span class="flag">🇳🇿</span><span class="team-name">New Zealand</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="uruguay" data-group="H" class="eliminated"><span class="flag">🇺🇾</span><span class="team-name">Uruguay</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="argentina" data-group="J" class="big5"><span class="flag">🇦🇷</span><span class="team-name">Argentina</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="colombia" data-group="K"><span class="flag">🇨🇴</span><span class="team-name">Colombia</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="colombia" data-group="K" class="eliminated"><span class="flag">🇨🇴</span><span class="team-name">Colombia</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
 
@@ -481,7 +481,7 @@
         <div class="subtitle">⭐ Portugal</div>
       </div>
       <div class="form-strip" id="form-katy"></div>
-      <span class="survive-badge" id="badge-katy">4 left</span>
+      <span class="survive-badge" id="badge-katy">3 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
@@ -490,7 +490,7 @@
       <li data-team="haiti" data-group="C" class="eliminated"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="morocco" data-group="C"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="ecuador" data-group="E" class="eliminated"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="egypt" data-group="G"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="egypt" data-group="G" class="eliminated"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="iraq" data-group="I" class="eliminated"><span class="flag">🇮🇶</span><span class="team-name">Iraq</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="norway" data-group="I"><span class="flag">🇳🇴</span><span class="team-name">Norway</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="portugal" data-group="K" class="big5 eliminated"><span class="flag">🇵🇹</span><span class="team-name">Portugal</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 94; // updated per result submission
+  const GAMES_PLAYED = 96; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -579,14 +579,14 @@
     scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }, { r: 'L', seq: 34 }],
     // LAURA
     curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'L', seq: 38 }],
-    argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }, { r: 'W', seq: 54 }, { r: 'W', seq: 69 }],
+    argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }, { r: 'W', seq: 54 }, { r: 'W', seq: 69 }, { r: 'W', seq: 77 }],
     uruguay:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }, { r: 'L', seq: 46 }],
     netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }, { r: 'W', seq: 39 }, { r: 'D', seq: 58 }],
     sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }, { r: 'D', seq: 40 }, { r: 'L', seq: 60 }],
     turkiye:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 14 }, { r: 'W', seq: 41 }],
     newzealand:  [{ r: 'D', seq: 0 }, { r: 'L', seq: 22 }, { r: 'L', seq: 47 }],
     japan:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 18 }, { r: 'D', seq: 40 }, { r: 'L', seq: 56 }],
-    colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }, { r: 'D', seq: 51 }, { r: 'W', seq: 70 }],
+    colombia:    [{ r: 'W', seq: 5 }, { r: 'W', seq: 30 }, { r: 'D', seq: 51 }, { r: 'W', seq: 70 }, { r: 'D', seq: 78 }],
     // KATY
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }, { r: 'L', seq: 61 }],
     portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }, { r: 'W', seq: 66 }, { r: 'L', seq: 75 }],
@@ -595,8 +595,8 @@
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }, { r: 'L', seq: 44 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }, { r: 'W', seq: 71 }],
-    switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }, { r: 'W', seq: 67 }],
-    egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }, { r: 'D', seq: 48 }, { r: 'D', seq: 68 }],
+    switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }, { r: 'W', seq: 67 }, { r: 'D', seq: 78 }],
+    egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }, { r: 'D', seq: 48 }, { r: 'D', seq: 68 }, { r: 'L', seq: 77 }],
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }, { r: 'L', seq: 72 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }, { r: 'L', seq: 63 }],
@@ -702,8 +702,8 @@
     { date: '05 Jul', group: 'R16', home: 'Mexico',               away: 'England', score: '2-3' },
     { date: '06 Jul', group: 'R16', home: 'Portugal',             away: 'Spain', score: '0-1' },
     { date: '06 Jul', group: 'R16', home: 'United States',        away: 'Belgium', score: '1-4' },
-    { date: '07 Jul', group: 'R16', home: 'Argentina',            away: 'Egypt' },
-    { date: '07 Jul', group: 'R16', home: 'Switzerland',          away: 'Colombia' },
+    { date: '07 Jul', group: 'R16', home: 'Argentina',            away: 'Egypt', score: '3-2' },
+    { date: '07 Jul', group: 'R16', home: 'Switzerland',          away: 'Colombia', score: '0-0 (4-3 pens)' },
     // ── QUARTER-FINALS ──
     { date: '09 Jul', group: 'QF',  home: 'Winner M89',           away: 'Winner M90' },
     { date: '10 Jul', group: 'QF',  home: 'Winner M93',           away: 'Winner M94' },
@@ -719,7 +719,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 75;
+  const FIXTURES_PLAYED = 77;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -926,6 +926,8 @@ function buildFixturesPanel() {
     { team: 'Mexico', flag: '🇲🇽', player: 'al', group: 'KO' },
     { team: 'Portugal', flag: '🇵🇹', player: 'katy', group: 'KO' },
     { team: 'United States', flag: '🇺🇸', player: 'graham', group: 'KO' },
+    { team: 'Egypt', flag: '🇪🇬', player: 'katy', group: 'KO' },
+    { team: 'Colombia', flag: '🇨🇴', player: 'laura', group: 'KO' },
   ];
 
 
@@ -1052,14 +1054,24 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '06 Jul, 22:00',
       text: `It was supposed to be Ronaldo's night. It ended as his last World Cup match. <strong>Graham's</strong> Spain beat <strong>Katy's</strong> Portugal 1-0 in Dallas — Mikel Merino with a stoppage-time winner off a gorgeous Ferran Torres ball. Ronaldo had an acrobatic bicycle kick saved, a Nuno Mendes effort rattled the bar, Diogo Costa was brilliant. But Spain — and Lamine Yamal — were just better. The Iberian changing of the guard. Graham delighted, Katy loses Portugal but still has Morocco, Norway, Switzerland and Egypt. Four teams. Still an army. 🔥`
+    },
+    {
+      timestamp: '07 Jul, 07:45',
+      text: `Cheaters never prosper — and the USA found that out the hard way. After Donald Trump personally pressured FIFA to overturn Folarin Balogun's red card suspension, the USMNT repaid their president's intervention with a dismal 4-1 capitulation against <strong>Jill's</strong> Belgium in Seattle. Balogun managed just 10 touches in the first half. De Ketelaere with two, Vanaken's howler gift, Lukaku off the bench to twist the knife. Graham down to just Spain — one team, everything on it. 🇧🇪`
     }
   ];
 
   const WOES = {
-    timestamp: '07 Jul, 07:45',
-    text: `Cheaters never prosper — and the USA found that out the hard way. After Donald Trump personally pressured FIFA to overturn Folarin Balogun's red card suspension, the USMNT repaid their president's intervention with a dismal 4-1 capitulation against <strong>Jill's</strong> Belgium in Seattle. Balogun managed just 10 touches in the first half. Ten. <strong>Graham</strong>, watching on, reportedly turned to the room and said: "Yeah, happy to lose the USA for sure — don't want cheats like that on my roster." We can neither confirm nor deny this. 🫢<br><br>
-The details: <cite index="11-1">Charles De Ketelaere scored twice and assisted another</cite> to run the show. Tillman's brilliant deflected free kick briefly made it 1-1, but <cite index="12-1">Freese's catastrophic error in the 57th minute</cite> — coming off his line and turning the ball straight to De Ketelaere — killed the game. <cite index="20-1">Lukaku, Doku and De Bruyne all started on the bench, and Belgium were already 3-1 up before any of them came on.</cite> Lukaku added a fourth in stoppage time for good measure. Belgium are into the quarter-finals and face <strong>Graham's</strong> Spain on Friday. So Graham faces his own team in the last eight.<br><br>
-For the sweepstake: <strong>Jill's</strong> Belgium are through. <strong>Graham</strong> is down to just Spain — one team, everything riding on it. 🇧🇪🇪🇸`
+    timestamp: '08 Jul, 00:00',
+    text: `The Round of 16 is complete — and it ended with two of the most dramatic nights of the tournament. 🎭<br><br>
+<strong>Argentina (Lozenge) 3-2 Egypt (Katy) — Atlanta:</strong> Where do you even start. <cite index="11-1">Egypt went two goals up with 11 minutes to go and Argentina looked dead and buried.</cite> Goalkeeper Shobeir had already saved a Messi penalty, kept out Mac Allister and Álvarez, and was playing the game of his life. <cite index="16-1">Then Romero headed in on 79 minutes, Messi rifled in a first-time strike on 83, and Enzo Fernández headed the winner in stoppage time.</cite> Argentina had no right to win that match. Egypt were absolutely magnificent and deserve enormous credit — they just couldn't keep out Messi when the chips were down. Lozenge is through. Katy loses Egypt. What a match. 😭🇦🇷<br><br>
+<strong>Switzerland (Katy) 0-0 Colombia (Lozenge) — Vancouver (AET, 4-3 pens):</strong> Dour, attritional, and decided by nerve. <cite index="21-1">Switzerland are through to their first World Cup quarter-final since 1954</cite>, after <cite index="22-1">Colombia's Davinson Sánchez rattled the crossbar in the shootout</cite> and keeper Kobel saved Hernandez's spot kick. <cite index="23-1">Lucumí had crashed a header off the bar in extra time</cite> — Colombia were desperately unlucky. Lozenge loses Colombia, Katy takes Switzerland through. Katy now has Morocco, Norway, Switzerland — three teams in the quarter-finals. Extraordinary. 🇨🇭<br><br>
+<strong>Quarter-final lineup — the full picture:</strong><br>
+🇫🇷 <strong>France (Jill)</strong> v 🇲🇦 <strong>Morocco (Katy)</strong> — Boston, 9 Jul<br>
+🇪🇸 <strong>Spain (Graham)</strong> v 🇧🇪 <strong>Belgium (Jill)</strong> — Los Angeles, 10 Jul<br>
+🏴󠁧󠁢󠁥󠁮󠁧󠁿 <strong>England (Alison)</strong> v 🇳🇴 <strong>Norway (Katy)</strong> — Miami, 11 Jul<br>
+🇦🇷 <strong>Argentina (Lozenge)</strong> v 🇨🇭 <strong>Switzerland (Katy)</strong> — Kansas City, 11 Jul<br><br>
+Katy has a team in three of the four quarter-finals — Morocco, Norway and Switzerland all still alive. The only QF she's missing is Spain v Belgium, which is a straight Graham v Jill affair. Remarkable tournament from Katy. 👑`
   };
 
   function buildWoesPanel() {
@@ -1073,7 +1085,7 @@ For the sweepstake: <strong>Jill's</strong> Belgium are through. <strong>Graham<
       </div>
       <div class="woes-body${isOpen ? ' open' : ''}" id="woes-body">
         <p class="woes-text">${WOES.text}</p>
-        <button class="woes-ko-btn" onclick="switchPhase('bracket')">⚔️ Check the Knockout Bracket</button>
+        <button class="woes-ko-btn" onclick="switchPhase('bracket'); setKORound('QF');">⚔️ Check the Knockout Bracket</button>
         <button class="woes-view-archive" onclick="openArchive()">📖 View the Archives</button>
       </div>`;
 
@@ -1166,7 +1178,7 @@ For the sweepstake: <strong>Jill's</strong> Belgium are through. <strong>Graham<
 
     // Round nav pills
     const rounds = ['R32', 'R16', 'QF', 'SF', '🏆'];
-    let activeRound = 'R16';
+    let activeRound = 'QF';
     const roundPills = rounds.map(r =>
       `<button class="ko-round-pill${r === activeRound ? ' active' : ''}" onclick="setKORound('${r}')">${r}</button>`
     ).join('');
@@ -1237,8 +1249,8 @@ For the sweepstake: <strong>Jill's</strong> Belgium are through. <strong>Graham<
       92:{t1:'Mexico',t2:'England',s1:2,s2:3,p1:null,p2:null,date:'05 Jul'},
       93:{t1:'Portugal',t2:'Spain',s1:0,s2:1,p1:null,p2:null,date:'06 Jul'},
       94:{t1:'United States',t2:'Belgium',s1:1,s2:4,p1:null,p2:null,date:'06 Jul'},
-      95:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'07 Jul'},
-      96:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'07 Jul'},
+      95:{t1:'Argentina',t2:'Egypt',s1:3,s2:2,p1:null,p2:null,date:'07 Jul'},
+      96:{t1:'Switzerland',t2:'Colombia',s1:0,s2:0,p1:4,p2:3,date:'07 Jul'},
       // QF
       97:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'09 Jul'},
       98:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'10 Jul'},
