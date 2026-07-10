@@ -481,14 +481,14 @@
         <div class="subtitle">⭐ Portugal</div>
       </div>
       <div class="form-strip" id="form-katy"></div>
-      <span class="survive-badge" id="badge-katy">3 left</span>
+      <span class="survive-badge" id="badge-katy">2 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
       <li data-team="qatar" data-group="B" class="eliminated"><span class="flag">🇶🇦</span><span class="team-name">Qatar</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="switzerland" data-group="B"><span class="flag">🇨🇭</span><span class="team-name">Switzerland</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="haiti" data-group="C" class="eliminated"><span class="flag">🇭🇹</span><span class="team-name">Haiti</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="morocco" data-group="C"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="morocco" data-group="C" class="eliminated"><span class="flag">🇲🇦</span><span class="team-name">Morocco</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="ecuador" data-group="E" class="eliminated"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="egypt" data-group="G" class="eliminated"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="iraq" data-group="I" class="eliminated"><span class="flag">🇮🇶</span><span class="team-name">Iraq</span><span class="out-icon">⚽</span><div class="results"></div></li>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 96; // updated per result submission
+  const GAMES_PLAYED = 97; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -569,7 +569,7 @@
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }, { r: 'L', seq: 66 }],
-    france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }, { r: 'W', seq: 72 }],
+    france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }, { r: 'W', seq: 72 }, { r: 'W', seq: 79 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }, { r: 'D', seq: 68 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }, { r: 'L', seq: 71 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }, { r: 'W', seq: 63 }, { r: 'W', seq: 76 }],
@@ -594,7 +594,7 @@
     norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }, { r: 'W', seq: 73 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }, { r: 'L', seq: 44 }],
-    morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }, { r: 'W', seq: 71 }],
+    morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }, { r: 'W', seq: 71 }, { r: 'L', seq: 79 }],
     switzerland: [{ r: 'D', seq: 0 }, { r: 'W', seq: 8 }, { r: 'W', seq: 31 }, { r: 'W', seq: 67 }, { r: 'D', seq: 78 }],
     egypt:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 22 }, { r: 'D', seq: 48 }, { r: 'D', seq: 68 }, { r: 'L', seq: 77 }],
     // AL
@@ -705,7 +705,7 @@
     { date: '07 Jul', group: 'R16', home: 'Argentina',            away: 'Egypt', score: '3-2' },
     { date: '07 Jul', group: 'R16', home: 'Switzerland',          away: 'Colombia', score: '0-0 (4-3 pens)' },
     // ── QUARTER-FINALS ──
-    { date: '09 Jul', group: 'QF',  home: 'Winner M89',           away: 'Winner M90' },
+    { date: '09 Jul', group: 'QF',  home: 'France',               away: 'Morocco', score: '2-0' },
     { date: '10 Jul', group: 'QF',  home: 'Winner M93',           away: 'Winner M94' },
     { date: '11 Jul', group: 'QF',  home: 'Winner M91',           away: 'Winner M92' },
     { date: '11 Jul', group: 'QF',  home: 'Winner M95',           away: 'Winner M96' },
@@ -719,7 +719,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 77;
+  const FIXTURES_PLAYED = 78;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -928,6 +928,7 @@ function buildFixturesPanel() {
     { team: 'United States', flag: '🇺🇸', player: 'graham', group: 'KO' },
     { team: 'Egypt', flag: '🇪🇬', player: 'katy', group: 'KO' },
     { team: 'Colombia', flag: '🇨🇴', player: 'laura', group: 'KO' },
+    { team: 'Morocco', flag: '🇲🇦', player: 'katy', group: 'KO' },
   ];
 
 
@@ -1058,20 +1059,18 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '07 Jul, 07:45',
       text: `Cheaters never prosper — and the USA found that out the hard way. After Donald Trump personally pressured FIFA to overturn Folarin Balogun's red card suspension, the USMNT repaid their president's intervention with a dismal 4-1 capitulation against <strong>Jill's</strong> Belgium in Seattle. Balogun managed just 10 touches in the first half. De Ketelaere with two, Vanaken's howler gift, Lukaku off the bench to twist the knife. Graham down to just Spain — one team, everything on it. 🇧🇪`
+    },
+    {
+      timestamp: '08 Jul, 00:00',
+      text: `The Round of 16 is complete. <strong>Argentina (Lozenge) 3-2 Egypt (Katy)</strong> — Egypt led 2-0 with 11 minutes to go. Romero, Messi, Fernández in stoppage time. Incredible. <strong>Switzerland (Katy) 0-0 Colombia (Lozenge) (4-3 pens)</strong> — Kobel saves, Sánchez hits the bar. Switzerland through. Katy has Morocco, Norway, Switzerland in the QFs. Every QF but one. 👑`
     }
   ];
 
   const WOES = {
-    timestamp: '08 Jul, 00:00',
-    text: `The Round of 16 is complete — and it ended with two of the most dramatic nights of the tournament. 🎭<br><br>
-<strong>Argentina (Lozenge) 3-2 Egypt (Katy) — Atlanta:</strong> Where do you even start. <cite index="11-1">Egypt went two goals up with 11 minutes to go and Argentina looked dead and buried.</cite> Goalkeeper Shobeir had already saved a Messi penalty, kept out Mac Allister and Álvarez, and was playing the game of his life. <cite index="16-1">Then Romero headed in on 79 minutes, Messi rifled in a first-time strike on 83, and Enzo Fernández headed the winner in stoppage time.</cite> Argentina had no right to win that match. Egypt were absolutely magnificent and deserve enormous credit — they just couldn't keep out Messi when the chips were down. Lozenge is through. Katy loses Egypt. What a match. 😭🇦🇷<br><br>
-<strong>Switzerland (Katy) 0-0 Colombia (Lozenge) — Vancouver (AET, 4-3 pens):</strong> Dour, attritional, and decided by nerve. <cite index="21-1">Switzerland are through to their first World Cup quarter-final since 1954</cite>, after <cite index="22-1">Colombia's Davinson Sánchez rattled the crossbar in the shootout</cite> and keeper Kobel saved Hernandez's spot kick. <cite index="23-1">Lucumí had crashed a header off the bar in extra time</cite> — Colombia were desperately unlucky. Lozenge loses Colombia, Katy takes Switzerland through. Katy now has Morocco, Norway, Switzerland — three teams in the quarter-finals. Extraordinary. 🇨🇭<br><br>
-<strong>Quarter-final lineup — the full picture:</strong><br>
-🇫🇷 <strong>France (Jill)</strong> v 🇲🇦 <strong>Morocco (Katy)</strong> — Boston, 9 Jul<br>
-🇪🇸 <strong>Spain (Graham)</strong> v 🇧🇪 <strong>Belgium (Jill)</strong> — Los Angeles, 10 Jul<br>
-🏴󠁧󠁢󠁥󠁮󠁧󠁿 <strong>England (Alison)</strong> v 🇳🇴 <strong>Norway (Katy)</strong> — Miami, 11 Jul<br>
-🇦🇷 <strong>Argentina (Lozenge)</strong> v 🇨🇭 <strong>Switzerland (Katy)</strong> — Kansas City, 11 Jul<br><br>
-Katy has a team in three of the four quarter-finals — Morocco, Norway and Switzerland all still alive. The only QF she's missing is Spain v Belgium, which is a straight Graham v Jill affair. Remarkable tournament from Katy. 👑`
+    timestamp: '10 Jul, 01:00',
+    text: `<strong>Jill's</strong> France are inevitable. A 2-0 win over <strong>Katy's</strong> Morocco in Boston — Les Bleus' third straight World Cup semi-final, and they haven't needed extra time in a single match. <cite index="7-1">France's 3.04 xG against Morocco's 0.14 tells the whole story.</cite><br><br>
+Mbappé had his first-half penalty saved by the brilliant Bounou — <cite index="2-1">his eighth save of the tournament</cite> — but made no mistake on 60 minutes with a curling shot into the far corner, his 20th career World Cup goal. <cite index="6-1">Dembélé then drove straight at the heart of Morocco's retreating defence and squeezed it past Bounou</cite> six minutes later to kill the game. Mbappé was then subbed off with an ice pack on his right ankle — a worry ahead of the semi-final. <cite index="2-1">Both Mbappé and Messi now have eight goals in this tournament, with Mbappé's superior assists count keeping him ahead in the Golden Boot race.</cite><br><br>
+For the sweepstake: <strong>Jill's</strong> France are in the last four — she has France and Belgium still going. <strong>Katy</strong> loses Morocco but still has Norway and Switzerland in the quarter-finals. Morocco leave having reached back-to-back World Cup quarter-finals, <cite index="7-1">knocking out the Netherlands on penalties and beating some of the world's finest keepers along the way.</cite> They go with their heads held high. 🇲🇦🇫🇷`
   };
 
   function buildWoesPanel() {
@@ -1252,7 +1251,7 @@ Katy has a team in three of the four quarter-finals — Morocco, Norway and Swit
       95:{t1:'Argentina',t2:'Egypt',s1:3,s2:2,p1:null,p2:null,date:'07 Jul'},
       96:{t1:'Switzerland',t2:'Colombia',s1:0,s2:0,p1:4,p2:3,date:'07 Jul'},
       // QF
-      97:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'09 Jul'},
+      97:{t1:'France',t2:'Morocco',s1:2,s2:0,p1:null,p2:null,date:'09 Jul'},
       98:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'10 Jul'},
       99:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'11 Jul'},
       100:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'11 Jul'},
@@ -1646,6 +1645,8 @@ Katy has a team in three of the four quarter-finals — Morocco, Norway and Swit
 
     sizeBracket();
     window.addEventListener('resize', sizeBracket);
+    // Scroll to active round after render
+    requestAnimationFrame(() => requestAnimationFrame(() => setKORound(activeRound)));
 
     window.setKORound = function(r) {
       activeRound = r;
