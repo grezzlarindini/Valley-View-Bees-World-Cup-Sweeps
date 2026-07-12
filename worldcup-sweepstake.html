@@ -481,7 +481,7 @@
         <div class="subtitle">⭐ Portugal</div>
       </div>
       <div class="form-strip" id="form-katy"></div>
-      <span class="survive-badge" id="badge-katy">2 left</span>
+      <span class="survive-badge" id="badge-katy">1 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-katy">
@@ -492,7 +492,7 @@
       <li data-team="ecuador" data-group="E" class="eliminated"><span class="flag">🇪🇨</span><span class="team-name">Ecuador</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="egypt" data-group="G" class="eliminated"><span class="flag">🇪🇬</span><span class="team-name">Egypt</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="iraq" data-group="I" class="eliminated"><span class="flag">🇮🇶</span><span class="team-name">Iraq</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="norway" data-group="I"><span class="flag">🇳🇴</span><span class="team-name">Norway</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="norway" data-group="I" class="eliminated"><span class="flag">🇳🇴</span><span class="team-name">Norway</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="portugal" data-group="K" class="big5 eliminated"><span class="flag">🇵🇹</span><span class="team-name">Portugal</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 98; // updated per result submission
+  const GAMES_PLAYED = 99; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -591,7 +591,7 @@
     ecuador:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'W', seq: 37 }, { r: 'L', seq: 61 }],
     portugal:    [{ r: 'D', seq: 3 }, { r: 'W', seq: 27 }, { r: 'D', seq: 51 }, { r: 'W', seq: 66 }, { r: 'L', seq: 75 }],
     qatar:       [{ r: 'D', seq: 0 }, { r: 'L', seq: 9 }, { r: 'L', seq: 32 }],
-    norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }, { r: 'W', seq: 73 }],
+    norway:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 25 }, { r: 'L', seq: 43 }, { r: 'W', seq: 59 }, { r: 'W', seq: 73 }, { r: 'L', seq: 81 }],
     haiti:       [{ r: 'L', seq: 0 }, { r: 'L', seq: 13 }, { r: 'L', seq: 33 }],
     iraq:        [{ r: 'L', seq: 1 }, { r: 'L', seq: 24 }, { r: 'L', seq: 44 }],
     morocco:     [{ r: 'D', seq: 0 }, { r: 'W', seq: 12 }, { r: 'W', seq: 33 }, { r: 'D', seq: 58 }, { r: 'W', seq: 71 }, { r: 'L', seq: 79 }],
@@ -600,7 +600,7 @@
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }, { r: 'L', seq: 72 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }, { r: 'L', seq: 63 }],
-    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }, { r: 'W', seq: 74 }],
+    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }, { r: 'W', seq: 74 }, { r: 'W', seq: 81 }],
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }, { r: 'W', seq: 61 }, { r: 'L', seq: 74 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
@@ -707,7 +707,7 @@
     // ── QUARTER-FINALS ──
     { date: '09 Jul', group: 'QF',  home: 'France',               away: 'Morocco', score: '2-0' },
     { date: '10 Jul', group: 'QF',  home: 'Spain',                away: 'Belgium', score: '2-1' },
-    { date: '11 Jul', group: 'QF',  home: 'Winner M91',           away: 'Winner M92' },
+    { date: '11 Jul', group: 'QF',  home: 'Norway',               away: 'England', score: '1-2 (AET)' },
     { date: '11 Jul', group: 'QF',  home: 'Winner M95',           away: 'Winner M96' },
     // ── SEMI-FINALS ──
     { date: '14 Jul', group: 'SF',  home: 'Winner M97',           away: 'Winner M98' },
@@ -719,7 +719,7 @@
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 79;
+  const FIXTURES_PLAYED = 80;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -930,6 +930,7 @@ function buildFixturesPanel() {
     { team: 'Colombia', flag: '🇨🇴', player: 'laura', group: 'KO' },
     { team: 'Morocco', flag: '🇲🇦', player: 'katy', group: 'KO' },
     { team: 'Belgium', flag: '🇧🇪', player: 'jill', group: 'KO' },
+    { team: 'Norway', flag: '🇳🇴', player: 'katy', group: 'KO' },
   ];
 
 
@@ -1068,15 +1069,19 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '10 Jul, 01:00',
       text: `<strong>Jill's</strong> France inevitable — 2-0 over <strong>Katy's</strong> Morocco in Boston. Mbappé curls in his 20th World Cup goal on 60 minutes, Dembélé drives in the second six minutes later. France's third straight semi-final, having not needed extra time once. Katy loses Morocco but still has Norway and Switzerland. 🇫🇷🇲🇦`
+    },
+    {
+      timestamp: '10 Jul, 22:00',
+      text: `<strong>Graham's</strong> Spain are in the semi-finals — Fabián Ruiz opener, De Ketelaere equaliser, then Courtois injured in the 74th minute. Backup keeper Lammens couldn't hold a Cubarsí shot and Merino pounced in the 87th. Belgium eliminated. Spain unbeaten in 35 in regular time. They face France. Jill v Graham. The biggest sweepstake clash yet. 🔥`
     }
   ];
 
   const WOES = {
-    timestamp: '10 Jul, 22:00',
-    text: `<strong>Graham's</strong> Spain are in the World Cup semi-finals — but it took an 87th-minute winner and a goalkeeping howler to get there. 🇪🇸<br><br>
-<cite index="9-1">Fabián Ruiz gave Spain the lead in the first half before Charles De Ketelaere equalised for <strong>Jill's</strong> Belgium.</cite> The match looked destined for extra time until <cite index="17-1">Belgium keeper Senne Lammens — on for the injured Thibaut Courtois — couldn't hold a Pau Cubarsí shot, and Mikel Merino pounced on the rebound to make it 2-1 in the 87th minute.</cite> Lammens had only come on in the 74th minute. Poor lad. <cite index="17-1">Laporte then cleared off the line in the 90th to seal it.</cite><br><br>
-<cite index="9-1">Belgium's Tielemans missed the match entirely with an injury picked up in the warmup</cite>, and they lost Courtois too — you'd have to say Spain were lucky, but they had the better xG and the better chances throughout. <cite index="17-1">Spain are now unbeaten in 35 matches in regular time.</cite> They face France in the semi-final. Jill v Graham. The biggest sweepstake clash yet. 🔥<br><br>
-For the sweepstake: <strong>Graham</strong> is through to the last four — his only team, everything on Spain. <strong>Jill</strong> loses Belgium and is now down to just France. Also into the last four. The semi-final is a straight Jill v Graham affair. 🏆`
+    timestamp: '12 Jul, 00:45',
+    text: `<strong>Alison's</strong> England are in the World Cup semi-finals — but only just. A brutal 120-minute war in Miami that will live long in the memory. 🏴󠁧󠁢󠁥󠁮󠁧󠁿<br><br>
+<cite index="19-1">Andreas Schjelderup put Norway ahead on 36 minutes</cite> with a brilliant strike, before <cite index="19-1">Jude Bellingham levelled with a clinical finish just before half time.</cite> <cite index="20-1">England's equaliser was surrounded by controversy — Norway's goal kick appeared to strike the spider-cam wire above the pitch, altering the ball's trajectory and allowing England to regain possession</cite> before Bellingham scored. Norway were furious, and rightly so. The second half was a war of attrition with Norway growing into it, <cite index="12-1">Haaland taken off with 15 minutes left</cite> — injury or exhaustion, nobody was sure. Then in extra time, <cite index="17-1">Morgan Rogers shot from distance, Nyland saved it but the ball fell loose and Bellingham pounced to make it 2-1 in the 93rd minute</cite>. England held on. Oasis's Wonderwall blasted out across Miami. Beckham in a suit. The full England experience.<br><br>
+<cite index="18-1">Norway reached a World Cup quarter-final for the first time in their history</cite> — a stunning achievement for a side who hadn't qualified for the tournament in 28 years. <strong>Katy</strong> will be gutted to have seen her last Norwegian drum beaten — Norway were magnificent throughout and deserved far better than to go out on a disputed equaliser. They leave as genuine heroes. 🇳🇴<br><br>
+For the sweepstake: <strong>Alison</strong> is in the last four with England — her only remaining team. Everything on it. <strong>Katy</strong> is down to just Switzerland. The last Norwegian drum has fallen silent. 🥁`
   };
 
   function buildWoesPanel() {
@@ -1259,7 +1264,7 @@ For the sweepstake: <strong>Graham</strong> is through to the last four — his 
       // QF
       97:{t1:'France',t2:'Morocco',s1:2,s2:0,p1:null,p2:null,date:'09 Jul'},
       98:{t1:'Spain',t2:'Belgium',s1:2,s2:1,p1:null,p2:null,date:'10 Jul'},
-      99:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'11 Jul'},
+      99:{t1:'Norway',t2:'England',s1:1,s2:2,p1:null,p2:null,date:'11 Jul'},
       100:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'11 Jul'},
       // SF
       101:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'14 Jul'},
