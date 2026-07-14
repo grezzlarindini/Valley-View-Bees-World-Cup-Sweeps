@@ -431,7 +431,7 @@
         <div class="subtitle">⭐ France</div>
       </div>
       <div class="form-strip" id="form-jill"></div>
-      <span class="survive-badge" id="badge-jill">1 left</span>
+      <span class="survive-badge" id="badge-jill">0 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-jill">
@@ -441,7 +441,7 @@
       <li data-team="belgium" data-group="E" class="eliminated"><span class="flag">🇧🇪</span><span class="team-name">Belgium</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="germany" data-group="E" class="eliminated"><span class="flag">🇩🇪</span><span class="team-name">Germany</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="caboverde" data-group="H" class="eliminated"><span class="flag">🇨🇻</span><span class="team-name">Cape Verde</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="france" data-group="I" class="big5"><span class="flag">🇫🇷</span><span class="team-name">France</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="france" data-group="I" class="eliminated big5"><span class="flag">🇫🇷</span><span class="team-name">France</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="uzbekistan" data-group="K" class="eliminated"><span class="flag">🇺🇿</span><span class="team-name">Uzbekistan</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="croatia" data-group="L" class="eliminated"><span class="flag">🇭🇷</span><span class="team-name">Croatia</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 100; // updated per result submission
+  const GAMES_PLAYED = 101; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -559,7 +559,7 @@
   const RESULTS = {
     // GRAHAM
     austria:     [{ r: 'W', seq: 2 }, { r: 'L', seq: 23 }, { r: 'D', seq: 53 }, { r: 'L', seq: 65 }],
-    spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }, { r: 'W', seq: 65 }, { r: 'W', seq: 75 }, { r: 'W', seq: 80 }],
+    spain:       [{ r: 'D', seq: 0 }, { r: 'W', seq: 19 }, { r: 'W', seq: 46 }, { r: 'W', seq: 65 }, { r: 'W', seq: 75 }, { r: 'W', seq: 80 }, { r: 'W', seq: 83 }],
     tunisia:     [{ r: 'L', seq: 0 }, { r: 'L', seq: 18 }, { r: 'L', seq: 39 }],
     usa:         [{ r: 'W', seq: 0 }, { r: 'W', seq: 11 }, { r: 'L', seq: 41 }, { r: 'W', seq: 64 }, { r: 'L', seq: 76 }],
     ghana:       [{ r: 'W', seq: 6 }, { r: 'D', seq: 28 }, { r: 'L', seq: 50 }, { r: 'L', seq: 70 }],
@@ -569,7 +569,7 @@
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }, { r: 'L', seq: 66 }],
-    france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }, { r: 'W', seq: 72 }, { r: 'W', seq: 79 }],
+    france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }, { r: 'W', seq: 72 }, { r: 'W', seq: 79 }, { r: 'L', seq: 83 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }, { r: 'D', seq: 68 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }, { r: 'L', seq: 71 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }, { r: 'W', seq: 63 }, { r: 'W', seq: 76 }, { r: 'L', seq: 80 }],
@@ -710,16 +710,16 @@
     { date: '11 Jul', group: 'QF',  home: 'Norway',               away: 'England', score: '1-2 (AET)' },
     { date: '11 Jul', group: 'QF',  home: 'Argentina',            away: 'Switzerland', score: '3-1 (AET)' },
     // ── SEMI-FINALS ──
-    { date: '14 Jul', group: 'SF',  home: 'France',               away: 'Spain' },
+    { date: '14 Jul', group: 'SF',  home: 'France',               away: 'Spain', score: '0-2' },
     { date: '15 Jul', group: 'SF',  home: 'England',              away: 'Argentina' },
     // ── THIRD PLACE ──
     { date: '18 Jul', group: '3rd', home: 'Loser M101',           away: 'Loser M102' },
     // ── FINAL ──
-    { date: '19 Jul', group: 'Final', home: 'Winner M101',        away: 'Winner M102' },
+    { date: '19 Jul', group: 'Final', home: 'Spain',              away: 'Winner M102' },
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 81;
+  const FIXTURES_PLAYED = 82;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -932,6 +932,7 @@ function buildFixturesPanel() {
     { team: 'Belgium', flag: '🇧🇪', player: 'jill', group: 'KO' },
     { team: 'Norway', flag: '🇳🇴', player: 'katy', group: 'KO' },
     { team: 'Switzerland', flag: '🇨🇭', player: 'katy', group: 'KO' },
+    { team: 'France', flag: '🇫🇷', player: 'jill', group: 'KO' },
   ];
 
 
@@ -1078,20 +1079,19 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '12 Jul, 00:45',
       text: `<strong>Alison's</strong> England are in the semi-finals after a brutal 120-minute war in Miami. Schjelderup puts Norway ahead on 36', Bellingham levels just before half time — controversially, with Norway furious about the spider-cam incident. Second half a war. Haaland subbed off. Then Bellingham pounces on a Nyland error in extra time to make it 2-1. Wonderwall. Beckham in a suit. England are through. <strong>Katy</strong> loses Norway — the last Norwegian drum has fallen silent. 🥁`
+    },
+    {
+      timestamp: '12 Jul, 09:15',
+      text: `<strong>KATY IS ELIMINATED.</strong> Switzerland go down 3-1 to Lozenge's Argentina in extra time in Kansas City. Mac Allister header on 10', Ndoye equalises, Embolo controversially sent off, Álvarez stunner from 25 yards in the 112th. Lautaro adds gloss in the 120th. Katy had Morocco, Norway, Switzerland in the QFs. All three gone. She was the story of this sweepstake. Four players remain. Jill v Graham (France v Spain). Alison v Lozenge (England v Argentina). This is what sweepstakes are for. 🔥`
     }
   ];
 
   const WOES = {
-    timestamp: '12 Jul, 09:15',
-    text: `<strong>KATY IS ELIMINATED. 👑 The queen has left the building.</strong><br><br>
-Switzerland, her last remaining team, went down 3-1 to <strong>Lozenge's</strong> Argentina in extra time in Kansas City — and with that, Katy's extraordinary tournament is over. Three teams in the quarter-finals. Morocco, Norway, Switzerland. And now all three are gone. She was the story of this sweepstake and she deserved a final. 💛<br><br>
-<strong>What this means for the sweepstake:</strong><br>
-🇫🇷 <strong>Jill</strong> has France — in the semi-final vs Spain on Tuesday in Dallas<br>
-🇪🇸 <strong>Graham</strong> has Spain — facing Jill's France. One of them goes home on Tuesday<br>
-🏴󠁧󠁢󠁥󠁮󠁧󠁿 <strong>Alison</strong> has England — semi-final vs Argentina on Wednesday in Atlanta<br>
-🇦🇷 <strong>Lozenge</strong> has Argentina — facing Alison's England. One of them goes home on Wednesday<br><br>
-Two semi-finals. Four players. All still alive. This is what sweepstakes are for. 🔥<br><br>
-<strong>The match:</strong> <cite index="13-1">Mac Allister headed in unmarked from a Messi corner on 10 minutes.</cite> Switzerland dominated the ball but struggled to create. <cite index="14-1">Ndoye equalised on 67 minutes — but moments later Embolo was controversially sent off after a "mistaken identity" yellow card reversal, leaving Switzerland with 10 men.</cite> <cite index="15-1">Argentina couldn't find a winner in normal time, but Julian Alvarez settled it in extra time with a stunning strike from 25 yards into the top corner.</cite> <cite index="11-1">Lautaro Martinez added gloss in the 120th minute.</cite> Switzerland go home after their best World Cup since 1954. They were magnificent throughout. 🇨🇭`
+    timestamp: '14 Jul, 22:00',
+    text: `<strong>JILL IS ELIMINATED. Graham is in the World Cup Final.</strong> 🇪🇸<br><br>
+Spain beat <strong>Jill's</strong> France 2-0 in Dallas in what felt less like an upset and more like an inevitability. <cite index="15-1">Lamine Yamal won the penalty that Oyarzabal converted on 22 minutes</cite>, and Saliba's non-contact back injury in the immediate aftermath left France scrambling to reorganise. <cite index="13-1">Porro made it 2-0 in the 58th minute with a lovely combination with Dani Olmo</cite> — France never looked like getting back into it. <cite index="15-1">Mbappé, tied on eight goals with Messi in the Golden Boot race</cite>, was anonymous. Spain were simply better in every department — possession, pressing, and composure.<br><br>
+<cite index="13-1">Spain are unbeaten in 36 matches in regular time</cite> and are into their second World Cup Final. <strong>Graham's</strong> Spain. One team left. Everything on Sunday. 🏆<br><br>
+<strong>Jill</strong> is out — France and Belgium both gone. She'll be watching the Final from the sofa and hoping <strong>Alison</strong> beats <strong>Lozenge</strong> in the other semi tonight. The sweepstake is down to three: <strong>Graham</strong> (Spain), <strong>Alison</strong> (England), <strong>Lozenge</strong> (Argentina). 🎯`
   };
 
   function buildWoesPanel() {
@@ -1277,7 +1277,7 @@ Two semi-finals. Four players. All still alive. This is what sweepstakes are for
       99:{t1:'Norway',t2:'England',s1:1,s2:2,p1:null,p2:null,date:'11 Jul'},
       100:{t1:'Argentina',t2:'Switzerland',s1:3,s2:1,p1:null,p2:null,date:'11 Jul'},
       // SF
-      101:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'14 Jul'},
+      101:{t1:'France',t2:'Spain',s1:0,s2:2,p1:null,p2:null,date:'14 Jul'},
       102:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'15 Jul'},
       // 3rd & Final
       103:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'18 Jul'},
