@@ -506,7 +506,7 @@
         <div class="subtitle">⭐ England</div>
       </div>
       <div class="form-strip" id="form-al"></div>
-      <span class="survive-badge" id="badge-al">1 left</span>
+      <span class="survive-badge" id="badge-al">0 left</span>
       <span class="chevron">▼</span>
     </div>
     <ul class="team-list" id="list-al">
@@ -517,7 +517,7 @@
       <li data-team="iran" data-group="G" class="eliminated"><span class="flag">🇮🇷</span><span class="team-name">Iran</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="senegal" data-group="I" class="eliminated"><span class="flag">🇸🇳</span><span class="team-name">Senegal</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="jordan" data-group="J" class="eliminated"><span class="flag">🇯🇴</span><span class="team-name">Jordan</span><span class="out-icon">⚽</span><div class="results"></div></li>
-      <li data-team="england" data-group="L" class="big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span><div class="results"></div></li>
+      <li data-team="england" data-group="L" class="eliminated big5"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span><span class="out-icon">⚽</span><div class="results"></div></li>
       <li data-team="panama" data-group="L" class="eliminated"><span class="flag">🇵🇦</span><span class="team-name">Panama</span><span class="out-icon">⚽</span><div class="results"></div></li>
     </ul>
   </div>
@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 101; // updated per result submission
+  const GAMES_PLAYED = 102; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -569,7 +569,7 @@
     czechia:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 7 }, { r: 'L', seq: 35 }],
     // JILL
     croatia:     [{ r: 'L', seq: 4 }, { r: 'W', seq: 29 }, { r: 'W', seq: 50 }, { r: 'L', seq: 66 }],
-    france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }, { r: 'W', seq: 72 }, { r: 'W', seq: 79 }, { r: 'L', seq: 83 }],
+    france:      [{ r: 'W', seq: 1 }, { r: 'W', seq: 24 }, { r: 'W', seq: 43 }, { r: 'W', seq: 60 }, { r: 'W', seq: 72 }, { r: 'W', seq: 79 }, { r: 'L', seq: 83 }, { r: 'L', seq: 85 }],
     australia:   [{ r: 'W', seq: 0 }, { r: 'L', seq: 11 }, { r: 'D', seq: 42 }, { r: 'D', seq: 68 }],
     canada:      [{ r: 'D', seq: 0 }, { r: 'W', seq: 9 }, { r: 'L', seq: 31 }, { r: 'W', seq: 55 }, { r: 'L', seq: 71 }],
     belgium:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 20 }, { r: 'W', seq: 47 }, { r: 'W', seq: 63 }, { r: 'W', seq: 76 }, { r: 'L', seq: 80 }],
@@ -579,7 +579,7 @@
     scotland:    [{ r: 'W', seq: 0 }, { r: 'L', seq: 12 }, { r: 'L', seq: 34 }],
     // LAURA
     curacao:     [{ r: 'L', seq: 0 }, { r: 'D', seq: 17 }, { r: 'L', seq: 38 }],
-    argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }, { r: 'W', seq: 54 }, { r: 'W', seq: 69 }, { r: 'W', seq: 77 }, { r: 'W', seq: 82 }],
+    argentina:   [{ r: 'W', seq: 2 }, { r: 'W', seq: 23 }, { r: 'W', seq: 54 }, { r: 'W', seq: 69 }, { r: 'W', seq: 77 }, { r: 'W', seq: 82 }, { r: 'W', seq: 84 }],
     uruguay:     [{ r: 'D', seq: 0 }, { r: 'D', seq: 21 }, { r: 'L', seq: 46 }],
     netherlands: [{ r: 'D', seq: 0 }, { r: 'W', seq: 15 }, { r: 'W', seq: 39 }, { r: 'D', seq: 58 }],
     sweden:      [{ r: 'W', seq: 0 }, { r: 'L', seq: 15 }, { r: 'D', seq: 40 }, { r: 'L', seq: 60 }],
@@ -600,7 +600,7 @@
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }, { r: 'L', seq: 72 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }, { r: 'L', seq: 63 }],
-    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }, { r: 'W', seq: 74 }, { r: 'W', seq: 81 }],
+    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }, { r: 'W', seq: 74 }, { r: 'W', seq: 81 }, { r: 'L', seq: 84 }, { r: 'L', seq: 85 }],
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }, { r: 'W', seq: 61 }, { r: 'L', seq: 74 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
@@ -711,15 +711,15 @@
     { date: '11 Jul', group: 'QF',  home: 'Argentina',            away: 'Switzerland', score: '3-1 (AET)' },
     // ── SEMI-FINALS ──
     { date: '14 Jul', group: 'SF',  home: 'France',               away: 'Spain', score: '0-2' },
-    { date: '15 Jul', group: 'SF',  home: 'England',              away: 'Argentina' },
+    { date: '15 Jul', group: 'SF',  home: 'England',              away: 'Argentina', score: '1-2' },
     // ── THIRD PLACE ──
-    { date: '18 Jul', group: '3rd', home: 'Loser M101',           away: 'Loser M102' },
+    { date: '18 Jul', group: '3rd', home: 'France',               away: 'England' },
     // ── FINAL ──
-    { date: '19 Jul', group: 'Final', home: 'Spain',              away: 'Winner M102' },
+    { date: '19 Jul', group: 'Final', home: 'Spain',              away: 'Argentina' },
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 82;
+  const FIXTURES_PLAYED = 83;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -933,6 +933,7 @@ function buildFixturesPanel() {
     { team: 'Norway', flag: '🇳🇴', player: 'katy', group: 'KO' },
     { team: 'Switzerland', flag: '🇨🇭', player: 'katy', group: 'KO' },
     { team: 'France', flag: '🇫🇷', player: 'jill', group: 'KO' },
+    { team: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', player: 'al', group: 'KO' },
   ];
 
 
@@ -1083,15 +1084,21 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '12 Jul, 09:15',
       text: `<strong>KATY IS ELIMINATED.</strong> Switzerland go down 3-1 to Lozenge's Argentina in extra time in Kansas City. Mac Allister header on 10', Ndoye equalises, Embolo controversially sent off, Álvarez stunner from 25 yards in the 112th. Lautaro adds gloss in the 120th. Katy had Morocco, Norway, Switzerland in the QFs. All three gone. She was the story of this sweepstake. Four players remain. Jill v Graham (France v Spain). Alison v Lozenge (England v Argentina). This is what sweepstakes are for. 🔥`
+    },
+    {
+      timestamp: '14 Jul, 22:00',
+      text: `<strong>JILL IS ELIMINATED. Graham is in the World Cup Final.</strong> Spain beat France 2-0 in Dallas. Yamal wins the penalty, Oyarzabal converts on 22'. Saliba forced off with a back injury. Porro makes it 2-0 on 58'. Mbappé anonymous. Spain unbeaten in 36. Graham's Spain into the Final. Three remain: Graham (Spain), Alison (England), Lozenge (Argentina). 🎯`
     }
   ];
 
   const WOES = {
-    timestamp: '14 Jul, 22:00',
-    text: `<strong>JILL IS ELIMINATED. Graham is in the World Cup Final.</strong> 🇪🇸<br><br>
-Spain beat <strong>Jill's</strong> France 2-0 in Dallas in what felt less like an upset and more like an inevitability. <cite index="15-1">Lamine Yamal won the penalty that Oyarzabal converted on 22 minutes</cite>, and Saliba's non-contact back injury in the immediate aftermath left France scrambling to reorganise. <cite index="13-1">Porro made it 2-0 in the 58th minute with a lovely combination with Dani Olmo</cite> — France never looked like getting back into it. <cite index="15-1">Mbappé, tied on eight goals with Messi in the Golden Boot race</cite>, was anonymous. Spain were simply better in every department — possession, pressing, and composure.<br><br>
-<cite index="13-1">Spain are unbeaten in 36 matches in regular time</cite> and are into their second World Cup Final. <strong>Graham's</strong> Spain. One team left. Everything on Sunday. 🏆<br><br>
-<strong>Jill</strong> is out — France and Belgium both gone. She'll be watching the Final from the sofa and hoping <strong>Alison</strong> beats <strong>Lozenge</strong> in the other semi tonight. The sweepstake is down to three: <strong>Graham</strong> (Spain), <strong>Alison</strong> (England), <strong>Lozenge</strong> (Argentina). 🎯`
+    timestamp: '15 Jul, 22:45',
+    text: `<strong>ALISON IS ELIMINATED. It's Graham vs Lozenge in the World Cup Final.</strong> 🏆<br><br>
+<cite index="16-1">England led 1-0 with five minutes remaining. Then Argentina scored twice in seven minutes and broke 60 million hearts.</cite> <cite index="23-1">Anthony Gordon gave England the lead on 55 minutes.</cite> For the next half hour England defended brilliantly — but then <cite index="16-1">Enzo Fernández fired in a stunning leveller from distance in the 85th minute</cite>, both goals set up by Messi. <cite index="16-1">Then substitute Lautaro Martínez headed in a 92nd-minute winner</cite> to send Argentina into the Final. <cite index="24-1">Messi now leads the Golden Boot standings on assists — both he and Mbappé have eight goals</cite>, but Messi's assist total breaks the tie.<br><br>
+<cite index="25-1">Argentina are chasing back-to-back World Cup titles — something not achieved since Brazil in 1962.</cite> <strong>Alison</strong> goes out — England reach their first semi-final since 1990 and their deepest run since 1966. So close. 🏴󠁧󠁢󠁥󠁮󠁧󠁿<br><br>
+<strong>What's left:</strong><br>
+🥉 <strong>3rd Place — Sat 18 Jul — France (Jill) v England (Alison) — Miami:</strong> Two eliminated players, one last hurrah. A dead rubber with pride on the line. Worth watching for bragging rights among the also-rans. Will Mbappé finally show up? Will Bellingham get closure?<br><br>
+🏆 <strong>THE FINAL — Sun 19 Jul — Spain (Graham) v Argentina (Lozenge) — New York:</strong> This is it. The Valley View sweepstake Final. Graham's imperious, unbeaten Spain against Lozenge's swashbuckling reigning champions Argentina. Messi v Yamal. The old guard v the new kings. <cite index="25-1">Argentina seeking back-to-back titles not seen since 1962.</cite> Spain unbeaten in 36 matches in regular time. Someone in this room is going to win. May the best team win. 👑`
   };
 
   function buildWoesPanel() {
@@ -1105,7 +1112,7 @@ Spain beat <strong>Jill's</strong> France 2-0 in Dallas in what felt less like a
       </div>
       <div class="woes-body${isOpen ? ' open' : ''}" id="woes-body">
         <p class="woes-text">${WOES.text}</p>
-        <button class="woes-ko-btn" onclick="switchPhase('bracket'); setKORound('QF');">⚔️ Check the Knockout Bracket</button>
+        <button class="woes-ko-btn" onclick="switchPhase('bracket'); setKORound('🏆');">⚔️ Check the Knockout Bracket</button>
         <button class="woes-view-archive" onclick="openArchive()">📖 View the Archives</button>
       </div>`;
 
@@ -1198,7 +1205,7 @@ Spain beat <strong>Jill's</strong> France 2-0 in Dallas in what felt less like a
 
     // Round nav pills
     const rounds = ['R32', 'R16', 'QF', 'SF', '🏆'];
-    let activeRound = 'QF';
+    let activeRound = '🏆';
     const roundPills = rounds.map(r =>
       `<button class="ko-round-pill${r === activeRound ? ' active' : ''}" onclick="setKORound('${r}')">${r}</button>`
     ).join('');
@@ -1278,7 +1285,7 @@ Spain beat <strong>Jill's</strong> France 2-0 in Dallas in what felt less like a
       100:{t1:'Argentina',t2:'Switzerland',s1:3,s2:1,p1:null,p2:null,date:'11 Jul'},
       // SF
       101:{t1:'France',t2:'Spain',s1:0,s2:2,p1:null,p2:null,date:'14 Jul'},
-      102:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'15 Jul'},
+      102:{t1:'England',t2:'Argentina',s1:1,s2:2,p1:null,p2:null,date:'15 Jul'},
       // 3rd & Final
       103:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'18 Jul'},
       104:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'19 Jul'},
