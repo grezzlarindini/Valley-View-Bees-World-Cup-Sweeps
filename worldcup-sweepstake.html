@@ -1936,6 +1936,21 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
   buildLeaderboard();
     buildKOShell();
   updateBadges();
+
+  // On load: switch to Match Center, open W&W expanded, scroll to it
+  window.addEventListener('load', function() {
+    switchPhase('group');
+    const woesBody = document.getElementById('woes-body');
+    const woesChev = document.getElementById('woes-chevron');
+    if (woesBody && !woesBody.classList.contains('open')) {
+      woesBody.classList.add('open');
+      if (woesChev) woesChev.style.transform = 'rotate(90deg)';
+    }
+    setTimeout(() => {
+      const el = document.getElementById('woes-panel');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+  });
 </script>
 </body>
 </html>
