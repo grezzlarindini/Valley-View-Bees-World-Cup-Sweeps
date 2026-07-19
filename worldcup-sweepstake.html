@@ -545,7 +545,7 @@
 <script>
   const MAX_RESULTS = 8;
   const GAMES_TOTAL = 104;
-  const GAMES_PLAYED = 102; // updated per result submission
+  const GAMES_PLAYED = 103; // updated per result submission
 
   const players = [
     { id: 'graham', name: 'Graham', color: '#c0392b', big5: '🇪🇸' },
@@ -600,7 +600,7 @@
     // AL
     paraguay:    [{ r: 'L', seq: 0 }, { r: 'W', seq: 14 }, { r: 'D', seq: 42 }, { r: 'D', seq: 57 }, { r: 'L', seq: 72 }],
     senegal:     [{ r: 'L', seq: 1 }, { r: 'L', seq: 25 }, { r: 'W', seq: 44 }, { r: 'L', seq: 63 }],
-    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }, { r: 'W', seq: 74 }, { r: 'W', seq: 81 }, { r: 'L', seq: 84 }, { r: 'L', seq: 85 }],
+    england:     [{ r: 'W', seq: 4 }, { r: 'D', seq: 28 }, { r: 'W', seq: 49 }, { r: 'W', seq: 62 }, { r: 'W', seq: 74 }, { r: 'W', seq: 81 }, { r: 'L', seq: 84 }, { r: 'W', seq: 85 }],
     mexico:      [{ r: 'W', seq: 0 }, { r: 'W', seq: 10 }, { r: 'W', seq: 35 }, { r: 'W', seq: 61 }, { r: 'L', seq: 74 }],
     jordan:      [{ r: 'L', seq: 2 }, { r: 'L', seq: 26 }, { r: 'L', seq: 54 }],
     panama:      [{ r: 'L', seq: 6 }, { r: 'L', seq: 29 }, { r: 'L', seq: 49 }],
@@ -713,13 +713,13 @@
     { date: '14 Jul', group: 'SF',  home: 'France',               away: 'Spain', score: '0-2' },
     { date: '15 Jul', group: 'SF',  home: 'England',              away: 'Argentina', score: '1-2' },
     // ── THIRD PLACE ──
-    { date: '18 Jul', group: '3rd', home: 'France',               away: 'England' },
+    { date: '18 Jul', group: '3rd', home: 'France',               away: 'England', score: '4-6' },
     // ── FINAL ──
     { date: '19 Jul', group: 'Final', home: 'Spain',              away: 'Argentina' },
   ];
 
   // How many fixtures have been played (consumed from top of list)
-  const FIXTURES_PLAYED = 83;
+  const FIXTURES_PLAYED = 84;
 
   // Maps fixture display names to RESULTS keys and player IDs
   const TEAM_PLAYER_MAP = {
@@ -1088,17 +1088,19 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
     {
       timestamp: '14 Jul, 22:00',
       text: `<strong>JILL IS ELIMINATED. Graham is in the World Cup Final.</strong> Spain beat France 2-0 in Dallas. Yamal wins the penalty, Oyarzabal converts on 22'. Saliba forced off with a back injury. Porro makes it 2-0 on 58'. Mbappé anonymous. Spain unbeaten in 36. Graham's Spain into the Final. Three remain: Graham (Spain), Alison (England), Lozenge (Argentina). 🎯`
+    },
+    {
+      timestamp: '15 Jul, 22:45',
+      text: `<strong>ALISON IS ELIMINATED. It's Graham vs Lozenge in the World Cup Final.</strong> England led 1-0 with five minutes to go. Enzo Fernández fired in a stunner on 85'. Lautaro Martínez headed in the winner in the 92nd minute. Messi set up both. England 60 years of hurt continues. Argentina into the Final to defend their title. Graham (Spain) v Lozenge (Argentina). May the best team win. 🏆`
     }
   ];
 
   const WOES = {
-    timestamp: '15 Jul, 22:45',
-    text: `<strong>ALISON IS ELIMINATED. It's Graham vs Lozenge in the World Cup Final.</strong> 🏆<br><br>
-<cite index="16-1">England led 1-0 with five minutes remaining. Then Argentina scored twice in seven minutes and broke 60 million hearts.</cite> <cite index="23-1">Anthony Gordon gave England the lead on 55 minutes.</cite> For the next half hour England defended brilliantly — but then <cite index="16-1">Enzo Fernández fired in a stunning leveller from distance in the 85th minute</cite>, both goals set up by Messi. <cite index="16-1">Then substitute Lautaro Martínez headed in a 92nd-minute winner</cite> to send Argentina into the Final. <cite index="24-1">Messi now leads the Golden Boot standings on assists — both he and Mbappé have eight goals</cite>, but Messi's assist total breaks the tie.<br><br>
-<cite index="25-1">Argentina are chasing back-to-back World Cup titles — something not achieved since Brazil in 1962.</cite> <strong>Alison</strong> goes out — England reach their first semi-final since 1990 and their deepest run since 1966. So close. 🏴󠁧󠁢󠁥󠁮󠁧󠁿<br><br>
-<strong>What's left:</strong><br>
-🥉 <strong>3rd Place — Sat 18 Jul — France (Jill) v England (Alison) — Miami:</strong> Two eliminated players, one last hurrah. A dead rubber with pride on the line. Worth watching for bragging rights among the also-rans. Will Mbappé finally show up? Will Bellingham get closure?<br><br>
-🏆 <strong>THE FINAL — Sun 19 Jul — Spain (Graham) v Argentina (Lozenge) — New York:</strong> This is it. The Valley View sweepstake Final. Graham's imperious, unbeaten Spain against Lozenge's swashbuckling reigning champions Argentina. Messi v Yamal. The old guard v the new kings. <cite index="25-1">Argentina seeking back-to-back titles not seen since 1962.</cite> Spain unbeaten in 36 matches in regular time. Someone in this room is going to win. May the best team win. 👑`
+    timestamp: '19 Jul, 01:15',
+    text: `Nobody told France and England this was supposed to be the dead rubber. <cite index="17-1">Ten goals in Miami — England hold off a stunning France comeback to win 6-4</cite> in the most entertaining match of the tournament. <cite index="13-1">Mbappé finally showed up</cite> — he ended his World Cup with a hat-trick and the Golden Boot on nine goals, pipping Messi on eight. Bellingham bagged two. Kane grabbed one. Olise terrorised England's left side all night. It was glorious, chaotic football that nobody asked for and everyone needed. <cite index="15-1">It's Deschamps' last game in charge of France after 14 years</cite> — what a send-off, even in defeat. 🎭<br><br>
+<strong>For the sweepstake:</strong> <strong>Alison</strong> ends on a win — England finish third, their best World Cup since 1966. <strong>Jill</strong> goes home with fourth place and zero regrets. Neither the gold nor silver they wanted, but what a tournament.<br><br>
+<strong>🏆 THE FINAL IS TONIGHT — Spain (Graham) v Argentina (Lozenge) — New York, 8pm UK</strong><br><br>
+<cite index="17-1">Argentina are chasing back-to-back titles not seen since Brazil in 1962.</cite> Spain are unbeaten in 36 matches in regular time. Messi's final chapter. Yamal's coronation. Graham needs just one more win. Lozenge needs one more miracle. The Valley View sweepstake ends tonight. 👑`
   };
 
   function buildWoesPanel() {
@@ -1287,7 +1289,7 @@ Now for the long-term view. <strong>Lozenge</strong> plays herself in M75 (Nethe
       101:{t1:'France',t2:'Spain',s1:0,s2:2,p1:null,p2:null,date:'14 Jul'},
       102:{t1:'England',t2:'Argentina',s1:1,s2:2,p1:null,p2:null,date:'15 Jul'},
       // 3rd & Final
-      103:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'18 Jul'},
+      103:{t1:'France',t2:'England',s1:4,s2:6,p1:null,p2:null,date:'18 Jul'},
       104:{t1:null,t2:null,s1:null,s2:null,p1:null,p2:null,date:'19 Jul'},
     };
 
